@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class MineBlock : MonoBehaviour {
 	
-	// Update is called once per frame
 	void Update () {
+        //Determines where the raycast is pointing
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
         RaycastHit hit;
         //Debug.DrawRay(ray.origin, hit.point);
-        if (Physics.Raycast(ray, out hit, 1.1f) & hit.transform.gameObject.tag == "Finish" & Input.GetMouseButton(0))
+        // If the raycast hits and object, and the left mouse button is down, destroy the gameObject
+        if (Physics.Raycast(ray, out hit, 3f) && Input.GetMouseButton(0))
         {
             Destroy(hit.transform.gameObject);
         }
+        if (Physics.Raycast(ray, out hit, 3f) && Input.GetMouseButton(1))
+        {
+            print(hit.normal);
 
+        }
     }
 }
