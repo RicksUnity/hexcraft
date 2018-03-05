@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: b6a18e80a6e2f450ab10eca062c305a2
 timeCreated: 1520249604
+=======
+guid: 888142b9d3ed6400db322b71053c480f
+timeCreated: 1519647206
+>>>>>>> Map
 licenseType: Free
 MonoImporter:
   externalObjects: {}

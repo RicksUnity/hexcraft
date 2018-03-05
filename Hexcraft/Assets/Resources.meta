@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 5d297dfbcdbbd4f8b8a37a1ee1903a97
 folderAsset: yes
 timeCreated: 1520091753
+=======
+guid: ce2b3bb87ad6f4d4280a88e747a1fec1
+folderAsset: yes
+timeCreated: 1519647206
+>>>>>>> Map
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
