@@ -12,7 +12,7 @@ public class Grid: MonoBehaviour {
 
 	void Awake () {
 
-		Vector3 scale = Vector3.one;
+		Vector3 scale = new Vector3(100f,100f,100f);
 		Vector3 position;
 		position.y = 0f;
 		float tres = Mathf.Sqrt (3);
