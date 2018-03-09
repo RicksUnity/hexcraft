@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovePlayeru : MonoBehaviour { 
+public class MovePlayeru : MonoBehaviour {
 
-    Rigidbody rb;
+    UnityEngine.Rigidbody rb;
     private float xpos = 0.0f;
     private float zpos = 0.0f;
     private float yaw = 0.0f;
@@ -13,7 +13,7 @@ public class MovePlayeru : MonoBehaviour {
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<UnityEngine.Rigidbody>();
     }
 
     void Update()
