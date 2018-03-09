@@ -5,6 +5,7 @@ public class Gameplay : MonoBehaviour {
 
 	public GameObject playerPrefab;
 	bool IsEscape;
+	public MainMenu Main;
 	// Use this for initialization
 	void Start () {
 		/*for(int i = 0; i < 3; i++){
@@ -42,7 +43,7 @@ public class Gameplay : MonoBehaviour {
 				IsEscape = false;
 			} 
 			else if (GUILayout.Button ("Save the game")) {
-				SaveLoad.Save ();
+				SaveLoad.Save (Main.worldName);
 				Debug.Log ('b');
 			} 
 			else if (GUILayout.Button ("Save the game and quit")) {
