@@ -12,11 +12,11 @@ public class Inventory : MonoBehaviour {
 	void Start() {
 		for (int i = 0; i < (slotsX*slotsY); i++){
 			slots.Add(new Item());
+			inventory.Add (new Item());
 		}
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>(); 
-
-		inventory.Add (database.items[0]);
-		inventory.Add (database.items[1]);
+		inventory[0] = database.items[0];
+		inventory[1] = database.items[1];
 
 	}
 	void Update(){
@@ -34,9 +34,16 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 	void DrawInventory(){
-		for (int x= 0; x < slotsX; x++){
-			for (int y = 0; y < slotsY; y ++){
-				GUI.Box(new Rect(x * 60, y * 60, 50, 50), "", skin.GetStyle("Slot"));
+		int i = 0; 
+		for (int y = 0; y < slotsY; y ++){
+			for (int x = 0; x < slotsX; x++){
+				Rect slotRect = new Rect(x * 60, y * 60, 50, 50); 
+				GUI.Box(new Rect(slotRect), "", skin.GetStyle("Slot"));
+				slots[i] = inventory[i];
+				if (slots[i].itemName != null){
+					GUI.DrawTexture(slotRect, slots[i].itemIcon);
+				}
+				i++; 
 			}
 
 		}
