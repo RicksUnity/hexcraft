@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour {
 	public int slotsX, slotsY;
+	public GUISkin skin;
 	public List<Item> inventory = new List<Item>();
 	public List<Item> slots = new List<Item>(); 
 	private bool showInventory;   
@@ -24,6 +25,7 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 	void OnGUI(){
+		GUI.skin = skin;  
 		if(showInventory){
 			DrawInventory();
 		}
@@ -34,7 +36,7 @@ public class Inventory : MonoBehaviour {
 	void DrawInventory(){
 		for (int x= 0; x < slotsX; x++){
 			for (int y = 0; y < slotsY; y ++){
-				GUI.Box(new Rect(x * 20, y * 20, 20, 20), y.ToString());
+				GUI.Box(new Rect(x * 60, y * 60, 50, 50), "", skin.GetStyle("Slot"));
 			}
 
 		}
