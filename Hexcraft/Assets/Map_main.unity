@@ -23121,6 +23121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotsX: 10
   slotsY: 3
+  skin: {fileID: 11400000, guid: 7c727e2cdb1ed3545b8339171cb99b90, type: 2}
   inventory: []
   slots: []
 --- !u!4 &418384239
