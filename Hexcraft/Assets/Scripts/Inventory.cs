@@ -11,6 +11,9 @@ public class Inventory : MonoBehaviour {
 	private ItemDatabase database; 
 	private bool showToolTip; 
 	private string tooltip; 
+	private bool draggingItem; 
+	private Item draggedItem; 
+	private int prevIndex; 
 	void Start() {
 		for (int i = 0; i < (slotsX*slotsY); i++){
 			slots.Add(new Item());
@@ -30,14 +33,20 @@ public class Inventory : MonoBehaviour {
 		GUI.skin = skin;  
 		if(showInventory){
 			DrawInventory();
-		}
-		if (showToolTip){
+			if (showToolTip){
 			GUI.Box (new Rect(Event.current.mousePosition.x +20f, Event.current.mousePosition.y + 20f, 200, 200), tooltip, skin.GetStyle("ToolTip"));
+		}
+		if (draggingItem){
+			GUI.DrawTexture(new Rect(Event.current.mousePosition.x +5f, Event.current.mousePosition.y + 5f, 50, 50), draggedItem.itemIcon);
+
+		}
+		
 		}
 		
 		}
 	
 	void DrawInventory(){
+		Event e = Event.current; 
 		int i = 0; 
 		for (int y = 0; y < slotsY; y ++){
 			for (int x = 0; x < slotsX; x++){
@@ -46,12 +55,39 @@ public class Inventory : MonoBehaviour {
 				slots[i] = inventory[i];
 				if (slots[i].itemName != null){
 					GUI.DrawTexture(slotRect, slots[i].itemIcon);
-					if (slotRect.Contains(Event.current.mousePosition)){
+					if (slotRect.Contains(e.mousePosition)){
 						tooltip = CreateToolTip(slots[i]);
 						showToolTip = true; 
+						if (e.button == 0 && e.type == EventType.MouseDrag && !draggingItem){
+							draggingItem = true;
+							prevIndex = i; 
+							draggedItem  = slots[i]; 
+							inventory[i] = new Item();
+
+						}
+						
+						if (e.type == EventType.MouseUp && draggingItem){
+							inventory[prevIndex] = inventory[i]; 
+							inventory[i] = draggedItem; 
+							draggingItem = false; 
+							draggedItem = null; 
+
+
+						}
 
 					}
 
+				} else {
+					if(slotRect.Contains(e.mousePosition)){
+						if (e.type == EventType.MouseUp && draggingItem){
+							inventory[prevIndex] = inventory[i]; 
+							inventory[i] = draggedItem; 
+							draggingItem = false; 
+							draggedItem = null; 
+							
+						}
+						
+					}
 				}
 				if (tooltip == ""){
 					showToolTip = false;
