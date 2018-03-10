@@ -9,15 +9,23 @@ public class MainMenu : MonoBehaviour {
 		NewGame,
 		LoadGame
 	}
+
 	int i=0;
 	public Menu currentMenu;
 	public string worldName;
 	public string characterName;
 	bool IsEscape;
+
+
+	public static DirectoryInfo dir = new DirectoryInfo("Assets/Store/");
+	public static FileInfo[] info = dir.GetFiles ("*.txt");
+	//Debug.Log (i);
+
+
 	void OnGUI () {
 		if (Input.GetKeyDown ("escape")) {
 			if (!IsEscape)
-				IsEscape = true;
+		IsEscape = true;
 			else
 				IsEscape = false;
 			Debug.Log (IsEscape);
@@ -78,7 +86,7 @@ public class MainMenu : MonoBehaviour {
 		else if (currentMenu == Menu.NewGame) {
 
 			GUILayout.Box("Name Your Characters");
-			Debug.Log ("LKJDLKJDFLKSDFJLKSDFJ");
+			//Debug.Log ("LKJDLKJDFLKSDFJLKSDFJ");
 			Game.current.player.name = GUILayout.TextField(Game.current.player.name, 20);
 			GUILayout.Space(10);
 
@@ -106,19 +114,24 @@ public class MainMenu : MonoBehaviour {
 			//SaveLoad.Load();
 			GUILayout.Box("Select Saved File");
 			GUILayout.Space(10);
-			DirectoryInfo dir = new DirectoryInfo("Assets/Store/");
-			FileInfo[] info = dir.GetFiles("*.txt*");
-			Debug.Log (i);
-			foreach (FileInfo f in info)
-			{
-				Debug.Log(f.ToString());
-			}
-			i++;
+			//GUILayout.Box("Select Saved File2");
+
+
+			//if(i<info.Length){
+				foreach (FileInfo f in info){
+					//Debug.Log (i);
+					GUILayout.Space(10);
+					GUILayout.Button(Path.GetFileNameWithoutExtension(f.ToString()));
+
+					i++;
+				}
+			//}
+			//Debug.Log(i);
 
 			//GUILayout.Space(10);
 			if(GUILayout.Button("Cancel")) {
 				currentMenu = Menu.MainMenu;
-			}			
+			}		
 		}
 
 		GUILayout.FlexibleSpace();
