@@ -15,13 +15,13 @@ public class Inventory : MonoBehaviour {
 			inventory.Add (new Item());
 		}
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>(); 
-		inventory[0] = database.items[0];
-		inventory[1] = database.items[1];
+		addItem(1);
+		addItem(0);
 
 	}
 	void Update(){
 		if(Input.GetButtonDown("Inventory")){
-			showInventory =  !showInventory;
+			showInventory = !showInventory;
 		}
 	}
 	void OnGUI(){
@@ -30,7 +30,7 @@ public class Inventory : MonoBehaviour {
 			DrawInventory();
 		}
 		for (int i = 0; i<inventory.Count; i++){
-			GUI.Label(new Rect(10,i*20,200,50),inventory[i].itemName);
+			GUI.Label(new Rect(10, i*20, 200, 50), inventory[i].itemName);
 		}
 	}
 	void DrawInventory(){
@@ -48,6 +48,21 @@ public class Inventory : MonoBehaviour {
 
 		}
 		
+	}
+	void addItem(int id){
+		for (int i = 0; i< inventory.Count; i++){
+			if (inventory[i].itemName == null){
+				for (int j = 0; j < database.items.Count; j++){
+					if (database.items[j].itemID == id){
+						inventory[i] = database.items[j];
+					}
+
+				}
+				break;
+
+			}
+		}
+
 	}
 
 
