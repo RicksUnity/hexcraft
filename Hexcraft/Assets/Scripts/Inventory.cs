@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour {
 	private bool draggingItem; 
 	private Item draggedItem; 
 	private int prevIndex; 
+	
 	void Start() {
 		for (int i = 0; i < (slotsX*slotsY); i++){
 			slots.Add(new Item());
@@ -34,7 +35,7 @@ public class Inventory : MonoBehaviour {
 		if(showInventory){
 			DrawInventory();
 			if (showToolTip){
-			GUI.Box (new Rect(Event.current.mousePosition.x +20f, Event.current.mousePosition.y + 20f, 200, 200), tooltip, skin.GetStyle("ToolTip"));
+			GUI.Box (new Rect(Event.current.mousePosition.x +20f, Event.current.mousePosition.y + 20f, 200, 100), tooltip, skin.GetStyle("ToolTip"));
 		}
 		if (draggingItem){
 			GUI.DrawTexture(new Rect(Event.current.mousePosition.x +5f, Event.current.mousePosition.y + 5f, 50, 50), draggedItem.itemIcon);
@@ -48,9 +49,11 @@ public class Inventory : MonoBehaviour {
 	void DrawInventory(){
 		Event e = Event.current; 
 		int i = 0; 
-		for (int y = 0; y < slotsY; y ++){
-			for (int x = 0; x < slotsX; x++){
-				Rect slotRect = new Rect(x * 60, y * 60, 50, 50); 
+		GUI.BeginGroup (new Rect (Screen.width / 2 - 250, Screen.height / 3 - 50, 600, 250));
+		GUI.Box(new Rect(0,0,600,250), "\n<color=#0>Glorious Inventory!</color>", skin.GetStyle("Background"));
+		for (int y = 1; y < slotsY+1; y ++){
+			for (int x = 1; x < slotsX+1; x++){
+				Rect slotRect = new Rect(x * 50, y * 50, 50, 50); 
 				GUI.Box(new Rect(slotRect), "", skin.GetStyle("Slot"));
 				slots[i] = inventory[i];
 				if (slots[i].itemName != null){
@@ -97,9 +100,10 @@ public class Inventory : MonoBehaviour {
 			
 		}
 	}
+	GUI.EndGroup ();
 	}
 	string CreateToolTip(Item item){
-		tooltip = "<color=#FFFFFFFF>"+item.itemName+"</color>\n\n"+ item.itemDesc;
+		tooltip = "<color=#FFFFFFFF>"+item.itemName+"</color>\n"+ item.itemDesc;
 		return tooltip;  
 
 	}
