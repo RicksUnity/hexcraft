@@ -5,7 +5,6 @@ using UnityEngine;
 public class MineBlock : MonoBehaviour {
 
     public GameObject placeBlock;
-
 	void Update () {
         //Determines where the raycast is pointing
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
@@ -13,7 +12,17 @@ public class MineBlock : MonoBehaviour {
         // If the raycast hits and object, and the left mouse button is down, destroy the gameObject
         if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(0))
         {
-            Destroy(hit.transform.gameObject);
+            hit.transform.localScale = hit.transform.localScale / 5;
+            hit.transform.Rotate(0, 90, 45);
+            if (hit.transform.gameObject.GetComponent<Rigidbody>() == null)
+            {
+                hit.transform.gameObject.AddComponent<Rigidbody>().useGravity = true;
+            }
+            hit.transform.gameObject.AddComponent<BoxCollider>();
+            hit.transform.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+            hit.transform.gameObject.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(3, 0, 0));
+
+            //Destroy(hit.transform.gameObject);
         }
         if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(1))
         {

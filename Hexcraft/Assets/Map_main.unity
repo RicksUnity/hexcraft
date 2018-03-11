@@ -92401,7 +92401,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
       propertyPath: movementSettings.JumpForce
-      value: 60
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
+      propertyPath: mouseLook.clampVerticalRotation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
+      propertyPath: mouseLook.MinimumX
+      value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
@@ -124641,7 +124649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095d49510021f4eef9d58f58c889e84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placeBlock: {fileID: 1475014055}
+  placeBlock: {fileID: 1674725431170902, guid: 729aa20d6e831c445896f385f2e890e7, type: 2}
 --- !u!1 &1888404973
 GameObject:
   m_ObjectHideFlags: 0
