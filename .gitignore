@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 [Ll]ibrary/
 Hexcraft/Library/ShaderCache
 Hexcraft/Library/*
+=======
+#[Ll]ibrary/
+Hexcraft/Library/ShaderCache
+Hexcraft/Library/metadata/*
+>>>>>>> BlockEntities
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
@@ -22,7 +28,7 @@ ExportedObj/
 *.user
 *.userprefs
 *.pidb
-*.booproj
+*.booproj	
 *.svd
 *.pdb
 
