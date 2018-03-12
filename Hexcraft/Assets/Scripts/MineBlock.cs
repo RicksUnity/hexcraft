@@ -11,14 +11,28 @@ public class MineBlock : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
         RaycastHit hit;
         // If the raycast hits and object, and the left mouse button is down, destroy the gameObject
-        if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButton(0))
+        if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(0))
         {
-            Destroy(hit.transform.gameObject);
+			//When mined, block becomes smaller and rotates, then a rigidbody is added
+			hit.transform.localScale = hit.transform.localScale/5;
+			hit.transform.Rotate (0, 90, 45);
+			if (hit.transform.gameObject.GetComponent<Rigidbody> () == null) 
+			{
+				hit.transform.gameObject.GetComponent<MeshCollider> ().convex = true;
+				hit.transform.gameObject.AddComponent<Rigidbody> ().useGravity = true;
+			}
+			//sets up properties of the block drop
+			hit.transform.gameObject.GetComponent<DropMechanics>().isDropped = true;
+			hit.transform.gameObject.GetComponent<DropMechanics> ().player = gameObject;
+			hit.transform.gameObject.GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+			hit.transform.gameObject.GetComponent<Rigidbody> ().AddRelativeTorque (new Vector3 (3, 0, 0));
+
         }
-        if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButton(1))
+        if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(1))
         {
             //Places a new Hexagon of choice
             GameObject newHex = Instantiate(placeBlock);
+
             //The following ifs transform hex into position in direction of the normal of where the Raycast hits the original hex
             if(hit.normal == new Vector3(1f,0f,0f))
             {

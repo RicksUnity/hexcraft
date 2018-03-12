@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: c1ed096c3df7a426891ffdf4477e55aa
 folderAsset: yes
 timeCreated: 1520091753
@@ -8,6 +9,11 @@ guid: 43cae1b80b57541e09306878748cb481
 folderAsset: yes
 timeCreated: 1519647206
 >>>>>>> Map
+=======
+guid: d4ece8e8640054f42ac8cd2ee6b543ed
+folderAsset: yes
+timeCreated: 1519645246
+>>>>>>> SaveLoad
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
