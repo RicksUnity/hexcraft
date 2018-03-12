@@ -11,7 +11,7 @@ public class DropMechanics : MonoBehaviour {
 		if(isDropped == true && Vector3.Distance(player.transform.position, transform.position) <= 5f)
         {
             GetComponent<Rigidbody>().AddForce((player.transform.position - transform.position).normalized * 1000 * Time.smoothDeltaTime);
-            if (Vector3.Distance(player.transform.position,transform.position)<=1.5f)
+            if (Vector3.Distance(player.transform.position,transform.position)<=2f)
             {
                 Destroy(gameObject);
             }
