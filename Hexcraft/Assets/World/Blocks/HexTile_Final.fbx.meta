@@ -1,11 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 3dbca4040d2704cc59b53d0a253d4303
-=======
-guid: 6f3e40cd47e4444f28df17c3dc11537f
-timeCreated: 1520269547
-licenseType: Free
->>>>>>> Player
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -15,10 +9,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cylinder
-<<<<<<< HEAD
     9500000: //RootNode
-=======
->>>>>>> Player
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -93,11 +84,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-<<<<<<< HEAD
   animationType: 2
-=======
-  animationType: 0
->>>>>>> Player
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
