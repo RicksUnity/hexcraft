@@ -1,28 +1,15 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Hexcraft/Assets/World/Blocks/HexTile.fbx.meta
 guid: 3dbca4040d2704cc59b53d0a253d4303
-timeCreated: 1519644999
-=======
-guid: 40067ad5eeb654f0caf27f7a7bc7568f
-timeCreated: 1520263217
->>>>>>> Map:Hexcraft/Assets/World/Blocks/HexTile_Final.fbx.meta
-licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
     2100000: No Name
-<<<<<<< HEAD:Hexcraft/Assets/World/Blocks/HexTile.fbx.meta
-    2300000: Cylinder
-    3300000: Cylinder
-    4300000: Cylinder
-    10800000: Lamp
-=======
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cylinder
->>>>>>> Map:Hexcraft/Assets/World/Blocks/HexTile_Final.fbx.meta
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -97,7 +84,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

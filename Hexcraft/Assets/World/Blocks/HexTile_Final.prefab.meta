@@ -1,29 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Hexcraft/Assets/Resources/Cube.prefab.meta
-<<<<<<< HEAD
-<<<<<<< HEAD
-guid: 82aec047cd2a949d2b8f8c1e82b88648
-timeCreated: 1520249607
-=======
-guid: 4825e324889e6419b88b679a0f5f807a
-timeCreated: 1519647209
->>>>>>> Map
-=======
-guid: 67c3a4fccebc842df8386e9262eab9e8
-timeCreated: 1520263217
->>>>>>> Map:Hexcraft/Assets/World/Blocks/HexTile_Final.prefab.meta
-licenseType: Free
+guid: 0e8eea2b867244ef6abd4924fc50e3cc
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0
-=======
-guid: 72209b62b6b384d01827ae25472d665c
-timeCreated: 1519126560
-licenseType: Free
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 100100000
->>>>>>> SaveLoad
   userData: 
   assetBundleName: 
   assetBundleVariant: 
