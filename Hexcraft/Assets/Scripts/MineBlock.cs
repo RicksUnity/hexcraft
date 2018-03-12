@@ -11,11 +11,11 @@ public class MineBlock : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
         RaycastHit hit;
         // If the raycast hits and object, and the left mouse button is down, destroy the gameObject
-        if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButton(0))
+        if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(0))
         {
             Destroy(hit.transform.gameObject);
         }
-        if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButton(1))
+        if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(1))
         {
             //Places a new Hexagon of choice
             GameObject newHex = Instantiate(placeBlock);

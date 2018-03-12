@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Hexcraft/Assets/MineBlock.cs.meta
 <<<<<<< HEAD:Hexcraft/Assets/Scripts/Character.cs.meta
 guid: 0d028b5da49bd4369823e0d3a800e295
 timeCreated: 1519645079
@@ -6,6 +7,10 @@ timeCreated: 1519645079
 guid: 25bb4018a53c24b8fa144c1b18a7766b
 timeCreated: 1520354806
 >>>>>>> Map:Hexcraft/Assets/MineBlock.cs.meta
+=======
+guid: a9b637a112b5d4942a249a13f4acd76c
+timeCreated: 1520592088
+>>>>>>> Player:Hexcraft/Assets/Scripts/Character.cs.meta
 licenseType: Free
 MonoImporter:
   externalObjects: {}

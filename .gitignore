@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 [Ll]ibrary/
+Hexcraft/Library/ShaderCache
+Hexcraft/Library/*
+=======
+#[Ll]ibrary/
+Hexcraft/Library/ShaderCache
+Hexcraft/Library/metadata/*
+>>>>>>> BlockEntities
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
-[Aa]ssets/
+#[Aa]ssets/
 Assets/AssetStoreTools*
 
 # Visual Studio 2015 cache directory
@@ -20,7 +28,7 @@ ExportedObj/
 *.user
 *.userprefs
 *.pidb
-*.booproj
+*.booproj	
 *.svd
 *.pdb
 
@@ -34,4 +42,3 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-hexcraft/
