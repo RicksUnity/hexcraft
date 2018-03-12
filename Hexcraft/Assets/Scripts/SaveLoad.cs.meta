@@ -1,11 +1,16 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: b6a18e80a6e2f450ab10eca062c305a2
 timeCreated: 1520249604
 =======
 guid: 888142b9d3ed6400db322b71053c480f
 timeCreated: 1519647206
 >>>>>>> Map
+=======
+guid: 004469d3b71ff4bcd9b63ea3cdcef2df
+timeCreated: 1519137469
+>>>>>>> SaveLoad
 licenseType: Free
 MonoImporter:
   externalObjects: {}
