@@ -5,6 +5,8 @@ using UnityEngine;
 public class MineBlock : MonoBehaviour {
 
     public GameObject placeBlock;
+    public ItemDatabase ItemDatabase;
+    public Inventory Inventory; 
 
 	void Update () {
         //Determines where the raycast is pointing
@@ -26,7 +28,8 @@ public class MineBlock : MonoBehaviour {
 			hit.transform.gameObject.GetComponent<DropMechanics> ().player = gameObject;
 			hit.transform.gameObject.GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			hit.transform.gameObject.GetComponent<Rigidbody> ().AddRelativeTorque (new Vector3 (3, 0, 0));
-
+            hit.transform.gameObject.GetComponent<DropMechanics>().database = ItemDatabase;
+            hit.transform.gameObject.GetComponent<DropMechanics>().invent = Inventory;
         }
         if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(1))
         {
