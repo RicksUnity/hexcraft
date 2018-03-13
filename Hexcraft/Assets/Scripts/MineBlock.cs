@@ -15,21 +15,24 @@ public class MineBlock : MonoBehaviour {
         // If the raycast hits and object, and the left mouse button is down, destroy the gameObject
         if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(0))
         {
-			//When mined, block becomes smaller and rotates, then a rigidbody is added
-			hit.transform.localScale = hit.transform.localScale/5;
-			hit.transform.Rotate (0, 90, 45);
-			if (hit.transform.gameObject.GetComponent<Rigidbody> () == null) 
-			{
-				hit.transform.gameObject.GetComponent<MeshCollider> ().convex = true;
-				hit.transform.gameObject.AddComponent<Rigidbody> ().useGravity = true;
-			}
-			//sets up properties of the block drop
-			hit.transform.gameObject.GetComponent<DropMechanics>().isDropped = true;
-			hit.transform.gameObject.GetComponent<DropMechanics> ().player = gameObject;
-			hit.transform.gameObject.GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-			hit.transform.gameObject.GetComponent<Rigidbody> ().AddRelativeTorque (new Vector3 (3, 0, 0));
-            hit.transform.gameObject.GetComponent<DropMechanics>().database = ItemDatabase;
-            hit.transform.gameObject.GetComponent<DropMechanics>().invent = Inventory;
+            if (hit.transform.gameObject.GetComponent<DropMechanics>().isDropped == false)
+            {
+                //When mined, block becomes smaller and rotates, then a rigidbody is added
+                hit.transform.localScale = hit.transform.localScale / 5;
+                hit.transform.Rotate(0, 90, 45);
+                if (hit.transform.gameObject.GetComponent<Rigidbody>() == null)
+                {
+                    hit.transform.gameObject.GetComponent<MeshCollider>().convex = true;
+                    hit.transform.gameObject.AddComponent<Rigidbody>().useGravity = true;
+                }
+                //sets up properties of the block drop
+                hit.transform.gameObject.GetComponent<DropMechanics>().isDropped = true;
+                hit.transform.gameObject.GetComponent<DropMechanics>().player = gameObject;
+                hit.transform.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+                hit.transform.gameObject.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(3, 0, 0));
+                hit.transform.gameObject.GetComponent<DropMechanics>().database = ItemDatabase;
+                hit.transform.gameObject.GetComponent<DropMechanics>().invent = Inventory;
+            }
         }
         if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(1))
         {
