@@ -6,7 +6,8 @@ public class MineBlock : MonoBehaviour {
 
     public GameObject placeBlock;
     public ItemDatabase ItemDatabase;
-    public Inventory Inventory; 
+    public Inventory Inventory;
+    public GameObject playerCollider;
 
 	void Update () {
         //Determines where the raycast is pointing
@@ -73,6 +74,12 @@ public class MineBlock : MonoBehaviour {
             {
                 newHex.transform.position = hit.transform.position + new Vector3(2, -2, 0);
             }
+            if (newHex.GetComponent<Collider>().bounds.Intersects(playerCollider.GetComponent<Collider>().bounds))
+            {
+                Destroy(newHex);
+            }
+
+
         }
     }
 }
