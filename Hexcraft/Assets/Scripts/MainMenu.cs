@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour {
 	void OnGUI () {
 		if (Input.GetKeyDown ("escape")) {
 			if (!IsEscape)
-		IsEscape = true;
+				IsEscape = true;
 			else
 				IsEscape = false;
 			Debug.Log (IsEscape);
@@ -109,7 +109,7 @@ public class MainMenu : MonoBehaviour {
 		}
 
 		else if (currentMenu == Menu.LoadGame) {
-			
+
 
 			//SaveLoad.Load();
 			GUILayout.Box("Select Saved File");
@@ -118,13 +118,14 @@ public class MainMenu : MonoBehaviour {
 
 
 			//if(i<info.Length){
-				foreach (FileInfo f in info){
-					//Debug.Log (i);
-					GUILayout.Space(10);
-					GUILayout.Button(Path.GetFileNameWithoutExtension(f.ToString()));
+			foreach (FileInfo f in info){
+				//Debug.Log (i);
+				GUILayout.Space(10);
+				if (GUILayout.Button (Path.GetFileNameWithoutExtension (f.ToString ())))
+					SaveLoad.Load (f.ToString ());
 
-					i++;
-				}
+				i++;
+			}
 			//}
 			//Debug.Log(i);
 
