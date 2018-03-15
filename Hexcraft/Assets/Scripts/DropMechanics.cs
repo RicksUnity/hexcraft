@@ -17,7 +17,7 @@ public class DropMechanics : MonoBehaviour {
             //When drop is close to player add the item to players inventory and delete it from the world
             if (Vector3.Distance(player.transform.position,transform.position)<=2f)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < database.items.Count; i++)
                 {
                     if(gameObject.name == database.items[i].itemWorld)
                     {

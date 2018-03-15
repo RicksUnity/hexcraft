@@ -119,7 +119,7 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 	}
-	void RemoveItem(int id){
+	public void RemoveItem(int id){
 		for (int i = 0; i <inventory.Count; i++){
 			if (inventory[i].itemID == id){
 				inventory[i]= new Item();
@@ -127,13 +127,14 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 	}
-	bool InventoryContains(int id){
+	public bool InventoryContains(int id){
 		bool result = false; 
 		for (int i = 0; i < inventory.Count; i++){
-			result =  true;
-			if (result){
-				break;
-			} 			
+            if (inventory[i].itemID == id)
+            {
+                result = true;
+                break;
+            }		
 		}	
 		return result; 
 	}
