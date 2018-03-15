@@ -7,7 +7,8 @@ public class MainMenu : MonoBehaviour {
 	public enum Menu {
 		MainMenu,
 		NewGame,
-		LoadGame
+		LoadGame,
+		InGame
 	}
 
 	int i=0;
@@ -20,17 +21,36 @@ public class MainMenu : MonoBehaviour {
 	public static DirectoryInfo dir = new DirectoryInfo("Assets/Store/");
 	public static FileInfo[] info = dir.GetFiles ("*.txt");
 	//Debug.Log (i);
-
-
-	void OnGUI () {
-		if (Input.GetKeyDown ("escape")) {
+	void Update(){
+		if (Input.GetKeyDown (KeyCode.Escape)) {
 			if (!IsEscape)
 				IsEscape = true;
 			else
 				IsEscape = false;
-			Debug.Log (IsEscape);
 		}
+
+	}
+
+	void OnGUI () {
+		GUILayout.BeginArea(new Rect(0,0,Screen.width, Screen.height));
+		GUILayout.BeginHorizontal();
+		GUILayout.FlexibleSpace();
+		GUILayout.BeginVertical();
+		GUILayout.FlexibleSpace();
+		//Debug.Log ("f");
+
+		/*if (Input.GetKeyDown ("escape")) {
+				Debug.Log ("Escape0");
+			if (!IsEscape)
+				IsEscape = true;
+			else
+				IsEscape = false;
+				Debug.Log (IsEscape);
+			}*/
+
+		//if (currentMenu == Menu.InGame) {		
 		if (IsEscape) {
+			Debug.Log ("Escape1");
 			GUILayout.BeginArea (new Rect (0, 0, Screen.width, Screen.height));
 			GUILayout.BeginHorizontal ();
 			GUILayout.FlexibleSpace ();
@@ -39,19 +59,16 @@ public class MainMenu : MonoBehaviour {
 
 			if (GUILayout.Button ("Back to the game")) {
 				IsEscape = false;
-			} 
-			else if (GUILayout.Button ("Save the game")) {
+			} else if (GUILayout.Button ("Save the game")) {
 
 				SaveLoad.Save (worldName);
 				Debug.Log ('b');
-			} 
-			else if (GUILayout.Button ("Save the game and quit")) {
+			} else if (GUILayout.Button ("Save the game and quit")) {
 
 				//Debug.Log ('c');
-			} 
-			else if (GUILayout.Button ("Quit without saving")) {
+			} else if (GUILayout.Button ("Quit without saving")) {
 				//Debug.Log ('d');
-				Application.Quit();
+				Application.Quit ();
 			}
 
 			GUILayout.FlexibleSpace ();
@@ -60,14 +77,11 @@ public class MainMenu : MonoBehaviour {
 			GUILayout.EndHorizontal ();
 			GUILayout.EndArea ();
 		}
+		//}
 		//Cursor.visible = true;
-		GUILayout.BeginArea(new Rect(0,0,Screen.width, Screen.height));
-		GUILayout.BeginHorizontal();
-		GUILayout.FlexibleSpace();
-		GUILayout.BeginVertical();
-		GUILayout.FlexibleSpace();
 
-		if(currentMenu == Menu.MainMenu) {
+
+		else if(currentMenu == Menu.MainMenu) {
 
 			if(GUILayout.Button("New Game")) {
 				Game.current = new Game();
@@ -96,8 +110,10 @@ public class MainMenu : MonoBehaviour {
 			GUILayout.Space(10);
 
 			if(GUILayout.Button("Create the world!")) {
+				currentMenu = Menu.InGame;
 				SaveLoad.Save(worldName);
-				this.enabled = false;
+				//this.enabled = false;
+
 				//SceneManager.LoadScene("map",LoadSceneMode.Single);
 				//SceneManager.LoadScene("Scene/New Game",LoadSceneMode.Single);
 			}
