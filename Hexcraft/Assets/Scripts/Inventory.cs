@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Inventory : MonoBehaviour {
 	public int slotsX, slotsY;
 	public GUISkin skin;
-	public List<Item> inventory = new List<Item>();
+	public static List<Item> inventory = new List<Item>();
 	public List<Item> slots = new List<Item>(); 
 	public List<Item> favSlots = new List<Item>(); 
 	private bool showInventory;
@@ -25,8 +25,8 @@ public class Inventory : MonoBehaviour {
 			favSlots.Add(new Item());
 		}
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>(); 
-		addItem(1);
 		addItem(0);
+		addItem(1);
 	}
 	void Update()
 	{
@@ -137,8 +137,6 @@ public class Inventory : MonoBehaviour {
 	{
 		Rect favSlotRect = new Rect(x*50, 50, 50, 50);
 		GUI.Box(new Rect(favSlotRect), "", skin.GetStyle("Slot"));
-		print(favSlots[i]);
-		print(inventory[i]);  
 		favSlots[i] = inventory[i]; 
 
 		if(favSlots[i].itemName != null)
