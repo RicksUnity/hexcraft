@@ -2,13 +2,15 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System.IO;
+using UnityEditor;
+
 public class MainMenu : MonoBehaviour {
 
 	public enum Menu {
 		MainMenu,
 		NewGame,
 		LoadGame,
-		InGame
+		None
 	}
 
 	int i=0;
@@ -23,6 +25,8 @@ public class MainMenu : MonoBehaviour {
 	//Debug.Log (i);
 	void Update(){
 		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Debug.Log ("update");
+			//GUI.enabled = true;
 			if (!IsEscape)
 				IsEscape = true;
 			else
@@ -50,7 +54,8 @@ public class MainMenu : MonoBehaviour {
 
 		//if (currentMenu == Menu.InGame) {		
 		if (IsEscape) {
-			Debug.Log ("Escape1");
+			//GUI.enabled = true;
+			//Debug.Log ("Escape1");
 			GUILayout.BeginArea (new Rect (0, 0, Screen.width, Screen.height));
 			GUILayout.BeginHorizontal ();
 			GUILayout.FlexibleSpace ();
@@ -60,9 +65,10 @@ public class MainMenu : MonoBehaviour {
 			if (GUILayout.Button ("Back to the game")) {
 				IsEscape = false;
 			} else if (GUILayout.Button ("Save the game")) {
-
-				SaveLoad.Save (worldName);
-				Debug.Log ('b');
+				if (EditorUtility.DisplayDialog ("Save the game","Are you sure you want to save the game?","Yes","No"))
+					SaveLoad.Save (worldName);
+					
+				//Debug.Log (EditorUtility.DisplayDialog ("Save the game","Are you sure you want to save the game?","Yes","No"));
 			} else if (GUILayout.Button ("Save the game and quit")) {
 
 				//Debug.Log ('c');
@@ -84,7 +90,7 @@ public class MainMenu : MonoBehaviour {
 		else if(currentMenu == Menu.MainMenu) {
 
 			if(GUILayout.Button("New Game")) {
-				Game.current = new Game();
+				//Game.current = new Game();
 				currentMenu = Menu.NewGame;
 			}
 			if(GUILayout.Button("Load Game")) {
@@ -101,18 +107,22 @@ public class MainMenu : MonoBehaviour {
 
 			GUILayout.Box("Name Your Characters");
 			//Debug.Log ("LKJDLKJDFLKSDFJLKSDFJ");
-			Game.current.player.name = GUILayout.TextField(Game.current.player.name, 20);
+			characterName = GUILayout.TextField(characterName, 20);
 			GUILayout.Space(10);
 
 			GUILayout.Box("Name your world");
-			Game.current.world.name = GUILayout.TextField(Game.current.world.name, 20);
-			worldName = Game.current.world.name;
+			worldName = GUILayout.TextField(worldName, 20);
+			//worldName = Game.current.world.name;
 			GUILayout.Space(10);
 
 			if(GUILayout.Button("Create the world!")) {
-				currentMenu = Menu.InGame;
-				SaveLoad.Save(worldName);
-				//this.enabled = false;
+				if (characterName.Length == 0 || worldName.Length == 0)
+					EditorUtility.DisplayDialog ("Empty name!", "Character's or world's name can't be empty", "OK");
+				else {
+					currentMenu = Menu.None;
+					SaveLoad.Save (worldName);
+				}
+				//GUI.enabled = false;
 
 				//SceneManager.LoadScene("map",LoadSceneMode.Single);
 				//SceneManager.LoadScene("Scene/New Game",LoadSceneMode.Single);
