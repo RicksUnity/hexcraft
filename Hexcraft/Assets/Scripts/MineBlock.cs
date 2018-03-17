@@ -67,6 +67,22 @@ public class MineBlock : MonoBehaviour {
             {
                 newHex.transform.position = hit.transform.position + new Vector3(2, -2, 0);
             }
+
+
+
+
+
+
+
+            if(newHex.name == "redstoneTorch(Clone)")
+            {
+                newHex.transform.localScale = newHex.transform.localScale / 3;
+                newHex.transform.position = newHex.transform.position + (hit.transform.position - newHex.transform.position) / 2;
+            }
+            if(newHex.name == "redstoneTorch(Clone)" || newHex.name == "redstone(clone)")
+            {
+                newHex.GetComponent<DropMechanics>().attatchedTo = hit.transform.gameObject;
+            }
         }
     }
 }
