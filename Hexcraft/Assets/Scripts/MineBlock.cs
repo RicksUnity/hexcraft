@@ -18,6 +18,7 @@ public class MineBlock : MonoBehaviour {
             if (hit.transform.name == "redstone(Clone)" || hit.transform.name == "redstoneTorch(Clone)")
             {
                 hit.transform.GetComponent<RedstoneBehaviour>().Orientation(true);
+                print("cheese");
             }
 			hit.transform.localScale = hit.transform.localScale/5;
 			hit.transform.Rotate (0, 90, 45);

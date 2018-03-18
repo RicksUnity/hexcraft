@@ -5,7 +5,7 @@ using UnityEngine;
 public class DropMechanics : MonoBehaviour {
     public GameObject player;
     public bool isDropped = false;
-    public int isPowered = 0;
+    public bool isPowered = false;
     public GameObject attatchedTo = null;
 
     void Update()
@@ -39,6 +39,18 @@ public class DropMechanics : MonoBehaviour {
                 attatchedTo = null;
             }
 
+        }
+        if (isPowered == true)
+        {
+            Collider[] nearby = Physics.OverlapSphere(transform.position, 2.1f);
+            for(int i = 0; i < nearby.Length; i++)
+            {
+                if(nearby[i].name == "redstone(Clone)" && nearby[i].GetComponent<RedstoneBehaviour>().infront == gameObject && nearby[i].GetComponent<RedstoneBehaviour>().strength>0)
+                {
+                    return;
+                }
+            }
+            isPowered = false;
         }
     }
 }

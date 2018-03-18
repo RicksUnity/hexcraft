@@ -8,8 +8,10 @@ public class RedstoneBehaviour : MonoBehaviour {
     public Vector3 pointing = new Vector3(0,0,0);
     private Collider behind;
     public GameObject infront;
-	
+    public bool affected;	
+
     public void Orientation (bool passOn){
+        pointing = new Vector3(0, 0, 0);
         Collider[] nearby = Physics.OverlapSphere(transform.position, 2.1f);
         for (int j = 0; j < nearby.Length; j++)
         {
@@ -23,8 +25,9 @@ public class RedstoneBehaviour : MonoBehaviour {
                     if (infront != null)
                     {
                         print("destroy infront" + infront.transform.position);
-                        infront.GetComponent<DropMechanics>().isPowered -= 1;
+                        //infront.GetComponent<DropMechanics>().isPowered -= 1;
                         infront = null;
+                        affected = false;
                     }
                     break;
                     
@@ -38,8 +41,13 @@ public class RedstoneBehaviour : MonoBehaviour {
                         if(nearby[k].transform.position == (transform.position + pointing) && nearby[k].name != "redstone(Clone)" && nearby[k].name != "redstoneTorch(Clone)")
                         {
                             infront = nearby[k].transform.gameObject;
-                            infront.GetComponent<DropMechanics>().isPowered += 1;
-                            print(infront.transform.position+ "bub"+ infront.GetComponent<DropMechanics>().isPowered);
+                            if (strength >0 && affected == false)
+                            {
+                                infront.GetComponent<DropMechanics>().isPowered = true;
+                                affected = true;
+                                print(infront.transform.position + "bub" + infront.GetComponent<DropMechanics>().isPowered);
+                            }
+                            
                         }
                     }
 
@@ -71,12 +79,24 @@ public class RedstoneBehaviour : MonoBehaviour {
                     strength = nearby[i].GetComponent<RedstoneBehaviour>().strength - 1;
                 }
             }
+            if (strength > 0 && affected == false && infront != null)
+            {
+                infront.GetComponent<DropMechanics>().isPowered = true;
+                affected = true;
+                print(infront.transform.position + "bub" + infront.GetComponent<DropMechanics>().isPowered);
+            }
+            if (strength == 0 && affected == true && infront != null)
+            {
+                //infront.GetComponent<DropMechanics>().isPowered -= 1;
+                affected = false;
+                print("off");
+            }
         }
         else
         {
             if (GetComponent<DropMechanics>().isDropped != true)
             {
-                if (GetComponent<DropMechanics>().attatchedTo.GetComponent<DropMechanics>().isPowered == 0)
+                if (GetComponent<DropMechanics>().attatchedTo.GetComponent<DropMechanics>().isPowered == false)
                 {
                     strength = 12;
                 }
