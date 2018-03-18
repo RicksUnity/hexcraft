@@ -27,6 +27,17 @@ public class Inventory : MonoBehaviour {
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>(); 
 		addItem(0);
 		addItem(1);
+		addItem(2);
+		addItem(1);
+		addItem(3);
+		addItem(2);
+		addItem(1);
+		addItem(2);
+		addItem(1);
+		addItem(1);
+		addItem(1);
+		addItem(1);
+		addItem(1);
 	}
 	void Update()
 	{
