@@ -13,7 +13,12 @@ public class MineBlock : MonoBehaviour {
         // If the raycast hits and object, and the left mouse button is down, destroy the gameObject
         if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(0))
         {
-			//When mined, block becomes smaller and rotates, then a rigidbody is added
+            //When mined, block becomes smaller and rotates, then a rigidbody is added
+            hit.transform.gameObject.GetComponent<DropMechanics>().isDropped = true;
+            if (hit.transform.name == "redstone(Clone)" || hit.transform.name == "redstoneTorch(Clone)")
+            {
+                hit.transform.GetComponent<RedstoneBehaviour>().Orientation(true);
+            }
 			hit.transform.localScale = hit.transform.localScale/5;
 			hit.transform.Rotate (0, 90, 45);
 			if (hit.transform.gameObject.GetComponent<Rigidbody> () == null) 
@@ -22,7 +27,6 @@ public class MineBlock : MonoBehaviour {
 				hit.transform.gameObject.AddComponent<Rigidbody> ().useGravity = true;
 			}
 			//sets up properties of the block drop
-			hit.transform.gameObject.GetComponent<DropMechanics>().isDropped = true;
 			hit.transform.gameObject.GetComponent<DropMechanics> ().player = gameObject;
 			hit.transform.gameObject.GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			hit.transform.gameObject.GetComponent<Rigidbody> ().AddRelativeTorque (new Vector3 (3, 0, 0));
@@ -79,9 +83,13 @@ public class MineBlock : MonoBehaviour {
                 newHex.transform.localScale = newHex.transform.localScale / 3;
                 newHex.transform.position = newHex.transform.position + (hit.transform.position - newHex.transform.position) / 2;
             }
-            if(newHex.name == "redstoneTorch(Clone)" || newHex.name == "redstone(clone)")
+            if(newHex.name == "redstoneTorch(Clone)")
             {
                 newHex.GetComponent<DropMechanics>().attatchedTo = hit.transform.gameObject;
+            }
+            if(newHex.name == "redstone(Clone)" || newHex.name == "redstoneTorch(Clone)")
+            {
+                newHex.GetComponent<RedstoneBehaviour>().Orientation(true);
             }
         }
     }

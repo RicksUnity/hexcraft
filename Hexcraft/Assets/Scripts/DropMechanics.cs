@@ -5,7 +5,7 @@ using UnityEngine;
 public class DropMechanics : MonoBehaviour {
     public GameObject player;
     public bool isDropped = false;
-    public bool isPowered = false;
+    public int isPowered = 0;
     public GameObject attatchedTo = null;
 
     void Update()
