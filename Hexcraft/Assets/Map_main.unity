@@ -33422,11 +33422,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockTypes:
-  - {fileID: 1938123384389740, guid: 98e75beb0ee6f4c5293532eea296a841, type: 2}
+  - {fileID: 1902695694882422, guid: 711eefaa29c484cacb32daea9bfdd409, type: 2}
   - {fileID: 1604338548082976, guid: 841e620caaa664dd6ab53b79169fef5e, type: 2}
-  amp: 20.48
+  rockbottom: {fileID: 1938123384389740, guid: 98e75beb0ee6f4c5293532eea296a841, type: 2}
+  amp: 12.3
   freq: 9.12
-  gird: 80
+  gird: 20
 --- !u!4 &507377781
 Transform:
   m_ObjectHideFlags: 0
@@ -131586,7 +131587,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1996177535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 546.5, y: 263.5, z: 0}
+  m_LocalPosition: {x: 447, y: 241, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1074197500}
