@@ -15,14 +15,16 @@ public class Item {
         Weapon,
         Block
     }
-    public Item(string name,int id, string desc, int power, int speed, ItemType type){
+    public string itemWorld;
+    public Item(string name,int id, string desc, int power, int speed, ItemType type, string itemWorlderu){
         itemName = name; 
         itemID = id; 
         itemDesc = desc; 
         itemIcon = Resources.Load<Texture2D>("Item Icons/"+ name); 
         itemPower = power;
         itemSpeed = speed; 
-        itemType = type; 
+        itemType = type;
+        itemWorld = itemWorlderu;
 
 
     }
