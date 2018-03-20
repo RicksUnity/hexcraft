@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 885, y: 471}
   m_MaxSize: {x: 16010, y: 14021}
   vertical: 0
-  controlID: 11846
+  controlID: 20523
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_MinSize: {x: 608, y: 471}
   m_MaxSize: {x: 12008, y: 14021}
   vertical: 1
-  controlID: 11847
+  controlID: 20524
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 608, y: 221}
   m_MaxSize: {x: 12008, y: 4021}
   vertical: 0
-  controlID: 11795
+  controlID: 20525
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -204,9 +204,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d2d9f1ff
-    m_LastClickedID: -927278
-    m_ExpandedIDs: ae0cecffd2d9f1ffac88f4ff68f0ffffd4f4ffff9efbffff00000000
+    m_SelectedIDs: fe73d0ff
+    m_LastClickedID: -3116034
+    m_ExpandedIDs: da9dd6ffae0cecffd2d9f1ffac88f4ff68f0ffffd4f4ffff9efbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -247,8 +247,8 @@ MonoBehaviour:
     y: 0
     width: 546
     height: 442
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -283,14 +283,14 @@ MonoBehaviour:
     height: 421
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 11281.38711079792
+  lastFramingTime: 12356.773225166697
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 59.47825, y: 9.857839, z: 30.096937}
+    m_Target: {x: 50.89616, y: 9.4836445, z: 35.154015}
     speed: 2
-    m_Value: {x: 59.47825, y: 9.857839, z: 30.096937}
+    m_Value: {x: 50.89616, y: 9.4836445, z: 35.154015}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -314,13 +314,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.4230517, y: -0.00081844605, z: 0.00038223926, w: -0.9061051}
+    m_Target: {x: -0.27386573, y: 0.051036682, z: -0.014554853, w: -0.9603026}
     speed: 2
-    m_Value: {x: -0.4230517, y: -0.000818446, z: 0.00038223923, w: -0.90610504}
+    m_Value: {x: -0.27386573, y: 0.051036686, z: -0.014554853, w: -0.9603026}
   m_Size:
-    m_Target: 1.9205849
+    m_Target: 4.757922
     speed: 2
-    m_Value: 1.9205849
+    m_Value: 4.757922
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -449,18 +449,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Resources/Prefabs
+    - Assets/World/Textures
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources/Prefabs
+  - Assets/World/Textures
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\moroz\Projects\hexcraft\Hexcraft
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 2a290000
-    m_LastClickedID: 10538
+    m_SelectedIDs: f2280000
+    m_LastClickedID: 10482
     m_ExpandedIDs: 00000000ea270000202800007228000082280000b6280000342900007229000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -514,10 +514,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: d2d9f1ff
-    m_LastClickedInstanceID: -927278
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300005e29000082280000542b0000582b000000000000
+    m_SelectedInstanceIDs: fe73d0ff
+    m_LastClickedInstanceID: -3116034
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: c62300005e29000082280000542b0000582b000000000000a8290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
