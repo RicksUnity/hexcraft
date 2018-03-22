@@ -49,12 +49,22 @@ public class Inventory : MonoBehaviour {
 	void DrawInventory(){
 		Event e = Event.current; 
 		int i = 0; 
-		GUI.BeginGroup (new Rect (Screen.width / 2 - 250, Screen.height / 3 - 50, 600, 250));
-		GUI.Box(new Rect(0,0,600,250), "\n<color=#0>Glorious Inventory!</color>", skin.GetStyle("Background"));
+		int x2 = slotsX * 50  ;
+		int y2 = 1; 
+		GUI.BeginGroup (new Rect (Screen.width / 2 - 400, Screen.height / 3 - 50, 900, 250));
+		GUI.Box(new Rect(0,0,900,250), "\n<color=#0>Glorious Inventory!</color>", skin.GetStyle("Background"));
 		for (int y = 1; y < slotsY+1; y ++){
 			for (int x = 1; x < slotsX+1; x++){
+				if (x2 > (slotsX * 50 + 100) ) {
+					y2 ++ ; 
+					x2 = slotsX * 50; 
+				}
+				x2 += 50;	
 				Rect slotRect = new Rect(x * 50, y * 50, 50, 50); 
+				Rect craftBox = new Rect(x2 + 35, y2 * 50, 50 ,50);
 				GUI.Box(new Rect(slotRect), "", skin.GetStyle("Slot"));
+				if (y2 < 4)
+					GUI.Box(new Rect(craftBox), "", skin.GetStyle("Slot"));
 				slots[i] = inventory[i];
 				if (slots[i].itemName != null){
 					GUI.DrawTexture(slotRect, slots[i].itemIcon);
