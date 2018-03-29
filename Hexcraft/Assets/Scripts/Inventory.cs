@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq;
 public class Inventory : MonoBehaviour {
 	public int slotsX, slotsY;
 	public GUISkin skin;
@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour {
 	public List<Item> Craftslots = new List<Item> ();
 	public List<Item> Craftinventory = new List<Item>();
 	private CraftingRecipe Recipe;
-	public List<int> tempCraftinventory = new List<int> ();
+
 	void Start() {
 		for (int i = 0; i < (slotsX*slotsY); i++){
 			slots.Add(new Item());
@@ -87,11 +87,15 @@ public class Inventory : MonoBehaviour {
 						if (e.button == 0 && e.type == EventType.MouseDrag && !draggingItem){
 							draggingItem = true;
 							prevIndex = i; 
-							if (craftBox.Contains (e.mousePosition))
+							if (craftBox.Contains (e.mousePosition)) {
 								draggedItem = Craftslots [i];
-							else
-								draggedItem  = slots[i]; 
-							inventory[i] = new Item();						 
+								Craftinventory [i] = new Item ();
+							}
+							
+							else {
+								draggedItem = slots [i]; 
+								inventory [i] = new Item ();
+							}				 
 						}
 						
 						if (e.type == EventType.MouseUp && draggingItem){							 
@@ -137,7 +141,7 @@ public class Inventory : MonoBehaviour {
 				Debug.Log ("aaa:   "+Craftinventory[k].itemID);
 			Debug.Log ("END");*/
 			 
-			print (GetCraftID (Craftinventory).ToString());
+			//print (GetCraftID (Craftinventory).ToString());
 			Debug.Log ("gg"+GetCraftID(Craftinventory));
 
 	}
@@ -197,24 +201,35 @@ public class Inventory : MonoBehaviour {
 	}
 
 	string GetCraftID(List<Item> Craftinventory){
-		
+		bool getit = false;
 		//Recipe.craftingRecipe.ToList ();
-		foreach (KeyValuePair<string,int[]> items in Recipe.craftingRecipe){
-			List<int> tempRecipe = new List<int>();
-
-			foreach (int values in items.Value)
+		foreach (KeyValuePair<string,int[]> items in Recipe.craftingRecipe) {
+			List<int> tempRecipe = new List<int> ();
+			List<int> tempCraftinventory = new List<int> ();
+			foreach (int values in items.Value) 				
 				tempRecipe.Add (values);
-			for (int v = 0; v < Craftinventory.Count; v++)
-				tempCraftinventory.Add (Craftinventory[v].itemID);
-			//tempCraftinventory.RemoveRange (9, 29);
+			
+			for (int v = 0; v < Craftinventory.Count; v++) {
+				tempCraftinventory.Add (Craftinventory [v].itemID);
+				//Debug.Log (Craftinventory [v].itemID);
+			}
+			tempCraftinventory.RemoveRange (9, tempCraftinventory.Count-9);
+			//tempCraftinventory
+			Debug.Log(tempCraftinventory.Count+"//////"+tempRecipe.Count);
+			//foreach (int ttt in tempCraftinventory)
+				//Debug.Log (ttt);
 
-			if (tempCraftinventory == tempRecipe) 
+			if (tempCraftinventory.SequenceEqual(tempRecipe)) {
+				getit = true;
 				return items.Key;
-
+			}
 			else
 				return string.Empty;
 		}
-		return string.Empty;
+		if (getit)
+			return string.Empty;
+		else
+			return string.Empty;
 		//GetItemID (CurrentCraftID);	
 	}
 }
