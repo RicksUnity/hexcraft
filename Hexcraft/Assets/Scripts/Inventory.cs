@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour {
 	public List<Item> Craftslots = new List<Item> ();
 	public List<Item> Craftinventory = new List<Item>();
 	private CraftingRecipe Recipe;
-
+	public Rect finishBox = new Rect();
 	void Start() {
 		for (int i = 0; i < (slotsX*slotsY); i++){
 			slots.Add(new Item());
@@ -28,10 +28,10 @@ public class Inventory : MonoBehaviour {
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
 		Recipe = GameObject.FindGameObjectWithTag("Crafting Recipe").GetComponent<CraftingRecipe>();
 
-		//addItem(1);
-		//addItem(0);
-		addCraftingItem (1);
-		addCraftingItem (2);
+		addItem(1);
+		addItem(1);
+		//addCraftingItem (1);
+		//addCraftingItem (1);
 	}
 	void Update(){
 		if(Input.GetButtonDown("Inventory")){
@@ -60,6 +60,7 @@ public class Inventory : MonoBehaviour {
 		int i = 0; 
 		int x2 = slotsX * 50  ;
 		int y2 = 1; 
+
 		GUI.BeginGroup (new Rect (Screen.width / 2 - 400, Screen.height / 3 - 50, 900, 250));
 		GUI.Box(new Rect(0,0,900,250), "\n<color=#0>Glorious Inventory!</color>", skin.GetStyle("Background"));
 		for (int y = 1; y < slotsY+1; y ++){
@@ -71,11 +72,13 @@ public class Inventory : MonoBehaviour {
 				x2 += 50;	
 				Rect slotRect = new Rect(x * 50, y * 50, 50, 50); 
 				Rect craftBox = new Rect(x2 + 35, y2 * 50, 50 ,50);
+
 				GUI.Box(new Rect(slotRect), "", skin.GetStyle("Slot"));
 				if (y2 < 4) {
 					GUI.Box (new Rect (craftBox), "", skin.GetStyle ("Slot"));
 					Craftslots [i] = Craftinventory [i];
 				}
+
 				slots[i] = inventory[i];
 
 				if (slots[i].itemName != null||Craftslots[i].itemName!=null){
@@ -136,15 +139,18 @@ public class Inventory : MonoBehaviour {
 
 				i++; 
 		}
-			/*Debug.Log ("START");
-			for (int k = 0; k < Craftinventory.Count; k++)
-				Debug.Log ("aaa:   "+Craftinventory[k].itemID);
-			Debug.Log ("END");*/
-			 
-			//print (GetCraftID (Craftinventory).ToString());
-			Debug.Log ("gg"+GetCraftID(Craftinventory));
+			//Debug.Log ("gg"+GetCraftID(Craftinventory));
+			//GUI.DrawTexture (finishBox, GetCraftID(Craftinventory));
 
 	}
+		finishBox = new Rect (x2+75,50,50,50);
+		GUI.Box (new Rect (finishBox), "", skin.GetStyle ("Slot"));
+		for (int k = 0; k < database.items.Count; k++){
+			if (database.items[k].itemID == GetCraftID(Craftinventory)){
+				GUI.DrawTexture (finishBox, database.items[k].itemIcon );
+				//Craftinventory[i] = database.items[j];
+			}
+		}
 	GUI.EndGroup ();
 	}
 	string CreateToolTip(Item item){
@@ -200,10 +206,8 @@ public class Inventory : MonoBehaviour {
 		return result; 
 	}
 
-	string GetCraftID(List<Item> Craftinventory){
-		bool getit = false;
-		//Recipe.craftingRecipe.ToList ();
-		foreach (KeyValuePair<string,int[]> items in Recipe.craftingRecipe) {
+	int GetCraftID(List<Item> Craftinventory){
+		foreach (KeyValuePair<int,int[]> items in Recipe.craftingRecipe) {
 			List<int> tempRecipe = new List<int> ();
 			List<int> tempCraftinventory = new List<int> ();
 			foreach (int values in items.Value) 				
@@ -214,23 +218,16 @@ public class Inventory : MonoBehaviour {
 				//Debug.Log (Craftinventory [v].itemID);
 			}
 			tempCraftinventory.RemoveRange (9, tempCraftinventory.Count-9);
-			//tempCraftinventory
-			Debug.Log(tempCraftinventory.Count+"//////"+tempRecipe.Count);
+			//Debug.Log(tempCraftinventory.Count+"//////"+tempRecipe.Count);
 			//foreach (int ttt in tempCraftinventory)
 				//Debug.Log (ttt);
 
-			if (tempCraftinventory.SequenceEqual(tempRecipe)) {
-				getit = true;
+			if (tempCraftinventory.SequenceEqual(tempRecipe)) 
 				return items.Key;
-			}
 			else
-				return string.Empty;
+				return 0;
 		}
-		if (getit)
-			return string.Empty;
-		else
-			return string.Empty;
-		//GetItemID (CurrentCraftID);	
+		return 0;
 	}
 }
 
