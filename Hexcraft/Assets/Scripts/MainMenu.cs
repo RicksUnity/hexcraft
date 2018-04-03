@@ -12,16 +12,29 @@ public class MainMenu : MonoBehaviour {
 		LoadGame,
 		None
 	}
-
+	void Start()
+	{
+		GameObject loadBlock = GameObject.Instantiate (Resources.Load("grass ground") as GameObject);
+		loadBlock.transform.parent = GameObject.FindGameObjectWithTag ("LoadGame").transform;
+		loadBlock.transform.SetParent(GameObject.FindGameObjectWithTag ("LoadGame").transform,false);
+		loadBlock.transform.position = new Vector3(20.0f, 15.79f, 20.0f);
+		//transform.position = 
+		Vector3 myPos = GameObject.FindGameObjectWithTag ("LoadGame").transform.position;
+	}
+	/*void start(string name){
+		saveload.Load (name);
+	} */
+	//
 	int i=0;
 	public Menu currentMenu;
 	public string worldName;
 	public string characterName;
 	bool IsEscape;
-
+	public bool Isload;
+	SaveLoad2 saveload = new SaveLoad2 ();
 
 	public static DirectoryInfo dir = new DirectoryInfo("Assets/Store/");
-	public static FileInfo[] info = dir.GetFiles ("*.txt");
+	public static FileInfo[] info = dir.GetFiles ("*.dat");
 	//Debug.Log (i);
 	void Update(){
 		if (Input.GetKeyDown (KeyCode.Escape)) {
@@ -51,7 +64,6 @@ public class MainMenu : MonoBehaviour {
 				IsEscape = false;
 				Debug.Log (IsEscape);
 			}*/
-
 		//if (currentMenu == Menu.InGame) {		
 		if (IsEscape) {
 			//GUI.enabled = true;
@@ -66,7 +78,7 @@ public class MainMenu : MonoBehaviour {
 				IsEscape = false;
 			} else if (GUILayout.Button ("Save the game")) {
 				if (EditorUtility.DisplayDialog ("Save the game","Are you sure you want to save the game?","Yes","No"))
-					SaveLoad.Save (worldName);
+					saveload.Save (worldName);
 					
 				//Debug.Log (EditorUtility.DisplayDialog ("Save the game","Are you sure you want to save the game?","Yes","No"));
 			} else if (GUILayout.Button ("Save the game and quit")) {
@@ -85,7 +97,6 @@ public class MainMenu : MonoBehaviour {
 		}
 		//}
 		//Cursor.visible = true;
-
 
 		else if(currentMenu == Menu.MainMenu) {
 
@@ -106,7 +117,6 @@ public class MainMenu : MonoBehaviour {
 		else if (currentMenu == Menu.NewGame) {
 
 			GUILayout.Box("Name Your Characters");
-			//Debug.Log ("LKJDLKJDFLKSDFJLKSDFJ");
 			characterName = GUILayout.TextField(characterName, 20);
 			GUILayout.Space(10);
 
@@ -120,12 +130,9 @@ public class MainMenu : MonoBehaviour {
 					EditorUtility.DisplayDialog ("Empty name!", "Character's or world's name can't be empty", "OK");
 				else {
 					currentMenu = Menu.None;
-					SaveLoad.Save (worldName);
+					saveload.Save (worldName);
 				}
-				//GUI.enabled = false;
 
-				//SceneManager.LoadScene("map",LoadSceneMode.Single);
-				//SceneManager.LoadScene("Scene/New Game",LoadSceneMode.Single);
 			}
 
 			GUILayout.Space(10);
@@ -147,9 +154,11 @@ public class MainMenu : MonoBehaviour {
 			foreach (FileInfo f in info){
 				//Debug.Log (i);
 				GUILayout.Space(10);
-				if (GUILayout.Button (Path.GetFileNameWithoutExtension (f.ToString ())))
-					SaveLoad.Load (f.ToString ());
-
+				if (GUILayout.Button (Path.GetFileNameWithoutExtension (f.ToString ()))) {
+					saveload.Load (f.ToString ());
+					currentMenu = Menu.None;
+				}
+				//currentMenu = Menu.None;
 				i++;
 			}
 			//}
