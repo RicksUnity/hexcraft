@@ -7,6 +7,8 @@ public class DropMechanics : MonoBehaviour {
     public bool isDropped = false;
     public bool isPowered = false;
     public GameObject attatchedTo = null;
+    public ItemDatabase ItemDatabase;
+    public Inventory Inventory;
 
     void Update()
     {
@@ -18,11 +20,11 @@ public class DropMechanics : MonoBehaviour {
             //When drop is close to player add the item to players inventory and delete it from the world
             if (Vector3.Distance(player.transform.position,transform.position)<=2f)
             {
-                for (int i = 0; i < database.items.Count; i++)
+                for (int i = 0; i < ItemDatabase.items.Count; i++)
                 {
-                    if(gameObject.name == database.items[i].itemWorld)
+                    if(gameObject.name == ItemDatabase.items[i].itemWorld)
                     {
-                        invent.addItem(database.items[i].itemID);
+                        Inventory.addItem(ItemDatabase.items[i].itemID);
                     }
                 }
                     

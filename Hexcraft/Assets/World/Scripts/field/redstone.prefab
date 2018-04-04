@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1501052486333062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 104.14, y: 191.76, z: 57.383453}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 100, y: 5, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -112,6 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   isDropped: 0
+  isPowered: 0
+  attatchedTo: {fileID: 0}
+  ItemDatabase: {fileID: 0}
+  Inventory: {fileID: 0}
 --- !u!114 &114760494140454464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,3 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff59fd436f32334d8608dc7fcaecd77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strength: 0
+  torch: 0
+  pointing: {x: 0, y: 0, z: 0}
+  infront: {fileID: 0}
+  affected: 0

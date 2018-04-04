@@ -21,10 +21,10 @@ public class MineBlock : MonoBehaviour {
             if (hit.transform.name == "redstone(Clone)" || hit.transform.name == "redstoneTorch(Clone)")
             {
                 hit.transform.GetComponent<RedstoneBehaviour>().Orientation(true);
-                print("cheese");
             }
 			hit.transform.localScale = hit.transform.localScale/5;
 			hit.transform.Rotate (0, 90, 45);
+            hit.transform.position += new Vector3(0f, 0.5f, 0);
 			if (hit.transform.gameObject.GetComponent<Rigidbody> () == null) 
 			{
 				hit.transform.gameObject.GetComponent<MeshCollider> ().convex = true;
@@ -34,8 +34,8 @@ public class MineBlock : MonoBehaviour {
                 hit.transform.gameObject.GetComponent<DropMechanics>().player = gameObject;
                 hit.transform.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
                 hit.transform.gameObject.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(3, 0, 0));
-                hit.transform.gameObject.GetComponent<DropMechanics>().database = ItemDatabase;
-                hit.transform.gameObject.GetComponent<DropMechanics>().invent = Inventory;
+                hit.transform.gameObject.GetComponent<DropMechanics>().ItemDatabase = ItemDatabase;
+                hit.transform.gameObject.GetComponent<DropMechanics>().Inventory = Inventory;
         }
         if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(1))
         {
@@ -46,7 +46,8 @@ public class MineBlock : MonoBehaviour {
                     placeBlockID = ItemDatabase.items[i].itemID;
                 }
             }
-            if (Inventory.InventoryContains(placeBlockID)  && placeBlockID != -1)
+            //if (Inventory.InventoryContains(placeBlockID) && placeBlockID != -1)
+            if(true)
             {
                 //Places a new Hexagon of choice
                 GameObject newHex = Instantiate(placeBlock);
@@ -85,53 +86,51 @@ public class MineBlock : MonoBehaviour {
                 {
                     newHex.transform.position = hit.transform.position + new Vector3(2, -2, 0);
                 }
+                if (newHex.name == "redstone(Clone)")
+                {
+                    newHex.transform.position += new Vector3(0, -1, 0);
+                }
+                if (hit.transform.gameObject.name == "redstone(Clone)")
+                {
+                    newHex.transform.position += new Vector3(0, 1, 0);
+                }
                 if (newHex.GetComponent<Collider>().bounds.Intersects(playerCollider.GetComponent<Collider>().bounds))
                 {
                     Destroy(newHex);
                 }
                 else
-                {
-                    print("ping");
-                    Inventory.RemoveItem(placeBlockID);
+                { 
+                    Collider[] nearby = Physics.OverlapSphere(newHex.transform.position, 0.05f);
+                    for (int j = 0; j < nearby.Length; j++)
+                    {
+                        print("gazuntai");
+                        print(nearby[j].transform.position);
+                        if (nearby[j].transform != newHex.transform && nearby[j].transform.position == newHex.transform.position)
+                        {
+                            Destroy(newHex);
+                        }
+                        else
+                        {
+                            print("pullinga");
+                            Inventory.RemoveItem(placeBlockID);
+
+                            if (newHex.name == "redstoneTorch(Clone)")
+                            {
+                                newHex.transform.localScale = newHex.transform.localScale / 3;
+                                newHex.transform.position = newHex.transform.position + (hit.transform.position - newHex.transform.position) / 2;
+                                newHex.GetComponent<DropMechanics>().attatchedTo = hit.transform.gameObject;
+                            }
+                            //if (newHex.name == "redstone(Clone)")
+                            //{
+                            //    newHex.GetComponent<DropMechanics>().attatchedTo = hit.transform.gameObject;
+                            //}
+                            if (newHex.name == "redstone(Clone)" || newHex.name == "redstoneTorch(Clone)")
+                            {
+                                newHex.GetComponent<RedstoneBehaviour>().Orientation(true);
+                            }
+                        }
+                    }
                 }
-            }
-
-            }
-            if (hit.normal == new Vector3(-0.5000005f, 0, 0.86602515f))
-            {
-                newHex.transform.position = hit.transform.position + new Vector3(-1f, 0, 1.732051f);
-            }
-            if (hit.normal == new Vector3(0.5000005f, 0, 0.86602515f))
-            {
-                newHex.transform.position = hit.transform.position + new Vector3(1f, 0, 1.732051f);
-            }
-            if (hit.normal == new Vector3(0f, 1f, 0f))
-            {
-                newHex.transform.position = hit.transform.position + new Vector3(0, 2, 0);
-            }
-            if (hit.normal == new Vector3(0f, -1f, 0f))
-            {
-                newHex.transform.position = hit.transform.position + new Vector3(2, -2, 0);
-            }
-
-
-
-
-
-
-
-            if(newHex.name == "redstoneTorch(Clone)")
-            {
-                newHex.transform.localScale = newHex.transform.localScale / 3;
-                newHex.transform.position = newHex.transform.position + (hit.transform.position - newHex.transform.position) / 2;
-            }
-            if(newHex.name == "redstoneTorch(Clone)")
-            {
-                newHex.GetComponent<DropMechanics>().attatchedTo = hit.transform.gameObject;
-            }
-            if(newHex.name == "redstone(Clone)" || newHex.name == "redstoneTorch(Clone)")
-            {
-                newHex.GetComponent<RedstoneBehaviour>().Orientation(true);
             }
         }
     }
