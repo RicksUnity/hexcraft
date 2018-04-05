@@ -6,9 +6,27 @@ public class DropMechanics : MonoBehaviour {
     public GameObject player;
     public bool isDropped = false;
     public bool isPowered = false;
+    public int poweredStrength = 0;
     public GameObject attatchedTo = null;
     public ItemDatabase ItemDatabase;
     public Inventory Inventory;
+
+    public void PowerCheck()
+    {
+        Collider[] nearby = Physics.OverlapSphere(transform.position, 2.9f);
+        for (int i = 0; i < nearby.Length; i++)
+        {
+            if (nearby[i].transform.position.y - transform.position.y > 1 || nearby[i].transform.position.y - transform.position.y < -1 || Mathf.Sqrt(Mathf.Pow(nearby[i].transform.position.x - transform.position.x, 2) + Mathf.Pow(nearby[i].transform.position.z - transform.position.z, 2)) < 2.1)
+            {
+                if (nearby[i].name == "redstone(Clone)" && nearby[i].GetComponent<RedstoneBehaviour>().infront == gameObject || nearby[i].GetComponent<DropMechanics>().attatchedTo == gameObject && nearby[i].GetComponent<RedstoneBehaviour>().strength > 0)
+                {
+                    return;
+                }
+            }
+        }
+        isPowered = false;
+        poweredStrength = 0;
+    }
 
     void Update()
     {
@@ -53,15 +71,17 @@ public class DropMechanics : MonoBehaviour {
         }
         if (isPowered == true)
         {
-            Collider[] nearby = Physics.OverlapSphere(transform.position, 2.1f);
-            for(int i = 0; i < nearby.Length; i++)
-            {
-                if(nearby[i].name == "redstone(Clone)" && nearby[i].GetComponent<RedstoneBehaviour>().infront == gameObject && nearby[i].GetComponent<RedstoneBehaviour>().strength>0)
-                {
-                    return;
-                }
-            }
-            isPowered = false;
+            PowerCheck();
+            //Collider[] nearby = Physics.OverlapSphere(transform.position, 2.1f);
+            //for(int i = 0; i < nearby.Length; i++)
+            //{
+            //    if(nearby[i].name == "redstone(Clone)" && nearby[i].GetComponent<RedstoneBehaviour>().infront == gameObject && nearby[i].GetComponent<RedstoneBehaviour>().strength>0)
+            //    {
+            //        return;
+            //    }
+            //}
+            //isPowered = false;
+            //poweredStrength = 0;
         }
     }
 }

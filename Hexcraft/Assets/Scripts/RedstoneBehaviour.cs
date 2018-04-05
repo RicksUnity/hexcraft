@@ -8,88 +8,108 @@ public class RedstoneBehaviour : MonoBehaviour {
     public Vector3 pointing = new Vector3(0,0,0);
     private Collider behind;
     public GameObject infront;
-    public bool affected;	
+    //powered strength is USELESS
 
     public void Orientation (bool passOn){
         pointing = new Vector3(0, 0, 0);
-        Collider[] nearby = Physics.OverlapSphere(transform.position, 2.1f);
+        Collider[] nearby = Physics.OverlapSphere(transform.position, 2.9f);
+        //For every block close to the redstone
         for (int j = 0; j < nearby.Length; j++)
         {
-            if ((nearby[j].name == "redstone(Clone)" || nearby[j].name == "redstoneTorch(Clone)") && nearby[j].transform.position != transform.position && nearby[j].GetComponent<DropMechanics>().isDropped == false)
+            if (nearby[j].transform.position.y - transform.position.y > 1 || nearby[j].transform.position.y - transform.position.y < -1 || Mathf.Sqrt(Mathf.Pow(nearby[j].transform.position.x - transform.position.x, 2) + Mathf.Pow(nearby[j].transform.position.z - transform.position.z, 2)) < 2.1)
             {
-                if (pointing != new Vector3(0, 0, 0))
+                //If the nearby block is redstone and has not be mined
+                if ((nearby[j].name == "redstone(Clone)" || nearby[j].name == "redstoneTorch(Clone)") && nearby[j].transform.position != transform.position && nearby[j].GetComponent<DropMechanics>().isDropped == false)
                 {
+                    //If pointing is not empty and it is another redstone detected, it means that there is at least two redstone surround the block so set pointng to empty
+                    if (pointing != new Vector3(0, 0, 0))
+                    {
 
-                    pointing = new Vector3(0, 0, 0);
-                    print("break"+transform.position);
-                    if (infront != null)
-                    {
-                        print("destroy infront" + infront.transform.position);
-                        //infront.GetComponent<DropMechanics>().isPowered -= 1;
-                        infront = null;
-                        affected = false;
-                    }
-                    break;
-                    
-                }
-                else
-                {
-                    pointing = transform.position - nearby[j].transform.position;
-                    print("once"+transform.position);
-                    for (int k = 0; k<nearby.Length; k++)
-                    {
-                        if(nearby[k].transform.position == (transform.position + pointing) && nearby[k].name != "redstone(Clone)" && nearby[k].name != "redstoneTorch(Clone)")
+                        pointing = new Vector3(0, 0, 0);
+                        if (infront != null)
                         {
-                            infront = nearby[k].transform.gameObject;
-                            if (strength >0 && affected == false)
-                            {
-                                infront.GetComponent<DropMechanics>().isPowered = true;
-                                affected = true;
-                                print(infront.transform.position + "bub" + infront.GetComponent<DropMechanics>().isPowered);
-                            }
-                            
+                            infront = null;
                         }
-                    }
+                        break;
 
+                    }
+                    //If this is the first redstone detected nearby, set pointing to the direction the redotn is pointing and set infront to the block infront
+                    else
+                    {
+                        pointing = transform.position - nearby[j].transform.position;
+
+
+                    }
                 }
             }
         }
+        //Make sure that the pointing of all nearby redstones orientations are also correct.
         if (passOn)
         {
             for (int l = 0; l < nearby.Length; l++)
             {
-                if (nearby[l].name == "redstone(Clone)" && nearby[l].transform.position != transform.position)
+                if (nearby[l].transform.position.y - transform.position.y > 1 || nearby[l].transform.position.y - transform.position.y < -1 || Mathf.Sqrt(Mathf.Pow(nearby[l].transform.position.x - transform.position.x, 2) + Mathf.Pow(nearby[l].transform.position.z - transform.position.z, 2)) < 2.1)
                 {
-                    nearby[l].GetComponent<RedstoneBehaviour>().Orientation(false);
+                    if (nearby[l].name == "redstone(Clone)" && nearby[l].transform.position != transform.position)
+                    {
+                        nearby[l].GetComponent<RedstoneBehaviour>().Orientation(false);
+                    }
                 }
             }
         }
     }
-    // Update is called once per frame
+
     void Update () {
-        Collider[] nearby = Physics.OverlapSphere(transform.position, 2.1f);
+        Collider[] nearby = Physics.OverlapSphere(transform.position, 2.9f);
+        if (pointing != new Vector3(0,0,0))
+        {
+            for (int k = 0; k < nearby.Length; k++)
+            {
+                if (nearby[k].transform.position.y - transform.position.y > 1 || nearby[k].transform.position.y - transform.position.y < -1 || Mathf.Sqrt(Mathf.Pow(nearby[k].transform.position.x - transform.position.x, 2) + Mathf.Pow(nearby[k].transform.position.z - transform.position.z, 2)) < 2.1)
+                {
+                    if (nearby[k].transform.position == (transform.position + pointing + new Vector3(0, 1, 0)) && nearby[k].name != "redstone(Clone)" && nearby[k].name != "redstoneTorch(Clone)")
+                    {
+                        infront = nearby[k].transform.gameObject;
+                        if (strength > 0)
+                        {
+                            infront.GetComponent<DropMechanics>().isPowered = true;
+                            infront.GetComponent<DropMechanics>().poweredStrength = strength - 1;
+                        }
+
+                    }
+                }
+            }
+        }
         if (torch == false)
         {
             strength = 0;
 
             for (int i = 0; i < nearby.Length; i++)
             {
-                if ((nearby[i].name == "redstone(Clone)" || nearby[i].name == "redstoneTorch(Clone)") && nearby[i].GetComponent<RedstoneBehaviour>().strength > strength + 1)
+                if (nearby[i].transform.position.y - transform.position.y > 1 || nearby[i].transform.position.y - transform.position.y < -1.1 || Mathf.Sqrt(Mathf.Pow(nearby[i].transform.position.x - transform.position.x, 2) + Mathf.Pow(nearby[i].transform.position.z - transform.position.z, 2)) < 2.1)
                 {
-                    strength = nearby[i].GetComponent<RedstoneBehaviour>().strength - 1;
+                    if ((nearby[i].name == "redstone(Clone)" || nearby[i].name == "redstoneTorch(Clone)") && nearby[i].GetComponent<RedstoneBehaviour>().strength > strength + 1)
+                    {
+                        strength = nearby[i].GetComponent<RedstoneBehaviour>().strength - 1;
+                    }
                 }
             }
-            if (strength > 0 && affected == false && infront != null)
+            //if (GetComponent<DropMechanics>().attatchedTo.GetComponent<DropMechanics>().isPowered == true && GetComponent<DropMechanics>().attatchedTo.GetComponent<DropMechanics>().poweredStrength > strength)
+            //{
+            //    strength = GetComponent<DropMechanics>().attatchedTo.GetComponent<DropMechanics>().poweredStrength;
+            //}
+            if (strength > 0 && infront != null)
             {
                 infront.GetComponent<DropMechanics>().isPowered = true;
-                affected = true;
-                print(infront.transform.position + "bub" + infront.GetComponent<DropMechanics>().isPowered);
             }
-            if (strength == 0 && affected == true && infront != null)
+            if (strength == 0 && infront != null)
             {
                 //infront.GetComponent<DropMechanics>().isPowered -= 1;
-                affected = false;
-                print("off");
+
+            }
+            if(strength >0 )
+            {
+                GetComponent<DropMechanics>().attatchedTo.GetComponent<DropMechanics>().isPowered = true;
             }
         }
         else
@@ -108,3 +128,126 @@ public class RedstoneBehaviour : MonoBehaviour {
         }
     }
 }
+
+
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+
+//public class RedstoneBehaviour : MonoBehaviour
+//{
+//    public int strength = 0;
+//    public bool torch = false;
+//    public Vector3 pointing = new Vector3(0, 0, 0);
+//    private Collider behind;
+//    public GameObject infront;
+//    public bool affected;
+
+//    public void Orientation(bool passOn)
+//    {
+//        pointing = new Vector3(0, 0, 0);
+//        Collider[] nearby = Physics.OverlapSphere(transform.position, 2.9f);
+//        //For every block close to the redstone
+//        for (int j = 0; j < nearby.Length; j++)
+//        {
+//            //If the nearby block is redstone and has not be mined
+//            if ((nearby[j].name == "redstone(Clone)" || nearby[j].name == "redstoneTorch(Clone)") && nearby[j].transform.position != transform.position && nearby[j].GetComponent<DropMechanics>().isDropped == false)
+//            {
+//                //If pointing is not empty and it is another redstone detected, it means that there is at least two redstone surround the block so set pointng to empty
+//                if (pointing != new Vector3(0, 0, 0))
+//                {
+
+//                    pointing = new Vector3(0, 0, 0);
+//                    if (infront != null)
+//                    {
+//                        infront = null;
+//                        affected = false;
+//                    }
+//                    break;
+
+//                }
+//                //If this is the first redstone detected nearby, set pointing to the direction the redotn is pointing and set infront to the block infront
+//                else
+//                {
+//                    pointing = transform.position - nearby[j].transform.position;
+
+
+//                }
+//            }
+//        }
+//        //Make sure that the pointing of all nearby redstones orientations are also correct.
+//        if (passOn)
+//        {
+//            for (int l = 0; l < nearby.Length; l++)
+//            {
+//                if (nearby[l].name == "redstone(Clone)" && nearby[l].transform.position != transform.position)
+//                {
+//                    nearby[l].GetComponent<RedstoneBehaviour>().Orientation(false);
+//                }
+//            }
+//        }
+//    }
+
+//    void Update()
+//    {
+//        Collider[] nearby = Physics.OverlapSphere(transform.position, 2.9f);
+//        if (pointing != new Vector3(0, 0, 0))
+//        {
+//            for (int k = 0; k < nearby.Length; k++)
+//            {
+//                if (nearby[k].transform.position == (transform.position + pointing + new Vector3(0, 1, 0)) && nearby[k].name != "redstone(Clone)" && nearby[k].name != "redstoneTorch(Clone)")
+//                {
+//                    infront = nearby[k].transform.gameObject;
+//                    if (strength > 0 && affected == false)
+//                    {
+//                        print("pingedinger");
+//                        infront.GetComponent<DropMechanics>().isPowered = true;
+//                        infront.GetComponent<DropMechanics>().poweredStrength = strength - 1;
+//                        affected = true;
+//                    }
+
+//                }
+//            }
+//        }
+//        if (torch == false)
+//        {
+//            strength = 0;
+
+//            for (int i = 0; i < nearby.Length; i++)
+//            {
+//                if ((nearby[i].name == "redstone(Clone)" || nearby[i].name == "redstoneTorch(Clone)") && nearby[i].GetComponent<RedstoneBehaviour>().strength > strength + 1)
+//                {
+//                    strength = nearby[i].GetComponent<RedstoneBehaviour>().strength - 1;
+//                }
+//            }
+//            if (GetComponent<DropMechanics>().attatchedTo.GetComponent<DropMechanics>().isPowered == true && GetComponent<DropMechanics>().attatchedTo.GetComponent<DropMechanics>().poweredStrength > strength)
+//            {
+//                strength = GetComponent<DropMechanics>().attatchedTo.GetComponent<DropMechanics>().poweredStrength;
+//            }
+//            if (strength > 0 && affected == false && infront != null)
+//            {
+//                infront.GetComponent<DropMechanics>().isPowered = true;
+//                affected = true;
+//            }
+//            if (strength == 0 && affected == true && infront != null)
+//            {
+//                //infront.GetComponent<DropMechanics>().isPowered -= 1;
+//                affected = false;
+//            }
+//        }
+//        else
+//        {
+//            if (GetComponent<DropMechanics>().isDropped != true)
+//            {
+//                if (GetComponent<DropMechanics>().attatchedTo.GetComponent<DropMechanics>().isPowered == false)
+//                {
+//                    strength = 12;
+//                }
+//                else
+//                {
+//                    strength = 0;
+//                }
+//            }
+//        }
+//    }
+//}

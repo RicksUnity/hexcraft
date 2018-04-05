@@ -89,6 +89,24 @@ public class MineBlock : MonoBehaviour {
                 if (newHex.name == "redstone(Clone)")
                 {
                     newHex.transform.position += new Vector3(0, -1, 0);
+                    Collider[] nearbyRed = Physics.OverlapSphere(newHex.transform.position, 1.1f);
+                    for (int i = 0; i < nearbyRed.Length; i++)
+                    {
+                        if(nearbyRed[i].transform.position == newHex.transform.position + new Vector3(0,-1,0))
+                        {
+                            newHex.GetComponent<DropMechanics>().attatchedTo = hit.transform.gameObject;
+                        }
+                    }
+                    if (newHex.GetComponent<DropMechanics>().attatchedTo == null)
+                    {
+                        Destroy(newHex);
+                    }
+                }
+                if (newHex.name == "redstoneTorch(Clone)")
+                {
+                    newHex.transform.localScale = newHex.transform.localScale / 3;
+                    newHex.transform.position = newHex.transform.position + (hit.transform.position - newHex.transform.position) / 2;
+                    newHex.GetComponent<DropMechanics>().attatchedTo = hit.transform.gameObject;
                 }
                 if (hit.transform.gameObject.name == "redstone(Clone)")
                 {
@@ -103,8 +121,8 @@ public class MineBlock : MonoBehaviour {
                     Collider[] nearby = Physics.OverlapSphere(newHex.transform.position, 0.05f);
                     for (int j = 0; j < nearby.Length; j++)
                     {
-                        print("gazuntai");
-                        print(nearby[j].transform.position);
+                        //print("gazuntai");
+                        //print(nearby[j].transform.position);
                         if (nearby[j].transform != newHex.transform && nearby[j].transform.position == newHex.transform.position)
                         {
                             Destroy(newHex);
@@ -114,16 +132,13 @@ public class MineBlock : MonoBehaviour {
                             print("pullinga");
                             Inventory.RemoveItem(placeBlockID);
 
-                            if (newHex.name == "redstoneTorch(Clone)")
-                            {
-                                newHex.transform.localScale = newHex.transform.localScale / 3;
-                                newHex.transform.position = newHex.transform.position + (hit.transform.position - newHex.transform.position) / 2;
-                                newHex.GetComponent<DropMechanics>().attatchedTo = hit.transform.gameObject;
-                            }
+                            
                             //if (newHex.name == "redstone(Clone)")
                             //{
                             //    newHex.GetComponent<DropMechanics>().attatchedTo = hit.transform.gameObject;
                             //}
+
+                            
                             if (newHex.name == "redstone(Clone)" || newHex.name == "redstoneTorch(Clone)")
                             {
                                 newHex.GetComponent<RedstoneBehaviour>().Orientation(true);
