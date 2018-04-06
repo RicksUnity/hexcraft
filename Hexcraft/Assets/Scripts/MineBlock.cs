@@ -112,7 +112,7 @@ public class MineBlock : MonoBehaviour {
                 {
                     newHex.transform.position += new Vector3(0, 1, 0);
                 }
-                if (newHex.GetComponent<Collider>().bounds.Intersects(playerCollider.GetComponent<Collider>().bounds))
+                if ((newHex.GetComponent<Collider>().bounds.Intersects(playerCollider.GetComponent<Collider>().bounds)) || ((newHex.name == "redstone(Clone)" || newHex.name == "redstoneTorch(Clone)") && hit.transform.gameObject.name == "redstone(Clone)")||(hit.transform.gameObject.name == "redstoneTorch(Clone)"))
                 {
                     Destroy(newHex);
                 }
@@ -121,24 +121,13 @@ public class MineBlock : MonoBehaviour {
                     Collider[] nearby = Physics.OverlapSphere(newHex.transform.position, 0.05f);
                     for (int j = 0; j < nearby.Length; j++)
                     {
-                        //print("gazuntai");
-                        //print(nearby[j].transform.position);
-                        if (nearby[j].transform != newHex.transform && nearby[j].transform.position == newHex.transform.position)
+                        if ((nearby[j].transform != newHex.transform && nearby[j].transform.position == newHex.transform.position) )
                         {
                             Destroy(newHex);
                         }
                         else
                         {
-                            print("pullinga");
                             Inventory.RemoveItem(placeBlockID);
-
-                            
-                            //if (newHex.name == "redstone(Clone)")
-                            //{
-                            //    newHex.GetComponent<DropMechanics>().attatchedTo = hit.transform.gameObject;
-                            //}
-
-                            
                             if (newHex.name == "redstone(Clone)" || newHex.name == "redstoneTorch(Clone)")
                             {
                                 newHex.GetComponent<RedstoneBehaviour>().Orientation(true);

@@ -18,7 +18,7 @@ public class DropMechanics : MonoBehaviour {
         {
             if (nearby[i].transform.position.y - transform.position.y > 1 || nearby[i].transform.position.y - transform.position.y < -1 || Mathf.Sqrt(Mathf.Pow(nearby[i].transform.position.x - transform.position.x, 2) + Mathf.Pow(nearby[i].transform.position.z - transform.position.z, 2)) < 2.1)
             {
-                if (nearby[i].name == "redstone(Clone)" && nearby[i].GetComponent<RedstoneBehaviour>().infront == gameObject || nearby[i].GetComponent<DropMechanics>().attatchedTo == gameObject && nearby[i].GetComponent<RedstoneBehaviour>().strength > 0)
+                if (nearby[i].name == "redstone(Clone)" && ((nearby[i].GetComponent<RedstoneBehaviour>().infront!= null && nearby[i].GetComponent<RedstoneBehaviour>().infront == gameObject) || nearby[i].GetComponent<DropMechanics>().attatchedTo == gameObject )&& nearby[i].GetComponent<RedstoneBehaviour>().strength > 0)
                 {
                     return;
                 }
