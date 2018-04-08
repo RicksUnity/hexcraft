@@ -16,19 +16,11 @@ using UnityEngine.SceneManagement;
 		public float playerPositionX;
 		public float playerPositionY;
 		public float playerPositionZ;
-		public int[] Inventory;
+	public List<int> inventory = new List<int>();
 
 	public SavedItem(){
 		
 	}
 	}
-/*	public class Hex{
-	float positionX;
-	float positionY;
 
-	public Hex(float positionX, float posisionY){
-		positionX = 0;
-		positionY = 0;
-	}*/
-//}
 

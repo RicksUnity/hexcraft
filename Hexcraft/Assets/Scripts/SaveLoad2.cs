@@ -11,6 +11,9 @@ public class SaveLoad2: MonoBehaviour {
 	public static SaveLoad2 saveload;
 	public List<float> stoneSet = new List<float>();
 	public List<float> grassSet = new List<float>();
+	//public GameObject inventory;
+	private Inventory inventory;
+
 
 	void Awake() {
 		DontDestroyOnLoad (transform.gameObject);
@@ -27,26 +30,22 @@ public class SaveLoad2: MonoBehaviour {
 	public void Save (string worldName){
 		BinaryFormatter bf = new BinaryFormatter ();
 		SavedItem data = new SavedItem ();
-		//FileStream file = File.Create (Application.persistentDataPath+"/"+worldName+".dat");
 		FileStream file = File.Create ("Assets/Store/"+worldName+".dat");
-		//Debug.Log("Here's the number"+count("fff"));
-		//foreach (Transform T in Field)
 		GameObject[] stones = GameObject.FindGameObjectsWithTag("stone");
 		foreach (GameObject objs in stones) {
 			data.stone.Add (objs.transform.position.x);
-			//Debug.Log (objs.transform.position.x);
 			data.stone.Add (objs.transform.position.y);
-			//Debug.Log (objs.transform.position.y);
 			data.stone.Add (objs.transform.position.z);
-			//Debug.Log (objs.transform.position.z);
 		}
 		foreach (GameObject objs in GameObject.FindGameObjectsWithTag("grass")) {
 			data.grass.Add (objs.transform.position.x);
 			data.grass.Add (objs.transform.position.y);
 			data.grass.Add (objs.transform.position.z);
 		}
-			
-		//inventory
+		inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>(); 
+		foreach (Item value in inventory.inventory )
+			data.inventory.Add(value.itemID);
+
 		bf.Serialize (file,data);
 		file.Close();
 	}
@@ -72,24 +71,31 @@ public class SaveLoad2: MonoBehaviour {
 			GameObject loadBlock = GameObject.Instantiate (Resources.Load("stone") as GameObject);
 			loadBlock.transform.parent = GameObject.FindGameObjectWithTag ("LoadGame").transform;
 			loadBlock.transform.SetParent (GameObject.FindGameObjectWithTag ("LoadGame").transform,false);
-
 			loadBlock.transform.position = posotion;
-			//Debug.Log (posotion.ToString("F4"));
 		}
 		 j = 1;
 		 k = 2;
 		for (int i = 0; i<grassSet.Count()/3 ; i=i+3) {
-			//Debug.Log (value);
 			j = i + 1;
 			k = i + 2;
+			//inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>(); 
+
 			Vector3 posotion = new Vector3 (grassSet [i], grassSet [j], grassSet [k]);
 			GameObject loadBlock = GameObject.Instantiate (Resources.Load("grass ground") as GameObject);
 			loadBlock.transform.parent = GameObject.FindGameObjectWithTag ("LoadGame").transform;
 			loadBlock.transform.SetParent(GameObject.FindGameObjectWithTag ("LoadGame").transform,false);
 			loadBlock.transform.position = posotion;
-			//Debug.Log (posotion.ToString("F4"));
+			//inventory2.addItem (1);
+			//Debug.Log ("hh");
+
 		}
-		
+		Inventory inventory2 = new Inventory();
+		for (int v = 0; v< dataDe.inventory.Count()-1; v++){
+				inventory2.addItem (dataDe.inventory[v]);
+				//Debug.Log (dataDe.inventory[v]);
+				//inventory.inventory[v].itemID = dataDe.inventory[v];
+				Debug.Log ("here"+dataDe.inventory[v]);
+			}
 	}
 
 

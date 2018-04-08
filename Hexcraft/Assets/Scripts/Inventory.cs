@@ -14,22 +14,24 @@ public class Inventory : MonoBehaviour {
 	private bool draggingItem; 
 	private Item draggedItem; 
 	private int prevIndex; 
-	
+	public static Inventory inventory2;
 	void Start() {
 		for (int i = 0; i < (slotsX*slotsY); i++){
 			slots.Add(new Item());
 			inventory.Add (new Item());
 		}
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>(); 
-		addItem(1);
-		addItem(0);
+		//addItem(1);
+		//addItem(0);
 	}
 	void Update(){
 		if(Input.GetButtonDown("Inventory")){
 			showInventory = !showInventory;
 		}
 	}
+
 	void OnGUI(){
+		//Debug.Log (inventory[0].itemID);
 		tooltip = "";
 		GUI.skin = skin;  
 		if(showInventory){
@@ -107,7 +109,7 @@ public class Inventory : MonoBehaviour {
 		return tooltip;  
 
 	}
-	void addItem(int id){
+	public void addItem(int id){
 		for (int i = 0; i< inventory.Count; i++){
 			if (inventory[i].itemName == null){
 				for (int j = 0; j < database.items.Count; j++){
@@ -118,6 +120,7 @@ public class Inventory : MonoBehaviour {
 				break;
 			}
 		}
+
 	}
 	void RemoveItem(int id){
 		for (int i = 0; i <inventory.Count; i++){
