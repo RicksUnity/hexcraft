@@ -229,7 +229,7 @@ public class Inventory : MonoBehaviour {
 
 
 
-	public void RemoveItem(int id){
+	void RemoveItem(int id){
 		for (int i = 0; i <inventory.Count; i++){
 			if (inventory[i].itemID == id){
 				inventory[i]= new Item();
