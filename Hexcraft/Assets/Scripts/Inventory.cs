@@ -24,14 +24,6 @@ public class Inventory : MonoBehaviour {
 		for (int i = 0; i < (slotsX*slotsY); i++)
 		{
 			slots.Add(new Item());
-<<<<<<< HEAD
-			inventory.Add(new Item());
-			favSlots.Add(new Item());
-		}
-		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>(); 
-		addItem(0);
-		addItem(1);
-=======
 			inventory.Add (new Item());
 			Craftslots.Add (new Item ());
 			Craftinventory.Add (new Item());
@@ -43,7 +35,6 @@ public class Inventory : MonoBehaviour {
 		addItem(1);
 		//addCraftingItem (1);
 		//addCraftingItem (1);
->>>>>>> SaveLoad2
 	}
 	void Update()
 	{
@@ -55,14 +46,9 @@ public class Inventory : MonoBehaviour {
 			
 		}
 	}
-<<<<<<< HEAD
-	void OnGUI()
-	{
-=======
 
 	void OnGUI(){
 		//Debug.Log (inventory[0].itemID);
->>>>>>> SaveLoad2
 		tooltip = "";
 		GUI.skin = skin;  
 		if(showInventory)
@@ -90,14 +76,6 @@ public class Inventory : MonoBehaviour {
 	{
 		Event e = Event.current; 
 		int i = 0; 
-<<<<<<< HEAD
-		GUI.BeginGroup (new Rect (Screen.width / 2 - 250, Screen.height / 3 - 50, 600, 250));
-		GUI.Box(new Rect(0,0,600,250), "\n<color=#0>Glorious Inventory!</color>", skin.GetStyle("Background"));
-		for (int y = 1; y < slotsY+1; y ++)
-		{
-			for (int x = 1; x < slotsX+1; x++)
-			{
-=======
 		int x2 = slotsX * 50  ;
 		int y2 = 1; 
 
@@ -110,7 +88,6 @@ public class Inventory : MonoBehaviour {
 					x2 = slotsX * 50; 
 				}
 				x2 += 50;	
->>>>>>> SaveLoad2
 				Rect slotRect = new Rect(x * 50, y * 50, 50, 50); 
 				Rect craftBox = new Rect(x2 + 35, y2 * 50, 50 ,50);
 
@@ -121,19 +98,11 @@ public class Inventory : MonoBehaviour {
 				}
 
 				slots[i] = inventory[i];
-<<<<<<< HEAD
-				if (slots[i].itemName != null)
-				{
-					GUI.DrawTexture(slotRect, slots[i].itemIcon);
-					if (slotRect.Contains(e.mousePosition))
-					{
-=======
 
 				if (slots[i].itemName != null||Craftslots[i].itemName!=null){
 					GUI.DrawTexture (craftBox, Craftslots[i].itemIcon);
 					GUI.DrawTexture(slotRect, slots[i].itemIcon);
 					if (slotRect.Contains(e.mousePosition)||craftBox.Contains(e.mousePosition)){
->>>>>>> SaveLoad2
 						tooltip = CreateToolTip(slots[i]);
 						showToolTip = true; 
 						if (e.button == 0 && e.type == EventType.MouseDrag && !draggingItem)
@@ -151,12 +120,6 @@ public class Inventory : MonoBehaviour {
 							}				 
 						}
 						
-<<<<<<< HEAD
-						if (e.type == EventType.MouseUp && draggingItem)
-						{
-							inventory[prevIndex] = inventory[i]; 
-							inventory[i] = draggedItem; 
-=======
 						if (e.type == EventType.MouseUp && draggingItem){							 
 							if (slotRect.Contains (e.mousePosition)) {
 								inventory [prevIndex] = inventory [i];
@@ -165,7 +128,6 @@ public class Inventory : MonoBehaviour {
 								Craftinventory [prevIndex] = Craftinventory [i];
 								Craftinventory [i] = draggedItem;
 							}
->>>>>>> SaveLoad2
 							draggingItem = false; 
 							draggedItem = null; 
 						}
@@ -173,14 +135,6 @@ public class Inventory : MonoBehaviour {
 					}
 
 				} else {
-<<<<<<< HEAD
-					if(slotRect.Contains(e.mousePosition))
-					{
-						if (e.type == EventType.MouseUp && draggingItem)
-						{
-							inventory[prevIndex] = inventory[i]; 
-							inventory[i] = draggedItem; 
-=======
 					if(slotRect.Contains(e.mousePosition)||craftBox.Contains(e.mousePosition)){
 						if (e.type == EventType.MouseUp && draggingItem){
 							if (slotRect.Contains (e.mousePosition)) {
@@ -191,7 +145,6 @@ public class Inventory : MonoBehaviour {
 								Craftinventory [prevIndex] = Craftinventory [i];
 								Craftinventory [i] = draggedItem;
 							}
->>>>>>> SaveLoad2
 							draggingItem = false; 
 							draggedItem = null; 
 							
@@ -272,15 +225,11 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 	}
-<<<<<<< HEAD
+
+
+
+
 	public void RemoveItem(int id){
-=======
-
-
-
-
-	void RemoveItem(int id){
->>>>>>> SaveLoad2
 		for (int i = 0; i <inventory.Count; i++){
 			if (inventory[i].itemID == id){
 				inventory[i]= new Item();

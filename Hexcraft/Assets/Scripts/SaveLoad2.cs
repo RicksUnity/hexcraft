@@ -43,7 +43,7 @@ public class SaveLoad2: MonoBehaviour {
 			data.grass.Add (objs.transform.position.z);
 		}
 		inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>(); 
-		foreach (Item value in inventory.inventory )
+		foreach (Item value in Inventory.inventory )
 			data.inventory.Add(value.itemID);
 
 		bf.Serialize (file,data);
