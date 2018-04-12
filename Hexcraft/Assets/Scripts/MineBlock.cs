@@ -16,24 +16,26 @@ public class MineBlock : MonoBehaviour {
         // If the raycast hits and object, and the left mouse button is down, destroy the gameObject
         if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(0))
         {
-            if (hit.transform.gameObject.GetComponent<DropMechanics>().isDropped == false)
+            //When mined, block becomes smaller and rotates, then a rigidbody is added
+            hit.transform.gameObject.GetComponent<DropMechanics>().isDropped = true;
+            if (hit.transform.name == "redstone(Clone)" || hit.transform.name == "redstoneTorch(Clone)")
             {
-                //When mined, block becomes smaller and rotates, then a rigidbody is added
-                hit.transform.localScale = hit.transform.localScale / 5;
-                hit.transform.Rotate(0, 90, 45);
-                if (hit.transform.gameObject.GetComponent<Rigidbody>() == null)
-                {
-                    hit.transform.gameObject.GetComponent<MeshCollider>().convex = true;
-                    hit.transform.gameObject.AddComponent<Rigidbody>().useGravity = true;
-                }
-                //sets up properties of the block drop
+                hit.transform.GetComponent<RedstoneBehaviour>().Orientation(true);
+            }
+			hit.transform.localScale = hit.transform.localScale/5;
+			hit.transform.Rotate (0, 90, 45);
+            hit.transform.position += new Vector3(0f, 0.5f, 0);
+			if (hit.transform.gameObject.GetComponent<Rigidbody> () == null) 
+			{
+				hit.transform.gameObject.GetComponent<MeshCollider> ().convex = true;
+				hit.transform.gameObject.AddComponent<Rigidbody> ().useGravity = true;
+			}
                 hit.transform.gameObject.GetComponent<DropMechanics>().isDropped = true;
                 hit.transform.gameObject.GetComponent<DropMechanics>().player = gameObject;
                 hit.transform.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
                 hit.transform.gameObject.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(3, 0, 0));
-                hit.transform.gameObject.GetComponent<DropMechanics>().database = ItemDatabase;
-                hit.transform.gameObject.GetComponent<DropMechanics>().invent = Inventory;
-            }
+                hit.transform.gameObject.GetComponent<DropMechanics>().ItemDatabase = ItemDatabase;
+                hit.transform.gameObject.GetComponent<DropMechanics>().Inventory = Inventory;
         }
         if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(1))
         {
@@ -44,7 +46,8 @@ public class MineBlock : MonoBehaviour {
                     placeBlockID = ItemDatabase.items[i].itemID;
                 }
             }
-            if (Inventory.InventoryContains(placeBlockID)  && placeBlockID != -1)
+            //if (Inventory.InventoryContains(placeBlockID) && placeBlockID != -1)
+            if(true)
             {
                 //Places a new Hexagon of choice
                 GameObject newHex = Instantiate(placeBlock);
@@ -83,17 +86,56 @@ public class MineBlock : MonoBehaviour {
                 {
                     newHex.transform.position = hit.transform.position + new Vector3(2, -2, 0);
                 }
-                if (newHex.GetComponent<Collider>().bounds.Intersects(playerCollider.GetComponent<Collider>().bounds))
+                if (newHex.name == "redstone(Clone)")
+                {
+                    newHex.transform.position += new Vector3(0, -1, 0);
+                    Collider[] nearbyRed = Physics.OverlapSphere(newHex.transform.position, 1.1f);
+                    for (int i = 0; i < nearbyRed.Length; i++)
+                    {
+                        if(nearbyRed[i].transform.position == newHex.transform.position + new Vector3(0,-1,0))
+                        {
+                            newHex.GetComponent<DropMechanics>().attatchedTo = hit.transform.gameObject;
+                        }
+                    }
+                    if (newHex.GetComponent<DropMechanics>().attatchedTo == null)
+                    {
+                        Destroy(newHex);
+                    }
+                }
+                if (newHex.name == "redstoneTorch(Clone)")
+                {
+                    newHex.transform.localScale = newHex.transform.localScale / 3;
+                    newHex.transform.position = newHex.transform.position + (hit.transform.position - newHex.transform.position) / 2;
+                    newHex.GetComponent<DropMechanics>().attatchedTo = hit.transform.gameObject;
+                }
+                if (hit.transform.gameObject.name == "redstone(Clone)")
+                {
+                    newHex.transform.position += new Vector3(0, 1, 0);
+                }
+                if ((newHex.GetComponent<Collider>().bounds.Intersects(playerCollider.GetComponent<Collider>().bounds)) || ((newHex.name == "redstone(Clone)" || newHex.name == "redstoneTorch(Clone)") && hit.transform.gameObject.name == "redstone(Clone)")||(hit.transform.gameObject.name == "redstoneTorch(Clone)"))
                 {
                     Destroy(newHex);
                 }
                 else
-                {
-                    print("ping");
-                    Inventory.RemoveItem(placeBlockID);
+                { 
+                    Collider[] nearby = Physics.OverlapSphere(newHex.transform.position, 0.05f);
+                    for (int j = 0; j < nearby.Length; j++)
+                    {
+                        if ((nearby[j].transform != newHex.transform && nearby[j].transform.position == newHex.transform.position) )
+                        {
+                            Destroy(newHex);
+                        }
+                        else
+                        {
+                            Inventory.RemoveItem(placeBlockID);
+                            if (newHex.name == "redstone(Clone)" || newHex.name == "redstoneTorch(Clone)")
+                            {
+                                newHex.GetComponent<RedstoneBehaviour>().Orientation(true);
+                            }
+                        }
+                    }
                 }
             }
-
         }
     }
 }
