@@ -88,7 +88,7 @@ public class Inventory : MonoBehaviour {
 		int y2 = 1;
 
 		GUI.BeginGroup (new Rect (Screen.width / 2 - 400, Screen.height / 3 - 50, 900, 250));
-		GUI.Box(new Rect(0,0,900,250), "\ n<color=#0>Glorious Inventory!</color>", skin.GetStyle("Background"));
+		GUI.Box(new Rect(0,0,900,250), "\n<color=#0>Glorious Inventory!</color>", skin.GetStyle("Background"));
 		for (int y = 1; y < slotsY+1; y ++){
 			for (int x = 1; x < slotsX+1; x++){
 				if (x2 > (slotsX * 50 + 100) ) {
@@ -237,7 +237,7 @@ public class Inventory : MonoBehaviour {
 
 	string CreateToolTip(Item item)
 	{
-		tooltip = "<color=#FFFFFFFF>"+item.itemName+"</color>\ n"+ item.itemDesc;
+		tooltip = "<color=#FFFFFFFF>"+item.itemName+"</color>\n"+ item.itemDesc;
 		return tooltip;  
 
 	}
