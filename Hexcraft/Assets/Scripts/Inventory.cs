@@ -233,26 +233,6 @@ public class Inventory : MonoBehaviour {
 		}
 
 	}
-	void DrawFavourites()
-	{
-
-	int i = 0; 
-	for( int x = 1; x < 11; x++ )
-	{
-		Rect favSlotRect = new Rect(x*50, 50, 50, 50);
-		GUI.Box(new Rect(favSlotRect), "", skin.GetStyle("Slot"));
-		favSlots[i] = inventory[i]; 
-
-		if(favSlots[i].itemName != null)
-		{
-			GUI.DrawTexture(favSlotRect, favSlots[i].itemIcon);
-		}
-
-
-		i ++;
-	}
-
-	}
 	
 	string CreateToolTip(Item item)
 	{
