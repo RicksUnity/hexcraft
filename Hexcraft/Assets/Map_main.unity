@@ -27016,8 +27016,18 @@ MonoBehaviour:
   slotsX: 10
   slotsY: 3
   skin: {fileID: 11400000, guid: 7c727e2cdb1ed3545b8339171cb99b90, type: 2}
-  inventory: []
   slots: []
+  favSlots: []
+  Craftslots: []
+  Craftinventory: []
+  Finishslots: []
+  Finishinventory: []
+  finishBox:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
 --- !u!4 &418384239
 Transform:
   m_ObjectHideFlags: 0
@@ -41731,6 +41741,46 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 641968637}
   m_Mesh: {fileID: 4300000, guid: f37a0c8f4618945119154830e69053c6, type: 3}
+--- !u!1 &642438965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 642438967}
+  - component: {fileID: 642438966}
+  m_Layer: 0
+  m_Name: Crafting Recipe
+  m_TagString: Crafting Recipe
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &642438966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 642438965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd54c215a4d371d4ba6d7fcaabae4d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &642438967
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 642438965}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 28.5, y: 1.5, z: 16.454483}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &643538211
 GameObject:
   m_ObjectHideFlags: 0
