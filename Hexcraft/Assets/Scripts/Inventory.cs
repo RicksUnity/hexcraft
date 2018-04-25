@@ -18,8 +18,15 @@ public class Inventory : MonoBehaviour {
 	private int prevIndex; 
 	public List<Item> Craftslots = new List<Item> ();
 	public List<Item> Craftinventory = new List<Item>();
+	public List<Item> Finishslots = new List<Item> ();   //new
+	public List<Item> Finishinventory = new List<Item>();  //new
 	private CraftingRecipe Recipe;
 	public Rect finishBox = new Rect();
+	public enum draggingFrom
+	{
+		slots, craft, finish, none
+	} ;
+	draggingFrom drag = draggingFrom.none;
 	void Start() {
 		for (int i = 0; i < (slotsX*slotsY); i++)
 		{
@@ -32,9 +39,9 @@ public class Inventory : MonoBehaviour {
 		Recipe = GameObject.FindGameObjectWithTag("Crafting Recipe").GetComponent<CraftingRecipe>();
 
 		addItem(1);
-		addItem(1);
-		//addCraftingItem (1);
-		//addCraftingItem (1);
+		addItem(3);
+		addCraftingItem (1);
+		addCraftingItem (3);
 	}
 	void Update()
 	{
@@ -77,18 +84,18 @@ public class Inventory : MonoBehaviour {
 		Event e = Event.current; 
 		int i = 0; 
 		int x2 = slotsX * 50  ;
-		int y2 = 1; 
+		int y2 = 1;
 
 		GUI.BeginGroup (new Rect (Screen.width / 2 - 400, Screen.height / 3 - 50, 900, 250));
 		GUI.Box(new Rect(0,0,900,250), "\n<color=#0>Glorious Inventory!</color>", skin.GetStyle("Background"));
 		for (int y = 1; y < slotsY+1; y ++){
 			for (int x = 1; x < slotsX+1; x++){
 				if (x2 > (slotsX * 50 + 100) ) {
-					y2 ++ ; 
-					x2 = slotsX * 50; 
+					y2 ++ ;
+					x2 = slotsX * 50;
 				}
-				x2 += 50;	
-				Rect slotRect = new Rect(x * 50, y * 50, 50, 50); 
+				x2 += 50;
+				Rect slotRect = new Rect(x * 50, y * 50, 50, 50);
 				Rect craftBox = new Rect(x2 + 35, y2 * 50, 50 ,50);
 
 				GUI.Box(new Rect(slotRect), "", skin.GetStyle("Slot"));
@@ -102,54 +109,82 @@ public class Inventory : MonoBehaviour {
 				if (slots[i].itemName != null||Craftslots[i].itemName!=null){
 					GUI.DrawTexture (craftBox, Craftslots[i].itemIcon);
 					GUI.DrawTexture(slotRect, slots[i].itemIcon);
-					if (slotRect.Contains(e.mousePosition)||craftBox.Contains(e.mousePosition)){
+					if (slotRect.Contains(e.mousePosition)||craftBox.Contains(e.mousePosition)||finishBox.Contains (e.mousePosition)){
 						tooltip = CreateToolTip(slots[i]);
 						showToolTip = true; 
 						if (e.button == 0 && e.type == EventType.MouseDrag && !draggingItem)
 						{
 							draggingItem = true;
-							prevIndex = i; 
+							prevIndex = i;
 							if (craftBox.Contains (e.mousePosition)) {
 								draggedItem = Craftslots [i];
 								Craftinventory [i] = new Item ();
+								Debug.Log ("craft drag:"+i);
 							}
-							
-							else {
-								draggedItem = slots [i]; 
+							else if (finishBox.Contains (e.mousePosition)) {
+								draggedItem = Finishslots [0];
+								Finishinventory [0] = new Item ();
+								//drag = draggingFrom.finish;
+								for (int s = 0; s < Craftinventory.Count; s++)
+									Craftinventory [s] = new Item();
+								Debug.Log ("finish drag:" + i);
+							}
+
+							else if(slotRect.Contains(e.mousePosition)){
+								draggedItem = slots [i];
 								inventory [i] = new Item ();
-							}				 
+								Debug.Log ("slot drag:"+i);
+							}
 						}
-						
-						if (e.type == EventType.MouseUp && draggingItem){							 
+
+						if (e.type == EventType.MouseUp && draggingItem){
 							if (slotRect.Contains (e.mousePosition)) {
 								inventory [prevIndex] = inventory [i];
 								inventory [i] = draggedItem;
-							} else {
-								Craftinventory [prevIndex] = Craftinventory [i];
-								Craftinventory [i] = draggedItem;
+								Debug.Log ("inventory if mouse up:"+i);
 							}
-							draggingItem = false; 
-							draggedItem = null; 
+							else if (finishBox.Contains (e.mousePosition)) {
+								//Finishinventory [0] = Finishinventory [0];
+								Finishinventory [i] = draggedItem;
+								Debug.Log ("finish if mouse up:" + i);
+
+							}
+							else  {
+								//Craftinventory [prevIndex] = Craftinventory [i];
+								Craftinventory [i] = draggedItem;
+								Debug.Log ("craft if mouse up:"+i);
+							}
+							draggingItem = false;
+							draggedItem = null;
 						}
 
 					}
 
-				} else {
-					if(slotRect.Contains(e.mousePosition)||craftBox.Contains(e.mousePosition)){
+				}  else {
+					if(slotRect.Contains(e.mousePosition)||craftBox.Contains(e.mousePosition)||finishBox.Contains (e.mousePosition)){
 						if (e.type == EventType.MouseUp && draggingItem){
 							if (slotRect.Contains (e.mousePosition)) {
-								inventory [prevIndex] = inventory [i]; 
-								inventory [i] = draggedItem; 
+								//inventory [prevIndex] = inventory [i];
+								inventory [i] = draggedItem;
+								Debug.Log ("inventory else mouse up:"+i);
+								//if (drag == draggingFrom.finish)
+								//	Finishinventory [0] = null;
 							}
-							else {
-								Craftinventory [prevIndex] = Craftinventory [i];
+							else if (finishBox.Contains (e.mousePosition)) {
+								//Finishinventory [0] = Finishinventory [0];
+								Finishinventory [i] = draggedItem;
+								Debug.Log ("finish else mouse up:" + i);
+							}
+							else if(craftBox.Contains (e.mousePosition)) {
+								//Craftinventory [prevIndex] = Craftinventory [i];
 								Craftinventory [i] = draggedItem;
+								Debug.Log ("craft else mouse up:"+i);
 							}
-							draggingItem = false; 
-							draggedItem = null; 
-							
+							draggingItem = false;
+							draggedItem = null;
+
 						}
-						
+
 					}
 				}
 				if (tooltip == "")
@@ -157,40 +192,45 @@ public class Inventory : MonoBehaviour {
 					showToolTip = false;
 				}
 
-				i++; 
-		}
+				i++;
+			}
 			//Debug.Log ("gg"+GetCraftID(Craftinventory));
 			//GUI.DrawTexture (finishBox, GetCraftID(Craftinventory));
 
-	}
-		finishBox = new Rect (x2+75,50,50,50);
+		}
+		finishBox = new Rect (x2+200,100,50,50);
 		GUI.Box (new Rect (finishBox), "", skin.GetStyle ("Slot"));
 		for (int k = 0; k < database.items.Count; k++){
 			if (database.items[k].itemID == GetCraftID(Craftinventory)){
+				Finishinventory.Insert(0,database.items[k]) ;
 				GUI.DrawTexture (finishBox, database.items[k].itemIcon );
+				Finishslots.Insert(0,database.items[k]);
+				//public List<Item> Craftslots = new List<Item> ();
+				//public List<Item> Craftinventory = new List<Item>();
 				//Craftinventory[i] = database.items[j];
 			}
 		}
-	GUI.EndGroup ();
+		GUI.EndGroup ();
 	}
 	void DrawFavourites()
 	{
 
-	int i = 0; 
-	for( int x = 1; x < 11; x++ )
-	{
-		Rect favSlotRect = new Rect(x*50, 50, 50, 50);
-		GUI.Box(new Rect(favSlotRect), "", skin.GetStyle("Slot"));
-		favSlots[i] = inventory[i]; 
-
-		if(favSlots[i].itemName != null)
+		int i = 0; 
+		for( int x = 1; x < 11; x++ )
 		{
-			GUI.DrawTexture(favSlotRect, favSlots[i].itemIcon);
+			//Debug.Log ("this is drawFavorite:"+ i);
+			Rect favSlotRect = new Rect(x*50, 50, 50, 50);
+			GUI.Box(new Rect(favSlotRect), "", skin.GetStyle("Slot"));
+			favSlots[i] = inventory[i]; 
+
+			if(favSlots[i].itemName != null)
+			{
+				GUI.DrawTexture(favSlotRect, favSlots[i].itemIcon);
+			}
+			//Debug.Log ("fav:"+favSlots[i]+"inventory:"+inventory[i]);
+
+			i ++;
 		}
-
-
-		i ++;
-	}
 
 	}
 	
@@ -255,7 +295,7 @@ public class Inventory : MonoBehaviour {
 			List<int> tempCraftinventory = new List<int> ();
 			foreach (int values in items.Value) 				
 				tempRecipe.Add (values);
-			
+
 			for (int v = 0; v < Craftinventory.Count; v++) {
 				tempCraftinventory.Add (Craftinventory [v].itemID);
 				//Debug.Log (Craftinventory [v].itemID);
@@ -263,7 +303,7 @@ public class Inventory : MonoBehaviour {
 			tempCraftinventory.RemoveRange (9, tempCraftinventory.Count-9);
 			//Debug.Log(tempCraftinventory.Count+"//////"+tempRecipe.Count);
 			//foreach (int ttt in tempCraftinventory)
-				//Debug.Log (ttt);
+			//Debug.Log (ttt);
 
 			if (tempCraftinventory.SequenceEqual(tempRecipe)) 
 				return items.Key;
@@ -273,6 +313,7 @@ public class Inventory : MonoBehaviour {
 		return 0;
 	}
 }
+
 
 
 
