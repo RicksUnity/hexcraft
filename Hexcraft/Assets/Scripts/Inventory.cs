@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour {
 	public static List<Item> inventory = new List<Item>();
 	public List<Item> slots = new List<Item>(); 
 	public List<Item> favSlots = new List<Item>(); 
+	public List<Item> selectedSlot = new List<Item>(); 
 	private bool showInventory;
 	private bool showFavourites;    
 	private ItemDatabase database; 
@@ -30,6 +31,7 @@ public class Inventory : MonoBehaviour {
 	void Start() {
 		for (int i = 0; i < (slotsX*slotsY); i++)
 		{
+			selectedSlot.Add(new Item()); 
 			slots.Add(new Item());
 			inventory.Add (new Item());
 			Craftslots.Add (new Item ());
@@ -40,6 +42,11 @@ public class Inventory : MonoBehaviour {
 
 		addItem(1);
 		addItem(3);
+		addItem(1);
+		addItem(1);
+		addItem(0);
+		addItem(0);
+		addItem(0);
 		addCraftingItem (1);
 		addCraftingItem (3);
 	}
@@ -72,7 +79,8 @@ public class Inventory : MonoBehaviour {
 
 		}
 		
-		} if(showFavourites)
+		}
+		if(showFavourites)
 		{
 			DrawFavourites();
 		}
@@ -99,6 +107,8 @@ public class Inventory : MonoBehaviour {
 				Rect craftBox = new Rect(x2 + 35, y2 * 50, 50 ,50);
 
 				GUI.Box(new Rect(slotRect), "", skin.GetStyle("Slot"));
+				GUI.Box(new Rect(slotRect), "", skin.GetStyle("SelectedSlot"));
+
 				if (y2 < 4) {
 					GUI.Box (new Rect (craftBox), "", skin.GetStyle ("Slot"));
 					Craftslots [i] = Craftinventory [i];
@@ -127,6 +137,7 @@ public class Inventory : MonoBehaviour {
 								//drag = draggingFrom.finish;
 								for (int s = 0; s < Craftinventory.Count; s++)
 									Craftinventory [s] = new Item();
+								
 								Debug.Log ("finish drag:" + i);
 							}
 
@@ -212,24 +223,45 @@ public class Inventory : MonoBehaviour {
 		}
 		GUI.EndGroup ();
 	}
+
+	void DrawSelected(){
+		SelectedItem item = new SelectedItem();
+		Rect selSlotRect = new Rect(50,100,50,50);
+		GUI.Box(new Rect(selSlotRect), "", skin.GetStyle("SelectedItem"));
+		GUI.DrawTexture(selSlotRect, favSlots[0].itemIcon);
+		
+
+	}
+
 	void DrawFavourites()
 	{
-
-		int i = 0; 
+		
+		favSlots.Clear();
+		int i = 0;
 		for( int x = 1; x < 11; x++ )
 		{
+			//seke
 			//Debug.Log ("this is drawFavorite:"+ i);
 			Rect favSlotRect = new Rect(x*50, 50, 50, 50);
+			
+			
+
 			GUI.Box(new Rect(favSlotRect), "", skin.GetStyle("Slot"));
-			favSlots[i] = inventory[i]; 
+			
+			finishBox = new Rect (50,100,50,50);
+
+			favSlots.Add(inventory[i]); 
 
 			if(favSlots[i].itemName != null)
 			{
+				
 				GUI.DrawTexture(favSlotRect, favSlots[i].itemIcon);
+	
 			}
+			DrawSelected();
 			//Debug.Log ("fav:"+favSlots[i]+"inventory:"+inventory[i]);
 
-			i ++;
+			i++;
 		}
 
 	}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -27018,6 +27018,7 @@ MonoBehaviour:
   skin: {fileID: 11400000, guid: 7c727e2cdb1ed3545b8339171cb99b90, type: 2}
   slots: []
   favSlots: []
+  selectedSlot: []
   Craftslots: []
   Craftinventory: []
   Finishslots: []
@@ -39833,6 +39834,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeBlock: {fileID: 1938123384389740, guid: 98e75beb0ee6f4c5293532eea296a841, type: 2}
+  ItemDatabase: {fileID: 0}
+  Inventory: {fileID: 0}
+  playerCollider: {fileID: 0}
 --- !u!1 &610172091
 GameObject:
   m_ObjectHideFlags: 0
@@ -40023,6 +40027,7 @@ MonoBehaviour:
   currentMenu: 0
   worldName: 
   characterName: 
+  Isload: 0
 --- !u!1 &616081252
 GameObject:
   m_ObjectHideFlags: 0
@@ -41781,7 +41786,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &643538211
 GameObject:
@@ -50359,6 +50364,58 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 783064495}
   m_Mesh: {fileID: 4300000, guid: f37a0c8f4618945119154830e69053c6, type: 3}
+--- !u!1 &784082543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 784082545}
+  - component: {fileID: 784082544}
+  m_Layer: 0
+  m_Name: SelectedSkin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &784082544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 784082543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ea26881049a4423a09fa8993c367d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  speed: 0
+  selectedItem: 1
+  selected:
+  - itemName: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemPower: 0
+    itemSpeed: 0
+    itemType: 0
+    itemWorld: 
+--- !u!4 &784082545
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 784082543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &784139714
 GameObject:
   m_ObjectHideFlags: 0
@@ -131661,8 +131718,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1996177535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 546.5, y: 263.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1074197500}
   m_Father: {fileID: 0}
@@ -137819,8 +137876,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ea26881049a4423a09fa8993c367d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  speed: 0
   selectedItem: 0
-  slots: []
+  selected: []
 --- !u!1 &2098099239
 GameObject:
   m_ObjectHideFlags: 0
