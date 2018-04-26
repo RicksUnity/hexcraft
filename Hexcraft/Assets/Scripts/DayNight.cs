@@ -6,8 +6,7 @@ public class DayNight : MonoBehaviour {
 
     public Light sun;
     public float time;
-    private float dayLength = 30;
-    private float intensityMultiplier;
+    public float dayLength = 30;
 	// Update is called once per frame
     
 	void Update () {
