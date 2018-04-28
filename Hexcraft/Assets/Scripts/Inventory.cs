@@ -214,6 +214,7 @@ public class Inventory : MonoBehaviour {
 			//GUI.DrawTexture (finishBox, GetCraftID(Craftinventory));
 
 		}
+		//draw the finish box on the right side of the inventory area
 		finishBox = new Rect (x2+200,100,50,50);
 		GUI.Box (new Rect (finishBox), "", skin.GetStyle ("Slot"));
 		for (int k = 0; k < database.items.Count; k++){
@@ -291,7 +292,7 @@ public class Inventory : MonoBehaviour {
 		}
 
 	}
-
+	//Add the items into the crafting area
 	void addCraftingItem (int id){
 		for (int i = 0; i< Craftinventory.Count; i++){
 			if (Craftinventory[i].itemName == null){
@@ -328,7 +329,9 @@ public class Inventory : MonoBehaviour {
 		}	
 		return result; 
 	}
-
+	// Make the items in the crafting area into an array
+	//Compare the array of crafting with the crafting recipe 
+	//return the item Id if find if the crafting array fit the crafting recipe
 	int GetCraftID(List<Item> Craftinventory){
 		foreach (KeyValuePair<int,int[]> items in Recipe.craftingRecipe) {
 			List<int> tempRecipe = new List<int> ();
