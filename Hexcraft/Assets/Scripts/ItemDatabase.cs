@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+// All the items in the game declared here. 
+// Creates instances using the item class. 
+
 public class ItemDatabase : MonoBehaviour{
     public List<Item> items = new List<Item>();
 

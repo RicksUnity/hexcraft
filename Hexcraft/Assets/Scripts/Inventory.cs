@@ -53,6 +53,7 @@ public class Inventory : MonoBehaviour {
 		addItem(20);
 		addItem(20);
 	}
+	// Checks for input from the player, if the 'I' key has been pressed opens inventory.
 	void Update()
 	{
 		showFavourites = !showInventory; 
@@ -63,7 +64,8 @@ public class Inventory : MonoBehaviour {
 			
 		}
 	}
-
+// Used to draw the inventory menu.
+//Used to draw the favourites (first ten slots of the inventory).
 	void OnGUI(){
 		//Debug.Log (inventory[0].itemID);
 		tooltip = "";
@@ -89,7 +91,10 @@ public class Inventory : MonoBehaviour {
 		}
 		
 		}
-	
+// Draw when conditions are met. 
+// Contains the logic for draggin items from and to different slots
+// as well as to the creafting menu. 
+
 	void DrawInventory()
 	{
 		Event e = Event.current; 
@@ -141,13 +146,12 @@ public class Inventory : MonoBehaviour {
 								for (int s = 0; s < Craftinventory.Count; s++)
 									Craftinventory [s] = new Item();
 								
-								Debug.Log ("finish drag:" + i);
 							}
 
 							else if(slotRect.Contains(e.mousePosition)){
 								draggedItem = slots [i];
 								inventory [i] = new Item ();
-								Debug.Log ("slot drag:"+i);
+
 							}
 							draggingItem = true;
 						}
@@ -156,18 +160,15 @@ public class Inventory : MonoBehaviour {
 							if (slotRect.Contains (e.mousePosition)) {
 								inventory [prevIndex] = inventory [i];
 								inventory [i] = draggedItem;
-								Debug.Log ("inventory if mouse up:"+i);
+
 							}
 							else if (finishBox.Contains (e.mousePosition)) {
-								//Finishinventory [0] = Finishinventory [0];
 								Finishinventory [i] = draggedItem;
-								Debug.Log ("finish if mouse up:" + i);
+
 
 							}
 							else  {
-								//Craftinventory [prevIndex] = Craftinventory [i];
 								Craftinventory [i] = draggedItem;
-								Debug.Log ("craft if mouse up:"+i);
 							}
 							draggingItem = false;
 							draggedItem = null;
@@ -227,7 +228,7 @@ public class Inventory : MonoBehaviour {
 		}
 		GUI.EndGroup ();
 	}
-
+// Draws the item currently selected in a seperate, golden, slot. 
 	void DrawSelected(){
 		SelectedItem item = new SelectedItem();
 		Rect selSlotRect = new Rect(50,100,50,50);
@@ -236,7 +237,8 @@ public class Inventory : MonoBehaviour {
 		
 
 	}
-
+// Draws favourites on to the screen in the top left corner
+// if slot empty, draws an empty slot. 
 	void DrawFavourites()
 	{
 		
@@ -269,7 +271,7 @@ public class Inventory : MonoBehaviour {
 		}
 
 	}
-	
+// Tooltip appears when hovering above an item, stating its name and description.
 	string CreateToolTip(Item item)
 	{
 		tooltip = "<color=#FFFFFFFF>"+item.itemName+"</color>\n"+ item.itemDesc;
@@ -289,6 +291,7 @@ public class Inventory : MonoBehaviour {
 		}
 
 	}
+
 	void addCraftingItem (int id){
 		for (int i = 0; i< Craftinventory.Count; i++){
 			if (Craftinventory[i].itemName == null){
@@ -304,7 +307,7 @@ public class Inventory : MonoBehaviour {
 
 
 
-
+// Called to remove an item from the inventory. 
 	public void RemoveItem(int id){
 		for (int i = 0; i <inventory.Count; i++){
 			if (inventory[i].itemID == id){
@@ -313,6 +316,7 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 	}
+// Called to check whether or not an item is in the invetory. 
 	public bool InventoryContains(int id){
 		bool result = false; 
 		for (int i = 0; i < inventory.Count; i++){

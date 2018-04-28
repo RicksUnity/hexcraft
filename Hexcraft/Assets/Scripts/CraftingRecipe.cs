@@ -3,11 +3,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+// Crafting recipes using, when combination matches an item is crafted. 
+// Uses list indexing.
+
 public class CraftingRecipe: MonoBehaviour{
-	//public List<RecipeItem> craftingItems = new List<RecipeItem>();
 	public Dictionary<int, int[]> craftingRecipe = new Dictionary<int, int[]>();
 	void Start (){
-	//	craftingItems.Add(new RecipeItem("stick",0,0,0,0,1,0,0,1,0));
+
 	//pickaxes
 		craftingRecipe.Add(6, new int[] {3,3,3,0,20,0,0,20,0}); //diamond pickaxe
 		craftingRecipe.Add(7, new int[] {22,22,22,0,20,0,0,20,0});	//Iron pickaxe
