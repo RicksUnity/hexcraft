@@ -8,8 +8,8 @@ public class RedstoneBehaviour : MonoBehaviour {
     public Vector3 pointing = new Vector3(0,0,0);
     private Collider behind;
     public GameObject infront;
-    //powered strength is USELESS
 
+    // --- Determines which way a line of redstone is facing --- 
     public void Orientation (bool passOn){
         pointing = new Vector3(0, 0, 0);
         Collider[] nearby = Physics.OverlapSphere(transform.position, 2.9f);
@@ -43,7 +43,7 @@ public class RedstoneBehaviour : MonoBehaviour {
                 }
             }
         }
-        //Make sure that the pointing of all nearby redstones orientations are also correct.
+        // --- This causes all nearby redstone blocks to run the Orientation function ---
         if (passOn)
         {
             for (int l = 0; l < nearby.Length; l++)
@@ -60,6 +60,7 @@ public class RedstoneBehaviour : MonoBehaviour {
     }
 
     void Update () {
+        // --- If a line of redsotne is pointing at a non redstone block, then the infront tag of the redstone becomes this block and the block becomes powered ---
         Collider[] nearby = Physics.OverlapSphere(transform.position, 2.9f);
         if (pointing != new Vector3(0,0,0))
         {
@@ -73,20 +74,23 @@ public class RedstoneBehaviour : MonoBehaviour {
                         if (strength > 0)
                         {
                             infront.GetComponent<DropMechanics>().isPowered = true;
-                            infront.GetComponent<DropMechanics>().poweredStrength = strength - 1;
+                            //infront.GetComponent<DropMechanics>().poweredStrength = strength - 1;
                         }
 
                     }
                 }
             }
         }
+     
         if (torch == false)
         {
+            // --- Causes powered redstone to power touching redstone wth decreasig strength ---
             strength = 0;
             Vector3 pos = transform.position;
             for (int i = 0; i < nearby.Length; i++)
             {
                 Vector3 near = nearby[i].transform.position;
+                //Last statement is so that redstone also travels up and down blocks
                 if ((nearby[i].name == "redstone(Clone)" || nearby[i].name == "redstoneTorch(Clone)") && (nearby[i].transform.position.y - transform.position.y > 1 || nearby[i].transform.position.y - transform.position.y < -1.1 || (Mathf.Sqrt(Mathf.Pow(nearby[i].transform.position.x - transform.position.x, 2) + Mathf.Pow(nearby[i].transform.position.z - transform.position.z, 2)) < 2.1 && transform.position.y - nearby[i].transform.position.y < 0.1)))
                 {
                     if ( nearby[i].GetComponent<RedstoneBehaviour>().strength > strength + 1)
@@ -103,10 +107,12 @@ public class RedstoneBehaviour : MonoBehaviour {
                     }
                 }
             }
+            //--- If the strength goes above zero then the infront block is powered---
             if (strength > 0 && infront != null)
             {
                 infront.GetComponent<DropMechanics>().isPowered = true;
             }
+            //--- If the strength is above zero, then the block that the redstone is ontop of (and attatched to) becomes powered---
             if(strength >0 )
             {
                 GetComponent<DropMechanics>().attatchedTo.GetComponent<DropMechanics>().isPowered = true;
@@ -114,6 +120,7 @@ public class RedstoneBehaviour : MonoBehaviour {
         }
         else
         {
+            // --- If the block the the torch is on is powered then it tunrs off, otherwise its strength is 12
             if (GetComponent<DropMechanics>().isDropped != true)
             {
                 if (GetComponent<DropMechanics>().attatchedTo.GetComponent<DropMechanics>().isPowered == false)

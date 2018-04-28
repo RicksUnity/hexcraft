@@ -7,7 +7,9 @@ public class SelectedItem : MonoBehaviour
 {
 	public float damage; 
 	public float speed; 
-	public int selectedItem = 1; 
+	public int selectedItem = 1;
+    public int itemDamage=0;
+    public GameObject Itemru;
 
 	public List<Item> selected = new List<Item>(); 
 
@@ -55,14 +57,12 @@ public class SelectedItem : MonoBehaviour
 
 	void SelectItem()
 	{
-		//print("Hey Dude");
-
-	
 		for(int i = 0; i<10; i++ )
 		{
 			if(i == selectedItem)
 			{
-				print(Inventory.inventory[i].itemName); 
+				Itemru = GameObject.Find(Inventory.inventory[i].itemWorld);
+                itemDamage = Inventory.inventory[i].itemPower;
 			}	
 
 		}
