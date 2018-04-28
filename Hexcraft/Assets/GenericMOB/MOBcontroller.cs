@@ -28,9 +28,9 @@ public class MOBcontroller : MonoBehaviour {
     private bool chasing = false;
 	private int NewTargetTimer = 0;
 	new Vector3 spawnPos;
-
-
-
+	Vector3 PrevPos;
+	Vector3 CurrentPos;
+	float speed;
 
 	// Use this for initialization
 	void Start () {
@@ -64,7 +64,7 @@ public class MOBcontroller : MonoBehaviour {
 		if (other.tag == "Player") {
 			target = playerPos;
 			chasing = true;
-			print (chasing);
+			print (chasing+ "woah" );
 		}
 	}
 	void OnTriggerExit(Collider other) {
@@ -72,11 +72,9 @@ public class MOBcontroller : MonoBehaviour {
 			spawnPos = transform.position;
 			target = WanderPoint (spawnPos, wanderBox);
 			chasing = false;
-			print (chasing);
+			print (chasing+"heyy");
 		}
 	}
-
-
 
 	// -------- Update is called once per frame -----------
 	void Update () {
@@ -101,17 +99,21 @@ public class MOBcontroller : MonoBehaviour {
 		float flatdistance = Vector3.Distance (FlatTarget, FlatPosition);
 
 		// - - - - Checks chasing, makes new target when in range.
-		//if (chasing = false) {
+		if (chasing == false) {
 			if (flatdistance < 3f) {
 				target = WanderPoint (spawnPos, wanderBox);
+				print ("found target");
 			}
+
+		}
 		
 		// -------  MOB Player chasing ---------
 		if (chasing == true) {
 			target = playerPos;
-
+			print ("im coming for you");
 		}
-			
+
+
 
 		// Keep MOB pointing at target
 		Vector3 targetPosition = new Vector3(target.x, transform.position.y, target.z);
@@ -143,6 +145,13 @@ public class MOBcontroller : MonoBehaviour {
 		if (NewTargetTimer % 500 == 0 & chasing == false) {
 			target = WanderPoint (spawnPos, wanderBox); // Creates new wander point
 		}
+
+		// - - - - Checking MOB speed - - - - - 
+		StartCoroutine(speedCalc());
+		if(speed < 0.1 & MobBlocked.pathBlocked == false)
+		{
+			rb.AddForce ((Heading * (cheekyPush/4)), ForceMode.Impulse);
+		}
 	}
 
 	// Function creates random point within a 2D box
@@ -153,7 +162,23 @@ public class MOBcontroller : MonoBehaviour {
 			(0f),
 			(Random.value - 0.5f) * size.z);
 	}
+	//  - - - - MOB speed calculation - - - - 
 
+	IEnumerator speedCalc() {
+		//This is a coroutine
+		PrevPos = transform.position;
+		yield return new WaitForSeconds(3);    //Wait for specified time
+		CurrentPos = transform.position;
+		speed = Vector3.Distance(PrevPos, CurrentPos);
+	}
+
+	/*
+	PrevPos = transform.position;
+	yield new WaitForSeconds (2);
+	CurrentPos = transform.position;
+	speed = Vector3.Distance (PrevPos, CurrentPos);
+	return(speed);
+	*/
 
 	// Wire spheres drawn on MOB
 	public void OnDrawGizmos()
