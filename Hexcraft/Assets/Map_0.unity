@@ -182,9 +182,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockTypes:
-  - {fileID: 1902695694882422, guid: 711eefaa29c484cacb32daea9bfdd409, type: 2}
-  - {fileID: 1604338548082976, guid: 841e620caaa664dd6ab53b79169fef5e, type: 2}
-  rockbottom: {fileID: 1938123384389740, guid: 98e75beb0ee6f4c5293532eea296a841, type: 2}
+  - {fileID: 1659100603275328, guid: 2b3749895c1be4ec1b9c3f79849df011, type: 2}
+  - {fileID: 1250713223474466, guid: 3f90c26566c7c45a18f0349dc482093d, type: 2}
+  - {fileID: 1310625502074320, guid: 70a865c97b2c743a6b8c13398b219835, type: 2}
+  - {fileID: 1734065579070088, guid: 32aa2c83e55a441d2ae05c49470a11b8, type: 2}
+  - {fileID: 1929275731206592, guid: 202a973f7b4764560839c8d3d88e0bc0, type: 2}
+  - {fileID: 1122732570992828, guid: bd99806116f2f4d8bba9f90528b515e4, type: 2}
+  rockbottom: {fileID: 1491357381643146, guid: e3dba39a05b504989b45989eca134c28, type: 2}
   grid: 20
   seed: 0
   TreeFab: {fileID: 1859802589562206, guid: 11c6f462fcfb242acabe4cea7c010d93, type: 2}

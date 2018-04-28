@@ -37,7 +37,7 @@ private GameObject currentBlockType;
 
 	public void generateTerrain(){
 
-		
+		seed = Random.Range(0,100000);
 		myPos = this.transform.position;
 		
 		float offsetx = myPos.x;
