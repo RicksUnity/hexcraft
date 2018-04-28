@@ -8,6 +8,7 @@ public class MineBlock : MonoBehaviour {
     public ItemDatabase ItemDatabase;
     public Inventory Inventory;
     public GameObject playerCollider;
+    public SelectedItem SelectedItem;
     private int placeBlockID = -1;
 	void Update () {
         //Determines where the raycast is pointing
@@ -16,26 +17,34 @@ public class MineBlock : MonoBehaviour {
         // If the raycast hits and object, and the left mouse button is down, destroy the gameObject
         if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(0))
         {
-            //When mined, block becomes smaller and rotates, then a rigidbody is added
-            hit.transform.gameObject.GetComponent<DropMechanics>().isDropped = true;
-            if (hit.transform.name == "redstone(Clone)" || hit.transform.name == "redstoneTorch(Clone)")
+            if (hit.transform.gameObject.tag == "Enemy")
             {
-                hit.transform.GetComponent<RedstoneBehaviour>().Orientation(true);
+                hit.transform.GetComponent<MOBcontroller>().health -= (12 + SelectedItem.GetComponent<SelectedItem>().damage);
+                hit.transform.GetComponent<Rigidbody>().AddForce(new Vector3(hit.transform.position.x - transform.position.x, 1, hit.transform.position.z - hit.transform.position.z));
             }
-			hit.transform.localScale = hit.transform.localScale/5;
-			hit.transform.Rotate (0, 90, 45);
-            hit.transform.position += new Vector3(0f, 0.5f, 0);
-			if (hit.transform.gameObject.GetComponent<Rigidbody> () == null) 
-			{
-				hit.transform.gameObject.GetComponent<MeshCollider> ().convex = true;
-				hit.transform.gameObject.AddComponent<Rigidbody> ().useGravity = true;
-			}
+            else
+            {
+                //When mined, block becomes smaller and rotates, then a rigidbody is added
+                hit.transform.gameObject.GetComponent<DropMechanics>().isDropped = true;
+                if (hit.transform.name == "redstone(Clone)" || hit.transform.name == "redstoneTorch(Clone)")
+                {
+                    hit.transform.GetComponent<RedstoneBehaviour>().Orientation(true);
+                }
+                hit.transform.localScale = hit.transform.localScale / 5;
+                hit.transform.Rotate(0, 90, 45);
+                hit.transform.position += new Vector3(0f, 0.5f, 0);
+                if (hit.transform.gameObject.GetComponent<Rigidbody>() == null)
+                {
+                    hit.transform.gameObject.GetComponent<MeshCollider>().convex = true;
+                    hit.transform.gameObject.AddComponent<Rigidbody>().useGravity = true;
+                }
                 hit.transform.gameObject.GetComponent<DropMechanics>().isDropped = true;
                 hit.transform.gameObject.GetComponent<DropMechanics>().player = gameObject;
                 hit.transform.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
                 hit.transform.gameObject.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(3, 0, 0));
                 hit.transform.gameObject.GetComponent<DropMechanics>().ItemDatabase = ItemDatabase;
                 hit.transform.gameObject.GetComponent<DropMechanics>().Inventory = Inventory;
+            }
         }
         if (Physics.Raycast(ray, out hit, 8f) && Input.GetMouseButtonDown(1))
         {

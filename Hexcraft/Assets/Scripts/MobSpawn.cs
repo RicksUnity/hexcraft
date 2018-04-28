@@ -7,15 +7,16 @@ public class MobSpawn : MonoBehaviour {
     public GameObject spawnMob;
     private float spawnRadius = 12f;
     private float lightDistance = 14f;
-	// Use this for initialization
-	void Start () {
+    private GameObject Sun = GameObject.Find("Sun");
+
+    void Start () {
         InvokeRepeating("CheckSpawn", 1, spawnCountdown);
 	}
 
     void CheckSpawn()
     {
         print("Cheese Muffin");
-        if (GameObject.Find("Directional Light").GetComponent<DayNight>().time >= 0.25 && GameObject.Find("Directional Light").GetComponent<DayNight>().time <= 0.75)
+        if (Sun.GetComponent<DayNight>().time >= 0.25 && Sun.GetComponent<DayNight>().time <= 0.75)
         {
             Collider[] Enemies = Physics.OverlapSphere(transform.position, spawnRadius);
             int enemyCount = 0;
@@ -49,6 +50,7 @@ public class MobSpawn : MonoBehaviour {
             }
         }
     }
+
     bool AboveCheck(GameObject spawnPos)
     {
         Collider[] Above = Physics.OverlapSphere(spawnPos.transform.position, 1.5f);

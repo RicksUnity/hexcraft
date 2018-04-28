@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class MOBcontroller : MonoBehaviour {
 	private Rigidbody rb;
-
+    public GameObject Sun = GameObject.Find("Sun");
 
 	// Player Constants
 	private GameObject player;
@@ -22,9 +22,10 @@ public class MOBcontroller : MonoBehaviour {
 	private float awarenessRadius = 10f;
 	private float cheekyPush = 3f;
 	private bool Jummped = false;
+    public float health = 60f;
 
-	// MOB Variables 
-	private bool chasing = false;
+    // MOB Variables 
+    private bool chasing = false;
 	private int NewTargetTimer = 0;
 	new Vector3 spawnPos;
 
@@ -41,7 +42,23 @@ public class MOBcontroller : MonoBehaviour {
 		//  ----- creating object for the player, chase mechanism -----
 		player = GameObject.Find ("Player");
 
-	}
+
+        // ----- Started trigger to make mob burn in sunlight ------
+        InvokeRepeating("BurnCheck", 1, 5);
+    }
+    
+    void BurnCheck()
+    {
+        if (Sun.GetComponent<DayNight>().time <= 0.25 || Sun.GetComponent<DayNight>().time >= 0.75)
+        {
+            Collider[] ceiling = Physics.OverlapBox(rb.transform.position + new Vector3(0, 100, 0), new Vector3(0, 100, 0));
+            if (ceiling.Length > 0)
+            {
+                health -= 20;
+            }
+        }
+    }
+
 	// ---------- MOB Trigger -------------
 	void OnTriggerEnter(Collider other) {
 		if (other.tag == "Player") {
@@ -63,6 +80,12 @@ public class MOBcontroller : MonoBehaviour {
 
 	// -------- Update is called once per frame -----------
 	void Update () {
+
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
 		// counter for New wander target
 		NewTargetTimer ++;
 
