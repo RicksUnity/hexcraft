@@ -127,7 +127,7 @@ public class Inventory : MonoBehaviour {
 						showToolTip = true; 
 						if (e.button == 0 && e.type == EventType.MouseDrag && !draggingItem)
 						{
-							draggingItem = true;
+							
 							prevIndex = i;
 							if (craftBox.Contains (e.mousePosition)) {
 								draggedItem = Craftslots [i];
@@ -149,6 +149,7 @@ public class Inventory : MonoBehaviour {
 								inventory [i] = new Item ();
 								Debug.Log ("slot drag:"+i);
 							}
+							draggingItem = true;
 						}
 
 						if (e.type == EventType.MouseUp && draggingItem){
@@ -251,7 +252,7 @@ public class Inventory : MonoBehaviour {
 
 			GUI.Box(new Rect(favSlotRect), "", skin.GetStyle("Slot"));
 			
-			finishBox = new Rect (50,100,50,50);
+			//finishBox = new Rect (50,100,50,50);
 
 			favSlots.Add(inventory[i]); 
 
