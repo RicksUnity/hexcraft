@@ -42,13 +42,16 @@ public class Inventory : MonoBehaviour {
 
 		addItem(1);
 		addItem(3);
-		addItem(1);
-		addItem(1);
-		addItem(0);
-		addItem(0);
-		addItem(0);
-		addCraftingItem (1);
-		addCraftingItem (3);
+		addItem(3);
+		addItem(22);
+		addItem(3);
+		addItem(5);
+		addItem(6);
+		addItem(7);
+		addItem(12);
+		addItem(15);
+		addItem(20);
+		addItem(20);
 	}
 	void Update()
 	{
