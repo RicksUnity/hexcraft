@@ -16,8 +16,8 @@ public class Item {
         Weapon,
         Block
     }
-    public string itemWorld;
-    public Item(string name,int id, string desc, int power, int speed, ItemType type, string itemWorlderu){
+    public GameObject itemWorld;
+    public Item(string name,int id, string desc, int power, int speed, ItemType type, GameObject itemWorlderu){
         itemName = name; 
         itemID = id; 
         itemDesc = desc; 

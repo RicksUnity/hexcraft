@@ -25,7 +25,8 @@ public class Inventory : MonoBehaviour {
 	public List<Item> Finishinventory = new List<Item>();  //new
 	private CraftingRecipe Recipe;
 	public Rect finishBox = new Rect();
-	public enum draggingFrom
+
+    public enum draggingFrom
 	{
 		slots, craft, finish, none
 	} ;
@@ -47,6 +48,8 @@ public class Inventory : MonoBehaviour {
 
 		addItem(1);
 		addItem(3);
+        addItem(24);
+        addItem(19);
 		addItem(3);
 		addItem(22);
 		addItem(3);
