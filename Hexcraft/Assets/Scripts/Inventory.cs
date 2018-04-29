@@ -67,7 +67,7 @@ public class Inventory : MonoBehaviour {
 			showInventory = !showInventory;
 			showFavourites = !showInventory; 
 			Screen.lockCursor = !Screen.lockCursor;
-			FPC.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController> ().MouseLook.m_cursorIsLocked = false;
+			//FPC.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController> ().MouseLook.m_cursorIsLocked = false;
 
 			
 		}
