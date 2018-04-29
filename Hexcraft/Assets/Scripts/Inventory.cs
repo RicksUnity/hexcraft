@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 public class Inventory : MonoBehaviour {
+	public GameObject FPC;
+	public GUITexture gt;
 	public int slotsX, slotsY;
 	public GUISkin skin;
 	public static List<Item> inventory = new List<Item>();
@@ -30,6 +32,9 @@ public class Inventory : MonoBehaviour {
 	} ;
 	draggingFrom drag = draggingFrom.none;
 	void Start() {
+		 Screen.lockCursor = true;
+
+		gt = GetComponent<GUITexture>();
 		for (int i = 0; i < (slotsX*slotsY); i++)
 		{
 			selectedSlot.Add(new Item()); 
@@ -54,7 +59,20 @@ public class Inventory : MonoBehaviour {
 		{
 			showInventory = !showInventory;
 			showFavourites = !showInventory; 
-			
+			print(Screen.lockCursor);
+			Screen.lockCursor = !Screen.lockCursor;
+			print(Screen.lockCursor);
+			//FPC.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController> ().MouseLook.m_cursorIsLocked = false;
+		}
+        
+        if (!Screen.lockCursor && wasLocked) {
+            wasLocked = false;
+            DidUnlockCursor();
+        } else
+            if (Screen.lockCursor && !wasLocked) {
+                wasLocked = true;
+                DidLockCursor();
+
 		}
 	}
 // Used to draw the inventory menu.
@@ -85,7 +103,7 @@ public class Inventory : MonoBehaviour {
 		
 		}
 // Draw when conditions are met. 
-// Contains the logic for draggin items from and to different slots
+// Contains the logic for dragging items from and to different slots
 // as well as to the creafting menu. 
 
 	void DrawInventory()
@@ -345,6 +363,15 @@ public class Inventory : MonoBehaviour {
 		}
 		return 0;
 	}
+    void DidLockCursor() {
+        Debug.Log("Locking cursor");
+        gt.enabled = false;
+    }
+    void DidUnlockCursor() {
+        Debug.Log("Unlocking cursor");
+        gt.enabled = true;
+    }
+	private bool wasLocked = false;
 }
 
 
