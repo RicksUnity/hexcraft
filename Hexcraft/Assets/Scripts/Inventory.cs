@@ -47,19 +47,9 @@ public class Inventory : MonoBehaviour {
 		Recipe = GameObject.FindGameObjectWithTag("Crafting Recipe").GetComponent<CraftingRecipe>();
 
 		addItem(1);
-		addItem(3);
-        addItem(24);
+        addItem(18);
         addItem(19);
-		addItem(3);
-		addItem(22);
-		addItem(3);
-		addItem(5);
-		addItem(6);
-		addItem(7);
-		addItem(12);
-		addItem(15);
-		addItem(20);
-		addItem(20);
+        addItem(24);
 	}
 	// Checks for input from the player, if the 'I' key has been pressed opens inventory.
 	void Update()
