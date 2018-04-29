@@ -1,7 +1,8 @@
 using UnityEngine; 
 using System.Collections;
 using System.Collections.Generic;
-
+//Item class.
+//Items have a number of attributes and a type (weapon or block). 
 [System.Serializable]
 public class Item {
     public string itemName;
@@ -15,8 +16,8 @@ public class Item {
         Weapon,
         Block
     }
-    public string itemWorld;
-    public Item(string name,int id, string desc, int power, int speed, ItemType type, string itemWorlderu){
+    public GameObject itemWorld;
+    public Item(string name,int id, string desc, int power, int speed, ItemType type, GameObject itemWorlderu){
         itemName = name; 
         itemID = id; 
         itemDesc = desc; 

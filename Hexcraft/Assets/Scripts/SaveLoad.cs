@@ -13,6 +13,7 @@ public class SaveLoad: MonoBehaviour {
 		Debug.Log (worldName);
 		GameObject[] objs ;
 		int i = 1;
+
 		string fileContent="Hex"+ "\n";
 		Dictionary <string, Vector3> data = new Dictionary<string, Vector3>();
 		objs = GameObject.FindGameObjectsWithTag("Hex");
@@ -23,27 +24,29 @@ public class SaveLoad: MonoBehaviour {
 		}
 
 		foreach (object o in data.Values)
-			{
+		{
 			fileContent += o + ";" ;
-				Debug.Log(i+"="+o);
-				i++;
-			}
+			Debug.Log(i+"="+o);
+			i++;
+		}
 		Debug.Log (fileContent);
 
 		StreamWriter writer = new StreamWriter("Assets/Store/"+worldName+".txt", false);
 		writer.WriteLine(fileContent);
 		writer.Close();
 	}	
-	
-	public static void Load() {
 
+	public static void Load(string file) {
 
-		
-		StreamReader reader = new StreamReader("Assets/Store/aa.txt"); 
+		StreamReader reader = new StreamReader("Assets/Store/"+file+".txt"); 
 		Vector3 rePosition;
+		int elementCount = 0;
 		string line = "";
+		string elementToBeLoad = "";
 		GameObject world = null;
 		List<string> lines = new List<string>();
+		List<string> elements = new List<string> (){"Hex","A","B","C"}; //put the new elements in
+
 		while ((line = reader.ReadLine()) != null)
 		{
 			line = line.Replace ('(',' ');
@@ -52,12 +55,17 @@ public class SaveLoad: MonoBehaviour {
 			lines.Add(line);
 		}
 		reader.Close();
-		if (lines[0]== "Hex" )
-			//pPrefab = Resources.Load("Assets/World/Blocks/Cube");
+
+		//pPrefab = Resources.Load("Assets/World/Blocks/Cube");
 		lines.RemoveAt (0);
 		foreach (string position in lines){
+			if (position == elements [elementCount]) {
+				elementToBeLoad = position;				
+				continue;
+				elementCount++;
+			}
 			rePosition = ConvertFromString (position);	
-			world = GameObject.Instantiate (Resources.Load("HexTile")as GameObject,rePosition,Quaternion.identity);
+			world = GameObject.Instantiate (Resources.Load(elementToBeLoad)as GameObject,rePosition,Quaternion.identity);
 			//instantiatedGameObject.transform.SetParent(null);
 			Debug.Log ("here");
 		}
