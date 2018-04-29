@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 114752454553258668}
   - component: {fileID: 65184161992894080}
   m_Layer: 0
-  m_Name: redstoneTorch
+  m_Name: RedstoneTorch
   m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
