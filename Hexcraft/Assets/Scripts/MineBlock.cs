@@ -70,7 +70,8 @@ public class MineBlock : MonoBehaviour {
         {
             for (int i = 0; i < ItemDatabase.items.Count; i++)
             {
-                if (placeBlock.name + "(Clone)" == ItemDatabase.items[i].itemWorld)
+                //if (placeBlock.name + "(Clone)" == ItemDatabase.items[i].itemWorld)
+                if (placeBlock == ItemDatabase.items[i].itemWorld)
                 {
                     placeBlockID = ItemDatabase.items[i].itemID;
                 }
@@ -131,7 +132,7 @@ public class MineBlock : MonoBehaviour {
                         Destroy(newHex);
                     }
                 }
-                if (newHex.name == "redstoneTorch(Clone)")
+                if (newHex.name == "RedstoneTorch(Clone)")
                 {
                     newHex.transform.localScale = newHex.transform.localScale / 3;
                     newHex.transform.position = newHex.transform.position + (hit.transform.position - newHex.transform.position) / 2;

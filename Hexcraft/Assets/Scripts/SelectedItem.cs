@@ -9,7 +9,7 @@ public class SelectedItem : MonoBehaviour
 	public float speed; 
 	public int selectedItem = 1;
     public int itemDamage=0;
-    public GameObject Itemru;
+    public Camera MainCamera;
 
 	public List<Item> selected = new List<Item>(); 
 
@@ -61,7 +61,7 @@ public class SelectedItem : MonoBehaviour
 		{
 			if(i == selectedItem)
 			{
-				Itemru = GameObject.Find(Inventory.inventory[i].itemWorld);
+				MainCamera.GetComponent<MineBlock>().placeBlock = Inventory.inventory[i].itemWorld;
                 itemDamage = Inventory.inventory[i].itemPower;
 			}	
 

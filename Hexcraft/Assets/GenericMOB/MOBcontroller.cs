@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class MOBcontroller : MonoBehaviour {
 	private Rigidbody rb;
-    public GameObject Sun = GameObject.Find("Sun");
+    public GameObject Sun;
 
 	// Player Constants
 	private GameObject player;
@@ -150,7 +150,7 @@ public class MOBcontroller : MonoBehaviour {
 		StartCoroutine(speedCalc());
 		if(speed < 0.1 & MobBlocked.pathBlocked == false)
 		{
-			rb.AddForce ((Heading * (cheekyPush/4)), ForceMode.Impulse);
+			//rb.AddForce ((Heading * (cheekyPush/4)), ForceMode.Impulse);
 		}
 	}
 

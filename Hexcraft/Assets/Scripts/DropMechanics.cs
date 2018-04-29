@@ -41,7 +41,7 @@ public class DropMechanics : MonoBehaviour {
             {
                 for (int i = 0; i < ItemDatabase.items.Count; i++)
                 {
-                    if(gameObject.name == ItemDatabase.items[i].itemWorld)
+                    if(gameObject.name == ItemDatabase.items[i].itemWorld.name)
                     {
                         Inventory.addItem(ItemDatabase.items[i].itemID);
                     }

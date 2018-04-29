@@ -7,7 +7,7 @@ public class MobSpawn : MonoBehaviour {
     public GameObject spawnMob;
     private float spawnRadius = 12f;
     private float lightDistance = 14f;
-    private GameObject Sun = GameObject.Find("Sun");
+    public GameObject Sun;
 
     // --- CHeck to see if a mob should spawn every set amount of time defined by spawnCountdown
     void Start () {
@@ -45,6 +45,7 @@ public class MobSpawn : MonoBehaviour {
                         {
                             GameObject newMob = Instantiate(spawnMob);
                             newMob.transform.position = spawnPos.transform.position + new Vector3(0, 2, 0);
+                            newMob.GetComponent<MOBcontroller>().Sun = Sun;
                             return;
                         }
                     }
