@@ -9,16 +9,18 @@ public class MOBcontroller : MonoBehaviour {
 
 	// Player Constants
 	private GameObject player;
+	private Rigidbody playerRB;
 	private Vector3 playerPos;
-
+	private float MOBtoPlayerDis;
+	//private Vector3 MOBtoPlayerVec;
 
 	// Spawning constants
 	Vector3 wanderBox = new Vector3(30f, 2f, 30f);
 	Vector3 target;
 
 	// MOB Constants 
-	private float wanderspeed = 12f;
-	private float jumpForce = 4f;
+	private float wanderspeed = 10f;
+	private float jumpForce = 8f;
 	private float awarenessRadius = 10f;
 	private float cheekyPush = 3f;
 	private bool Jummped = false;
@@ -27,14 +29,14 @@ public class MOBcontroller : MonoBehaviour {
     // MOB Variables 
     private bool chasing = false;
 	private int NewTargetTimer = 0;
-	new Vector3 spawnPos;
+	Vector3 spawnPos;
 	Vector3 PrevPos;
 	Vector3 CurrentPos;
 	float speed;
 
+
 	// Use this for initialization
 	void Start () {
-
 		rb = GetComponent<Rigidbody> (); // rigid body needed for physics
 		spawnPos = transform.position; // Initial spawn postion
 		target = WanderPoint (spawnPos, wanderBox);  // Initial spawn box
@@ -59,12 +61,13 @@ public class MOBcontroller : MonoBehaviour {
         }
     }
 
+		playerRB = player.GetComponent<Rigidbody>();
+	}
 	// ---------- MOB Trigger -------------
-	void OnTriggerEnter(Collider other) {
+	void OnTriggerStay(Collider other) {
 		if (other.tag == "Player") {
 			target = playerPos;
 			chasing = true;
-			print (chasing+ "woah" );
 		}
 	}
 	void OnTriggerExit(Collider other) {
@@ -72,11 +75,11 @@ public class MOBcontroller : MonoBehaviour {
 			spawnPos = transform.position;
 			target = WanderPoint (spawnPos, wanderBox);
 			chasing = false;
-			print (chasing+"heyy");
 		}
 	}
 
-	// -------- Update is called once per frame -----------
+
+	// ================= Update Start ===============
 	void Update () {
 
         if(health <= 0)
@@ -90,31 +93,41 @@ public class MOBcontroller : MonoBehaviour {
 		//  Updating the player postion
 		playerPos = player.transform.position;
 
+		//  Updating the distance between player and MOB
+		MOBtoPlayerDis = Vector3.Distance(transform.position, playerPos);
+		Vector3 MOBtoPlayerVec = (transform.position - playerPos);
+
+
 		// ---- Flat Variables for target proximity calculations. ---- 
 		Vector3 FlatTarget = new Vector3(target.x, 0f, target.z);
 		Vector3 FlatPosition = new Vector3(transform.position.x, 0f, transform.position.z);
-		float distance = Vector3.Distance (target, transform.position);  // Variable in force calculations.
+	//	float distance = Vector3.Distance (target, transform.position);  // Variable in force calculations.
 
 		// Checking for target Poximity
 		float flatdistance = Vector3.Distance (FlatTarget, FlatPosition);
 
 		// - - - - Checks chasing, makes new target when in range.
-		if (chasing == false) {
-			if (flatdistance < 3f) {
+		if (chasing == false) 
+		{	if (flatdistance < 3f) 
+			{
 				target = WanderPoint (spawnPos, wanderBox);
-				print ("found target");
 			}
-
 		}
 		
 		// -------  MOB Player chasing ---------
-		if (chasing == true) {
-			target = playerPos;
-			print ("im coming for you");
+		if (chasing == true) 
+		{	target = playerPos;
+			
+			// - - - - Player Being attacked  - - - - -
+			if (MOBtoPlayerDis < 1.8f) 
+			{
+				playerRB.velocity = -MOBtoPlayerVec*5;
+				print ("you have been pushed");
+			}
 		}
 
 
-
+			
 		// Keep MOB pointing at target
 		Vector3 targetPosition = new Vector3(target.x, transform.position.y, target.z);
 		transform.LookAt (targetPosition);
@@ -127,14 +140,21 @@ public class MOBcontroller : MonoBehaviour {
 			rb.AddForce ((Heading) * wanderspeed);
 		} 
 
-		// Jumping Mechanics
-		if (MobOnGround.onGround == true && MobBlocked.pathBlocked == true)
+		// - - - - - Jumping Mechanics - - - - -
+		print ("Mob to player distance is " + MOBtoPlayerDis);
+		if (MOBtoPlayerDis > 2f) // This stops the Mob jumping ontop of player
 		{
-			rb.AddForce (0, jumpForce, 0, ForceMode.Impulse);
-			MobOnGround.onGround = false;
-			MobBlocked.pathBlocked = false;
-			Jummped = true;
+			// Checks if mob is on ground and blocked, then Jumps if true.
+			if (MobOnGround.onGround == true && MobBlocked.pathBlocked == true)
+			{
+				rb.velocity = new Vector3(0, jumpForce, 0);
+				//rb.AddForce (0, jumpForce, 0, ForceMode.Impulse);
+				MobOnGround.onGround = false;
+				MobBlocked.pathBlocked = false;
+				Jummped = true;
+			}
 		}
+
 		// Cheaky push triggered after jumping. 
 		if (rb.velocity.y < -0.1f & Jummped == true) {
 			rb.AddForce ((Heading * cheekyPush), ForceMode.Impulse);
@@ -142,17 +162,25 @@ public class MOBcontroller : MonoBehaviour {
 		}
 			
 		// - - - -  Refreshing wandering target point
-		if (NewTargetTimer % 500 == 0 & chasing == false) {
+		if (NewTargetTimer % 250 == 0 & chasing == false) 
+		{
+			print ("new spawn Generated");
 			target = WanderPoint (spawnPos, wanderBox); // Creates new wander point
 		}
 
 		// - - - - Checking MOB speed - - - - - 
 		StartCoroutine(speedCalc());
+		// - Pushes mob if stuck 
 		if(speed < 0.1 & MobBlocked.pathBlocked == false)
 		{
-			//rb.AddForce ((Heading * (cheekyPush/4)), ForceMode.Impulse);
+			print ("mob reciving incouraging push");
+			rb.AddForce ((Heading * (cheekyPush/4)), ForceMode.Impulse);
 		}
+
 	}
+	// =========== UPDATE END ================
+
+
 
 	// Function creates random point within a 2D box
 	private Vector3 WanderPoint(Vector3 center, Vector3 size)
@@ -162,8 +190,8 @@ public class MOBcontroller : MonoBehaviour {
 			(0f),
 			(Random.value - 0.5f) * size.z);
 	}
-	//  - - - - MOB speed calculation - - - - 
 
+	//  - - - - MOB speed calculation - - - - 
 	IEnumerator speedCalc() {
 		//This is a coroutine
 		PrevPos = transform.position;
@@ -171,15 +199,7 @@ public class MOBcontroller : MonoBehaviour {
 		CurrentPos = transform.position;
 		speed = Vector3.Distance(PrevPos, CurrentPos);
 	}
-
-	/*
-	PrevPos = transform.position;
-	yield new WaitForSeconds (2);
-	CurrentPos = transform.position;
-	speed = Vector3.Distance (PrevPos, CurrentPos);
-	return(speed);
-	*/
-
+		
 	// Wire spheres drawn on MOB
 	public void OnDrawGizmos()
 	{
