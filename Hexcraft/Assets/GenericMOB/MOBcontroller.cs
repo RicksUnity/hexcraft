@@ -60,9 +60,7 @@ public class MOBcontroller : MonoBehaviour {
             }
         }
     }
-
-		playerRB = player.GetComponent<Rigidbody>();
-	}
+	
 	// ---------- MOB Trigger -------------
 	void OnTriggerStay(Collider other) {
 		if (other.tag == "Player") {
@@ -121,7 +119,7 @@ public class MOBcontroller : MonoBehaviour {
 			// - - - - Player Being attacked  - - - - -
 			if (MOBtoPlayerDis < 1.8f) 
 			{
-				playerRB.velocity = -MOBtoPlayerVec*5;
+                player.GetComponent<Rigidbody>().velocity = -MOBtoPlayerVec*5;
 				print ("you have been pushed");
 			}
 		}
