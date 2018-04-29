@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4381917277004288}
   m_Layer: 0
-  m_Name: RedstoneTorch
+  m_Name: RedstoneTorchy
   m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

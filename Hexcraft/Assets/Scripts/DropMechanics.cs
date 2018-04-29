@@ -41,13 +41,14 @@ public class DropMechanics : MonoBehaviour {
             {
                 for (int i = 0; i < ItemDatabase.items.Count; i++)
                 {
-                    if(gameObject.name == ItemDatabase.items[i].itemWorld.name)
+                    if(gameObject.name == ItemDatabase.items[i].itemWorld.name + "(Clone)")
                     {
                         Inventory.addItem(ItemDatabase.items[i].itemID);
+                        
                     }
                 }
-                    
                 Destroy(gameObject);
+
             }
         }
         // ---This function is for when a block like a torch is attatched to another. When the block it is attatched to is mined, make this block also be mined ---
@@ -59,12 +60,17 @@ public class DropMechanics : MonoBehaviour {
                 transform.Rotate(0, 90, 45);
                 if (transform.gameObject.GetComponent<Rigidbody>() == null)
                 {
-                    transform.gameObject.GetComponent<MeshCollider>().convex = true;
+                    if (transform.gameObject.GetComponent<MeshCollider>() != null)
+                    {
+                        transform.gameObject.GetComponent<MeshCollider>().convex = true;
+                    }
                     transform.gameObject.AddComponent<Rigidbody>().useGravity = true;
                 }
                 //sets up properties of the block drop
                 transform.gameObject.GetComponent<DropMechanics>().isDropped = true;
-                transform.gameObject.GetComponent<DropMechanics>().player = gameObject;
+                transform.gameObject.GetComponent<DropMechanics>().player = attatchedTo.GetComponent<DropMechanics>().player;
+                transform.gameObject.GetComponent<DropMechanics>().ItemDatabase = attatchedTo.GetComponent<DropMechanics>().ItemDatabase;
+                transform.gameObject.GetComponent<DropMechanics>().Inventory = attatchedTo.GetComponent<DropMechanics>().Inventory;
                 transform.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
                 transform.gameObject.GetComponent<Rigidbody>().AddRelativeTorque(new Vector3(3, 0, 0));
                 attatchedTo = null;

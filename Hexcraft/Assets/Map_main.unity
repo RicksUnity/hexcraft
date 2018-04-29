@@ -177,7 +177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &122687317
 MonoBehaviour:
@@ -253,7 +253,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &125020371 stripped
 RectTransform:
@@ -462,7 +462,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &608595027 stripped
 GameObject:
@@ -577,7 +577,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &740730277
 Prefab:
@@ -628,7 +628,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
       propertyPath: mouseLook.lockCursor
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
       propertyPath: movementSettings.JumpForce
@@ -701,7 +701,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1063279563
 GameObject:
@@ -732,21 +732,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   EarthBlock: {fileID: 1902695694882422, guid: 711eefaa29c484cacb32daea9bfdd409, type: 2}
-  CoalBlock: {fileID: 0}
-  DiamondBlock: {fileID: 0}
-  RedstoneBlock: {fileID: 1501052486333062, guid: bb49267b26bdc6c46b34b6675cd0eef7,
+  CoalBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
+  DiamondBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043,
+    type: 2}
+  RedstoneBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043,
     type: 2}
   StoneBlock: {fileID: 1938123384389740, guid: 98e75beb0ee6f4c5293532eea296a841, type: 2}
-  Torch: {fileID: 1799352916364740, guid: 44558ca4f9c9a4cf2970a888bfd7d86f, type: 2}
+  Torch: {fileID: 1452844423550310, guid: 879029a7852e836449328ef948db2c16, type: 2}
   RedstoneTorch: {fileID: 1345685096255516, guid: 069a8992e44fbd94eacbf871638b2f7c,
     type: 2}
-  IronBlock: {fileID: 0}
-  PlankBlock: {fileID: 0}
-  WoodBlock: {fileID: 0}
+  IronBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
+  PlankBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
+  WoodBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
   RedstoneDust: {fileID: 1501052486333062, guid: bb49267b26bdc6c46b34b6675cd0eef7,
     type: 2}
-  GrassBlock: {fileID: 1604338548082976, guid: 101b857a06a854f4abbf8b9ca03e2b29, type: 2}
-  ItemHolder: {fileID: 0}
+  GrassBlock: {fileID: 1604338548082976, guid: 841e620caaa664dd6ab53b79169fef5e, type: 2}
+  ItemHolder: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
 --- !u!4 &1063279565
 Transform:
   m_ObjectHideFlags: 0
@@ -758,7 +759,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1074197499
 GameObject:
@@ -828,52 +829,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1074197499}
---- !u!1001 &1490235651
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4367115240602576, guid: 069a8992e44fbd94eacbf871638b2f7c, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 36.88006
-      objectReference: {fileID: 0}
-    - target: {fileID: 4367115240602576, guid: 069a8992e44fbd94eacbf871638b2f7c, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 14.3547
-      objectReference: {fileID: 0}
-    - target: {fileID: 4367115240602576, guid: 069a8992e44fbd94eacbf871638b2f7c, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 27.141212
-      objectReference: {fileID: 0}
-    - target: {fileID: 4367115240602576, guid: 069a8992e44fbd94eacbf871638b2f7c, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4367115240602576, guid: 069a8992e44fbd94eacbf871638b2f7c, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4367115240602576, guid: 069a8992e44fbd94eacbf871638b2f7c, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4367115240602576, guid: 069a8992e44fbd94eacbf871638b2f7c, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4367115240602576, guid: 069a8992e44fbd94eacbf871638b2f7c, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1345685096255516, guid: 069a8992e44fbd94eacbf871638b2f7c, type: 2}
-      propertyPath: m_Name
-      value: redstoneTorch
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 069a8992e44fbd94eacbf871638b2f7c, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &1636948475 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}

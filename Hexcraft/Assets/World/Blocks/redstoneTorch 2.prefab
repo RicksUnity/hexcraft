@@ -36,8 +36,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4367115240602576}
+  - component: {fileID: 114867544339038434}
+  - component: {fileID: 114053970567364028}
+  - component: {fileID: 65760446475558300}
   m_Layer: 0
-  m_Name: redstoneTorch 2
+  m_Name: redstoneTorch
   m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +99,7 @@ Transform:
   m_GameObject: {fileID: 1345685096255516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 36.88006, y: 14.3547, z: 27.141212}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 2, y: 1.3, z: 2}
   m_Children:
   - {fileID: 4301755517249708}
   - {fileID: 4548847573156438}
@@ -171,6 +174,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1175389588288990}
   m_Mesh: {fileID: 4300000, guid: c9a6ef46ee41f43ef8751d25d0be6ac7, type: 3}
+--- !u!65 &65760446475558300
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345685096255516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &108601264031694604
 Light:
   m_ObjectHideFlags: 1
@@ -243,3 +258,35 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114053970567364028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345685096255516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff59fd436f32334d8608dc7fcaecd77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 0
+  torch: 1
+  pointing: {x: 0, y: 0, z: 0}
+  infront: {fileID: 0}
+--- !u!114 &114867544339038434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345685096255516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e481613b8a4e6034fb9694a7edfde250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  isDropped: 0
+  isPowered: 0
+  attatchedTo: {fileID: 0}
+  ItemDatabase: {fileID: 0}
+  Inventory: {fileID: 0}
