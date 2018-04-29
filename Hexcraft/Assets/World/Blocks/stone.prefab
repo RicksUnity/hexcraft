@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 64060592675064626}
   - component: {fileID: 114060718081394072}
   m_Layer: 0
-  m_Name: StoneBlock
+  m_Name: stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

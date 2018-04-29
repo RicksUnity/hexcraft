@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 64130402052193486}
   - component: {fileID: 114328869571674250}
   m_Layer: 0
-  m_Name: EarthBlock
+  m_Name: soil ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

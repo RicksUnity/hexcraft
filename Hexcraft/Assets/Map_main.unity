@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 122687315}
-  time: 0.3
+  time: 0.8
   dayLength: 3600
 --- !u!1 &123367415
 GameObject:
@@ -739,7 +739,7 @@ MonoBehaviour:
     type: 2}
   StoneBlock: {fileID: 1938123384389740, guid: 98e75beb0ee6f4c5293532eea296a841, type: 2}
   Torch: {fileID: 1452844423550310, guid: 879029a7852e836449328ef948db2c16, type: 2}
-  RedstoneTorch: {fileID: 1345685096255516, guid: 069a8992e44fbd94eacbf871638b2f7c,
+  RedstoneTorch: {fileID: 1766082364644210, guid: c6bbd39e386af564fb77d11370d422cf,
     type: 2}
   IronBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
   PlankBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
