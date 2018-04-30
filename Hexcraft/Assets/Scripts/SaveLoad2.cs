@@ -52,6 +52,7 @@ public class SaveLoad2: MonoBehaviour {
 			data.Leaves.Add (objs.transform.position.x);  
 			data.Leaves.Add (objs.transform.position.y);
 			data.Leaves.Add (objs.transform.position.z);
+			Debug.Log("Save the Leaves"+objs.transform.position.x);
 		}
 		foreach (GameObject objs in GameObject.FindGameObjectsWithTag("Tree")) {//save the grass to the game
 			data.Tree.Add (objs.transform.position.x);
@@ -115,7 +116,7 @@ public class SaveLoad2: MonoBehaviour {
 
 
 	public void Load(string name) {  //Load the game back 
-		Debug.Log ("Loaging game here");
+		Debug.Log ("Load function");
 		Debug.Log (name);
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream file = File.Open (name , FileMode.Open);  // open the file of the saved game
@@ -142,7 +143,7 @@ public class SaveLoad2: MonoBehaviour {
 		int j = 1 ;
 		int k = 2;
 		for (int i = 0; i<LeavesSet.Count()/3 ; i=i+3) {   //Load the sleaves
-			//Debug.Log (value);
+		//	Debug.Log ("Leaves"+value);
 			j = i + 1;
 			k = i + 2;
 			Vector3 posotion = new Vector3 (LeavesSet [i], LeavesSet [j], LeavesSet [k]); 

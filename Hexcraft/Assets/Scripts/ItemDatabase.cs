@@ -49,8 +49,8 @@ public class ItemDatabase : MonoBehaviour{
         items.Add(new Item("IronBlock", 21,"Good in a sticky situation",0, 0,0, Item.ItemType.Block, Metal));
         items.Add(new Item("PlankBlock", 22,"Good in a sticky situation",0, 0,0, Item.ItemType.Block, PlankBlock));
         items.Add(new Item("WoodBlock", 23,"Good in a sticky situation",0, 0,0, Item.ItemType.Block, WoodBlock));
-        items.Add(new Item("RedstoneDust", 24, "Good in a sticky situation", 0, 0,0, Item.ItemType.Block, redstone));
-        items.Add(new Item("GrassBlock", 25, "Good in a sticky situation", 0, 0,0, Item.ItemType.Block, HexTile_grass));
+        items.Add(new Item("RedstoneBlock", 24, "Good in a sticky situation", 0, 0,0, Item.ItemType.Block, redstone));
+        items.Add(new Item("GrassEarthBlock", 25, "Good in a sticky situation", 0, 0,0, Item.ItemType.Block, HexTile_grass));
         // items.Add(new Item("EarthBlock", 1,"A pile of mud",1, 1, Item.ItemType.Block, EarthBlock));
         // items.Add(new Item("CoalBlock", 2, "A rocky description", 1, 1, Item.ItemType.Block, CoalBlock));
         // items.Add(new Item("DiamondBlock", 3, "A rocky description", 1, 1, Item.ItemType.Block, DiamondBlock));

@@ -121,7 +121,7 @@ public class MOBcontroller : MonoBehaviour {
 			{
                 player.GetComponent<Rigidbody>().velocity = -MOBtoPlayerVec*5;
 				player.GetComponent<HealthBar>().currentHealth -=10;
-				print ("you have been pushed");
+	
 			}
 		}
 
@@ -140,7 +140,7 @@ public class MOBcontroller : MonoBehaviour {
 		} 
 
 		// - - - - - Jumping Mechanics - - - - -
-		print ("Mob to player distance is " + MOBtoPlayerDis);
+	
 		if (MOBtoPlayerDis > 2f) // This stops the Mob jumping ontop of player
 		{
 			// Checks if mob is on ground and blocked, then Jumps if true.

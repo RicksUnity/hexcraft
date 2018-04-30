@@ -149,12 +149,13 @@ public class MainMenu : MonoBehaviour {
 		
 			foreach (FileInfo f in info){
 				
-				GUILayout.Space(10);
+			//	GUILayout.Space(10);
 				if (GUILayout.Button (Path.GetFileNameWithoutExtension (f.ToString ()))) {
+					//if(GUILayout.Button("Create the world!")){
 					saveload.Load (f.ToString ());
-
+					Debug.Log("Load the game");
 					currentMenu = Menu.None;
-					Player.transform.position = new Vector3 (0, 40, 0);
+					//Player.transform.position = new Vector3 (0, 40, 0);
 				}
 
 				i++;
