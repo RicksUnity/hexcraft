@@ -114,20 +114,21 @@ public class MOBcontroller : MonoBehaviour {
 		
 		// -------  MOB Player chasing ---------
 		if (chasing == true) 
-		{	target = playerPos;
-			
-			// - - - - Player Being attacked  - - - - -
-			if (MOBtoPlayerDis < 1.8f) 
-			{
-                player.GetComponent<Rigidbody>().velocity = -MOBtoPlayerVec*5;
-				print ("you have been pushed");
-			}
+		{
+            target = playerPos;
 		}
+        // - - - - Player Being attacked  - - - - -
+        if (MOBtoPlayerDis < 1.8f)
+        {
+            player.GetComponent<Rigidbody>().velocity = -MOBtoPlayerVec * 5;
+            player.GetComponent<HealthBar>().currentHealth -= 25;
+            print("you have been pushed");
+        }
 
 
-			
-		// Keep MOB pointing at target
-		Vector3 targetPosition = new Vector3(target.x, transform.position.y, target.z);
+
+        // Keep MOB pointing at target
+        Vector3 targetPosition = new Vector3(target.x, transform.position.y, target.z);
 		transform.LookAt (targetPosition);
 
 		// Flat Vector3 towards target "Heading"

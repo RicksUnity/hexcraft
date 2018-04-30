@@ -8,7 +8,9 @@ public class SelectedItem : MonoBehaviour
 	public float damage; 
 	public float speed; 
 	public int selectedItem = 1;
-    public int itemDamage=0;
+    public int itemDamage = 0;
+    public int itemSpeedDirt = 0;
+    public int itemSpeedStone = 0;
     public Camera MainCamera;
 
 	public List<Item> selected = new List<Item>(); 
@@ -63,7 +65,9 @@ public class SelectedItem : MonoBehaviour
 			{
 				MainCamera.GetComponent<MineBlock>().placeBlock = Inventory.inventory[i].itemWorld;
                 itemDamage = Inventory.inventory[i].itemPower;
-			}	
+                itemSpeedStone = Inventory.inventory[i].itemSpeedStone;
+                itemSpeedDirt = Inventory.inventory[i].itemSpeedDirt;
+            }	
 
 		}
 	}

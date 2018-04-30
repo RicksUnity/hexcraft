@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 122687315}
-  time: 0.8
+  time: 0.3
   dayLength: 3600
 --- !u!1 &123367415
 GameObject:
@@ -488,7 +488,7 @@ MonoBehaviour:
   ItemDatabase: {fileID: 1063279564}
   Inventory: {fileID: 418384238}
   playerCollider: {fileID: 614158658}
-  SelectedItem: {fileID: 0}
+  SelectedItem: {fileID: 2097962842}
   mineCounter: 0
   mineSpeed: 10
   mineBar: {fileID: 125020371}
@@ -536,7 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc1fb0d1b4bdba4fa8046e5ab8e2bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnCountdown: 30
+  spawnCountdown: 10
   spawnMob: {fileID: 1290597284536144, guid: 1680d71ce7444f2479748e40682e9196, type: 2}
   Sun: {fileID: 122687314}
 --- !u!1 &642438965
@@ -680,7 +680,8 @@ MonoBehaviour:
   speed: 0
   selectedItem: 1
   itemDamage: 0
-  MainCamera: {fileID: 0}
+  itemAttack: 0
+  MainCamera: {fileID: 608595028}
   selected:
   - itemName: 
     itemID: 0
@@ -731,23 +732,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
-  EarthBlock: {fileID: 1902695694882422, guid: 711eefaa29c484cacb32daea9bfdd409, type: 2}
-  CoalBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
-  DiamondBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043,
-    type: 2}
-  RedstoneBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043,
-    type: 2}
-  StoneBlock: {fileID: 1938123384389740, guid: 98e75beb0ee6f4c5293532eea296a841, type: 2}
-  Torch: {fileID: 1452844423550310, guid: 879029a7852e836449328ef948db2c16, type: 2}
-  RedstoneTorch: {fileID: 1766082364644210, guid: c6bbd39e386af564fb77d11370d422cf,
-    type: 2}
-  IronBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
-  PlankBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
-  WoodBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
-  RedstoneDust: {fileID: 1501052486333062, guid: bb49267b26bdc6c46b34b6675cd0eef7,
-    type: 2}
-  GrassBlock: {fileID: 1604338548082976, guid: 841e620caaa664dd6ab53b79169fef5e, type: 2}
-  ItemHolder: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
+  EarthBlock: {fileID: 0}
+  CoalBlock: {fileID: 0}
+  DiamondBlock: {fileID: 0}
+  RedstoneBlock: {fileID: 0}
+  StoneBlock: {fileID: 0}
+  Torch: {fileID: 0}
+  RedstoneTorch: {fileID: 0}
+  IronBlock: {fileID: 0}
+  PlankBlock: {fileID: 0}
+  WoodBlock: {fileID: 0}
+  RedstoneDust: {fileID: 0}
+  GrassBlock: {fileID: 0}
+  ItemHolder: {fileID: 0}
 --- !u!4 &1063279565
 Transform:
   m_ObjectHideFlags: 0
@@ -964,7 +961,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 150}
+  m_AnchoredPosition: {x: 0, y: 250}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2094711031
@@ -1046,6 +1043,7 @@ MonoBehaviour:
   speed: 0
   selectedItem: 0
   itemDamage: 0
+  itemAttack: 0
   MainCamera: {fileID: 608595028}
   selected: []
 --- !u!224 &2125415710 stripped

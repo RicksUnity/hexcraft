@@ -79,7 +79,6 @@ public class RedstoneBehaviour : MonoBehaviour {
                         if (strength > 0)
                         {
                             infront.GetComponent<DropMechanics>().isPowered = true;
-                            //infront.GetComponent<DropMechanics>().poweredStrength = strength - 1;
                         }
 
                     }
