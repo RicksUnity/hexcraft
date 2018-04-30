@@ -151,8 +151,8 @@ public class SaveLoad2: MonoBehaviour {
 			loadBlock.transform.parent = GameObject.FindGameObjectWithTag ("LoadGame").transform;
 			loadBlock.transform.SetParent (GameObject.FindGameObjectWithTag ("LoadGame").transform,false);
 			loadBlock.transform.position = posotion;
-			Debug.Log ("Loaging game here"+"Leaves");
-			//Debug.Log ("Leaves"+LeavesSet [i]);
+			//Debug.Log ("Loaging game here"+"Leaves");
+			Debug.Log ("Leaves"+LeavesSet [i]);
 		}
 		 j = 1;
 		 k = 2;
