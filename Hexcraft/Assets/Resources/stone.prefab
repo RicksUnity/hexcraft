@@ -93,9 +93,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Convex: 0
-  m_InflateMesh: 0
+  m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: f37a0c8f4618945119154830e69053c6, type: 3}
 --- !u!114 &114060718081394072
@@ -111,3 +111,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   isDropped: 0
+  isPowered: 0
+<<<<<<< HEAD:Hexcraft/Assets/World/Blocks/stone.prefab
+=======
+  poweredStrength: 0
+>>>>>>> Map:Hexcraft/Assets/World/Blocks/Final Hex/stone.prefab
+  attatchedTo: {fileID: 0}
+  ItemDatabase: {fileID: 0}
+  Inventory: {fileID: 0}

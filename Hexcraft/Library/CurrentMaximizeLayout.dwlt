@@ -20,6 +20,7 @@ MonoBehaviour:
     y: 30
     width: 1280
 <<<<<<< HEAD
+<<<<<<< HEAD
     height: 727
   m_MinSize: {x: 483, y: 392}
   m_MaxSize: {x: 14004, y: 14042}
@@ -32,6 +33,13 @@ MonoBehaviour:
   vertical: 0
   controlID: 17770
 >>>>>>> Bugfixes
+=======
+    height: 638
+  m_MinSize: {x: 581, y: 221}
+  m_MaxSize: {x: 16006, y: 8021}
+  vertical: 0
+  controlID: 1560
+>>>>>>> savemap
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -56,6 +64,7 @@ MonoBehaviour:
     serializedVersion: 2
 <<<<<<< HEAD
     x: 202
+<<<<<<< HEAD
     y: 71
     width: 797
     height: 427
@@ -65,6 +74,11 @@ MonoBehaviour:
     width: 424
     height: 414
 >>>>>>> Bugfixes
+=======
+    y: 94
+    width: 403
+    height: 346
+>>>>>>> savemap
   m_PersistentViewDataDictionary: {fileID: 0}
   m_MaximizeOnPlay: 1
   m_Gizmos: 0
@@ -74,6 +88,7 @@ MonoBehaviour:
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_HBaseRangeMin: -398.5
     m_HBaseRangeMax: 398.5
@@ -85,13 +100,19 @@ MonoBehaviour:
     m_VBaseRangeMin: -198.5
     m_VBaseRangeMax: 198.5
 >>>>>>> Bugfixes
+=======
+    m_HBaseRangeMin: -201.5
+    m_HBaseRangeMax: 201.5
+    m_VBaseRangeMin: -164.5
+    m_VBaseRangeMax: 164.5
+>>>>>>> savemap
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 1
-    m_VSlider: 1
+    m_HSlider: 0
+    m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoom: 0
@@ -101,6 +122,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
+<<<<<<< HEAD
 <<<<<<< HEAD
       width: 797
       height: 410
@@ -112,12 +134,19 @@ MonoBehaviour:
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 212, y: 198.5}
 >>>>>>> Bugfixes
+=======
+      width: 403
+      height: 329
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 201.5, y: 164.5}
+>>>>>>> savemap
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
       x: -246.69019
       y: -83.15274
@@ -129,15 +158,25 @@ MonoBehaviour:
       width: 424
       height: 397
 >>>>>>> Bugfixes
+=======
+      x: -201.5
+      y: -164.5
+      width: 403
+      height: 329
+>>>>>>> savemap
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LastWindowPixelSize: {x: 1594, y: 854}
 =======
   m_LastWindowPixelSize: {x: 848, y: 828}
 >>>>>>> Bugfixes
+=======
+  m_LastWindowPixelSize: {x: 806, y: 692}
+>>>>>>> savemap
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 00000000000100000100
@@ -159,9 +198,9 @@ MonoBehaviour:
     y: 0
 <<<<<<< HEAD
     width: 200
-    height: 727
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+    height: 638
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 5}
 =======
     width: 201
@@ -198,9 +237,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 71
+    y: 93
     width: 198
-    height: 706
+    height: 685
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
   lastFramingTime: 0
@@ -276,12 +315,17 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 71
+=======
+    y: 94
+>>>>>>> savemap
     width: 198
-    height: 706
+    height: 617
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 24360000
     m_LastClickedID: 13860
     m_ExpandedIDs: e6e2e5ffe6f2e5ff2417e6ffb8d8fdffc4f2feff9efbffff0000000024360000
@@ -296,6 +340,11 @@ MonoBehaviour:
     m_LastClickedID: 16960
     m_ExpandedIDs: 0ee9ffff80ecffff00000000523c000040420000
 >>>>>>> Bugfixes
+=======
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: d4f4ffff96fbffff000000008c3c0000
+>>>>>>> savemap
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -332,17 +381,17 @@ MonoBehaviour:
   m_Children:
 <<<<<<< HEAD
   - {fileID: 7}
-  - {fileID: 14}
+  - {fileID: 15}
   m_Position:
     serializedVersion: 2
     x: 200
     y: 0
     width: 1080
-    height: 727
-  m_MinSize: {x: 381, y: 392}
-  m_MaxSize: {x: 10002, y: 14042}
+    height: 638
+  m_MinSize: {x: 481, y: 221}
+  m_MaxSize: {x: 12006, y: 8021}
   vertical: 1
-  controlID: 8879
+  controlID: 1561
 --- !u!114 &7
 =======
   - {fileID: 6}
@@ -372,22 +421,27 @@ MonoBehaviour:
   m_Children:
 <<<<<<< HEAD
   - {fileID: 8}
+<<<<<<< HEAD
 =======
   - {fileID: 7}
   - {fileID: 9}
 >>>>>>> Bugfixes
   - {fileID: 11}
+=======
+  - {fileID: 9}
+  - {fileID: 12}
+>>>>>>> savemap
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
 <<<<<<< HEAD
     width: 1080
-    height: 448
-  m_MinSize: {x: 381, y: 121}
-  m_MaxSize: {x: 8006, y: 4021}
+    height: 367
+  m_MinSize: {x: 481, y: 121}
+  m_MaxSize: {x: 12006, y: 4021}
   vertical: 0
-  controlID: 8880
+  controlID: 1562
 --- !u!114 &8
 =======
     width: 1079
@@ -414,8 +468,13 @@ MonoBehaviour:
     x: 0
     y: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 801
     height: 448
+=======
+    width: 407
+    height: 367
+>>>>>>> savemap
   m_MinSize: {x: 104, y: 121}
   m_MaxSize: {x: 4004, y: 4021}
 =======
@@ -426,10 +485,35 @@ MonoBehaviour:
 >>>>>>> Bugfixes
   m_ActualView: {fileID: 2}
   m_Panes:
-  - {fileID: 9}
   - {fileID: 2}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &9
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 407
+    y: 0
+    width: 390
+    height: 367
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 11}
+  m_Panes:
   - {fileID: 10}
+  - {fileID: 11}
   m_Selected: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_LastSelected: 2
 --- !u!114 &9
@@ -437,6 +521,10 @@ MonoBehaviour:
   m_LastSelected: 1
 --- !u!114 &8
 >>>>>>> Bugfixes
+=======
+  m_LastSelected: 1
+--- !u!114 &10
+>>>>>>> savemap
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -458,13 +546,14 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 202
-    y: 71
-    width: 797
-    height: 427
+    x: 0
+    y: 93
+    width: 200
+    height: 685
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_SelectedIDs: 3421e5ff
     m_LastClickedID: -1760972
@@ -474,6 +563,11 @@ MonoBehaviour:
     m_LastClickedID: 16960
     m_ExpandedIDs: 0ee9ffff80ecffff0000000040420000
 >>>>>>> Bugfixes
+=======
+    m_SelectedIDs: 061affff
+    m_LastClickedID: 0
+    m_ExpandedIDs: 96fbffff00000000
+>>>>>>> savemap
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -496,6 +590,7 @@ MonoBehaviour:
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 --- !u!114 &9
@@ -525,6 +620,9 @@ MonoBehaviour:
   m_LastSelected: 0
 >>>>>>> Bugfixes
 --- !u!114 &10
+=======
+--- !u!114 &11
+>>>>>>> savemap
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -547,6 +645,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 202
     y: 71
     width: 797
@@ -563,10 +662,20 @@ MonoBehaviour:
   m_SceneLighting: 1
   lastFramingTime: 1799.7396129369736
 >>>>>>> Bugfixes
+=======
+    x: 609
+    y: 94
+    width: 386
+    height: 346
+  m_PersistentViewDataDictionary: {fileID: 0}
+  m_SceneLighting: 1
+  lastFramingTime: 7143.464583992958
+>>>>>>> savemap
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_Target: {x: 0.5152582, y: -0.5154073, z: -1.6342913}
     speed: 2
@@ -576,6 +685,11 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 46.6835, y: 16.74607, z: 25.35474}
 >>>>>>> Bugfixes
+=======
+    m_Target: {x: 0, y: 0, z: 0}
+    speed: 2
+    m_Value: {x: 0, y: 0, z: 0}
+>>>>>>> savemap
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -600,12 +714,17 @@ MonoBehaviour:
       m_Value: 0
   m_Rotation:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: 0.029778115, y: 0.96859735, z: -0.20069407, w: 0.14371619}
+=======
+    m_Target: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+>>>>>>> savemap
     speed: 2
-    m_Value: {x: 0.029778115, y: 0.96859735, z: -0.20069407, w: 0.14371619}
+    m_Value: {x: -0, y: 0.7071068, z: 0, w: -0.7071068}
   m_Size:
-    m_Target: 6.024949
+    m_Target: 213.90475
     speed: 2
+<<<<<<< HEAD
     m_Value: 6.024949
 =======
     m_Target: {x: -0.7123902, y: 0, z: 0, w: -0.70178366}
@@ -616,6 +735,9 @@ MonoBehaviour:
     speed: 2
     m_Value: 45.185127
 >>>>>>> Bugfixes
+=======
+    m_Value: 213.90475
+>>>>>>> savemap
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -627,7 +749,7 @@ MonoBehaviour:
   m_ReplacementString: 
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &11
+--- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -642,12 +764,17 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 801
+=======
+    x: 797
+>>>>>>> savemap
     y: 0
-    width: 279
-    height: 448
+    width: 283
+    height: 367
   m_MinSize: {x: 277, y: 71}
   m_MaxSize: {x: 4002, y: 4021}
+<<<<<<< HEAD
 =======
     x: 800
     y: 0
@@ -657,12 +784,15 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
 >>>>>>> Bugfixes
   m_ActualView: {fileID: 12}
+=======
+  m_ActualView: {fileID: 13}
+>>>>>>> savemap
   m_Panes:
-  - {fileID: 12}
   - {fileID: 13}
+  - {fileID: 14}
   m_Selected: 0
   m_LastSelected: 1
---- !u!114 &12
+--- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -684,6 +814,7 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1003
 <<<<<<< HEAD
     y: 71
@@ -694,6 +825,12 @@ MonoBehaviour:
     width: 277
     height: 414
 >>>>>>> Bugfixes
+=======
+    x: 999
+    y: 94
+    width: 281
+    height: 346
+>>>>>>> savemap
   m_PersistentViewDataDictionary: {fileID: 0}
   m_ScrollPosition: {x: 0, y: 604.0082}
   m_InspectorMode: 1
@@ -702,7 +839,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
---- !u!114 &13
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -734,7 +871,7 @@ MonoBehaviour:
   - https://public-cdn.cloud.unity3d.com/editor/production/cloud/hub
   m_RegisteredViewInstances:
   - {fileID: 0}
---- !u!114 &14
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -750,15 +887,19 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 448
+=======
+    y: 367
+>>>>>>> savemap
     width: 1080
-    height: 279
-  m_MinSize: {x: 232, y: 271}
-  m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 15}
+    height: 271
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 17}
   m_Panes:
-  - {fileID: 15}
   - {fileID: 16}
+<<<<<<< HEAD
   m_Selected: 0
   m_LastSelected: 1
 =======
@@ -775,6 +916,12 @@ MonoBehaviour:
   m_LastSelected: 0
 >>>>>>> Bugfixes
 --- !u!114 &15
+=======
+  - {fileID: 17}
+  m_Selected: 1
+  m_LastSelected: 0
+--- !u!114 &16
+>>>>>>> savemap
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -798,8 +945,9 @@ MonoBehaviour:
     serializedVersion: 2
 <<<<<<< HEAD
     x: 202
-    y: 519
+    y: 461
     width: 1078
+<<<<<<< HEAD
     height: 258
 =======
     x: 203
@@ -807,6 +955,9 @@ MonoBehaviour:
     width: 1077
     height: 250
 >>>>>>> Bugfixes
+=======
+    height: 250
+>>>>>>> savemap
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -821,6 +972,7 @@ MonoBehaviour:
     m_SearchArea: 0
     m_Folders:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/World/Blocks/Final Hex
   m_ViewMode: 1
   m_StartGridSize: 64
@@ -833,10 +985,18 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Standard Assets/Characters/FirstPersonCharacter/Scripts
 >>>>>>> Bugfixes
+=======
+    - Assets/Resources
+  m_ViewMode: 1
+  m_StartGridSize: 64
+  m_LastFolders:
+  - Assets/Resources
+>>>>>>> savemap
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: /Users/alzom/Projects/hexcraft/Hexcraft
+  m_LastProjectPath: /Users/wangangel/Documents/HexcraftGithub/hexcraft/Hexcraft
   m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
 <<<<<<< HEAD
     scrollPos: {x: 0, y: 275}
     m_SelectedIDs: 52310000
@@ -848,6 +1008,12 @@ MonoBehaviour:
     m_LastClickedID: 11598
     m_ExpandedIDs: 000000000e2d0000402d00008c2d00009e2d0000de2d0000662e0000c42e000000ca9a3bffffff7f
 >>>>>>> Bugfixes
+=======
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: d03a0000
+    m_LastClickedID: 15056
+    m_ExpandedIDs: 00000000d8290000502a0000c02a0000d42a0000282b0000d03a00005a3b0000ffffff7f
+>>>>>>> savemap
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -863,7 +1029,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 14}
+      m_ClientGUIView: {fileID: 15}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -876,10 +1042,14 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000bc27000004280000062800007628000088280000ce28000064290000ec29000000ca9a3bffffff7f
 =======
     m_ExpandedIDs: 000000000e2d0000402d00008c2d00009e2d0000de2d0000662e0000c42e000000ca9a3bffffff7f
 >>>>>>> Bugfixes
+=======
+    m_ExpandedIDs: 00000000d8290000502a0000c02a0000d42a0000282b0000d03a00005a3b0000ffffff7f
+>>>>>>> savemap
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -905,6 +1075,7 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedInstanceIDs: 24360000
     m_LastClickedInstanceID: 13860
     m_HadKeyboardFocusLastEvent: 0
@@ -915,6 +1086,12 @@ MonoBehaviour:
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
 >>>>>>> Bugfixes
+=======
+    m_SelectedInstanceIDs: 061affff
+    m_LastClickedInstanceID: -58874
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: 
+>>>>>>> savemap
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -930,7 +1107,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 15}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -941,7 +1118,7 @@ MonoBehaviour:
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 197
---- !u!114 &16
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -963,8 +1140,14 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 203
     y: 528
     width: 1077
+=======
+    x: 202
+    y: 461
+    width: 1078
+>>>>>>> savemap
     height: 250
   m_PersistentViewDataDictionary: {fileID: 0}

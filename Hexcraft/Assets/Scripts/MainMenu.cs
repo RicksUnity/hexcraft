@@ -5,7 +5,7 @@ using System.IO;
 using UnityEditor;
 
 public class MainMenu : MonoBehaviour {
-
+	public GameObject Player;
 	public enum Menu {
 		MainMenu,
 		NewGame,
@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour {
 		saveload.Load (name);
 	} */
 	//
+	public GameObject field1; 
 	int i=0;
 	public Menu currentMenu;
 	public string worldName;
@@ -32,7 +33,7 @@ public class MainMenu : MonoBehaviour {
 	bool IsEscape;
 	public bool Isload;
 	SaveLoad2 saveload = new SaveLoad2 ();
-
+	//Field field = new Field (); 
 	public static DirectoryInfo dir = new DirectoryInfo("Assets/Store/");
 	public static FileInfo[] info = dir.GetFiles ("*.dat");
 	//Debug.Log (i);
@@ -77,11 +78,15 @@ public class MainMenu : MonoBehaviour {
 			if (GUILayout.Button ("Back to the game")) {
 				IsEscape = false;
 			} else if (GUILayout.Button ("Save the game")) {
-				if (EditorUtility.DisplayDialog ("Save the game","Are you sure you want to save the game?","Yes","No"))
+				if (EditorUtility.DisplayDialog ("Save the game", "Are you sure you want to save the game?", "Yes", "No")) {
 					saveload.Save (worldName);
+					IsEscape = false;
+				}
 					
 				//Debug.Log (EditorUtility.DisplayDialog ("Save the game","Are you sure you want to save the game?","Yes","No"));
 			} else if (GUILayout.Button ("Save the game and quit")) {
+				saveload.Save (worldName); 
+				Application.Quit (); 
 
 				//Debug.Log ('c');
 			} else if (GUILayout.Button ("Quit without saving")) {
@@ -130,7 +135,11 @@ public class MainMenu : MonoBehaviour {
 					EditorUtility.DisplayDialog ("Empty name!", "Character's or world's name can't be empty", "OK");
 				else {
 					currentMenu = Menu.None;
-					saveload.Save (worldName);
+					saveload.Save (worldName);		
+					GameObject field2 = GameObject.Instantiate (field1);
+					Vector3 fieldpos  =  new Vector3 (0,0,0);
+					field2.transform.position = fieldpos;
+					Player.transform.position = new Vector3 (0, 40, 0);
 				}
 
 			}
@@ -156,7 +165,9 @@ public class MainMenu : MonoBehaviour {
 				GUILayout.Space(10);
 				if (GUILayout.Button (Path.GetFileNameWithoutExtension (f.ToString ()))) {
 					saveload.Load (f.ToString ());
+
 					currentMenu = Menu.None;
+					Player.transform.position = new Vector3 (0, 40, 0);
 				}
 				//currentMenu = Menu.None;
 				i++;
