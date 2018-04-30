@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1158915933709382}
+  m_RootGameObject: {fileID: 1167341935621782}
   m_IsPrefabParent: 1
---- !u!1 &1158915933709382
+--- !u!1 &1167341935621782
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4455090800693426}
-  - component: {fileID: 114205491806760078}
+  - component: {fileID: 4757201057547768}
+  - component: {fileID: 114859370393832460}
   m_Layer: 0
   m_Name: Field2
   m_TagString: Untagged
@@ -27,12 +27,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4455090800693426
+--- !u!4 &4757201057547768
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1158915933709382}
+  m_GameObject: {fileID: 1167341935621782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,18 +40,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114205491806760078
+--- !u!114 &114859370393832460
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1158915933709382}
+  m_GameObject: {fileID: 1167341935621782}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31115f1cbb6244da6984b5cba180d9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentBlockType: {fileID: 0}
   blockTypes:
   - {fileID: 1659100603275328, guid: 2b3749895c1be4ec1b9c3f79849df011, type: 2}
   - {fileID: 1250713223474466, guid: 3f90c26566c7c45a18f0349dc482093d, type: 2}
@@ -60,6 +59,5 @@ MonoBehaviour:
   - {fileID: 1929275731206592, guid: 202a973f7b4764560839c8d3d88e0bc0, type: 2}
   - {fileID: 1122732570992828, guid: bd99806116f2f4d8bba9f90528b515e4, type: 2}
   rockbottom: {fileID: 1491357381643146, guid: e3dba39a05b504989b45989eca134c28, type: 2}
-  soilorrockormineral: {fileID: 0}
   grid: 10
-  TreeFab: {fileID: 1314890554833786, guid: 7a4399f027b564e82a19fc4ce4b995b4, type: 2}
+  TreeFab: {fileID: 1250244146908782, guid: e5500e5f43253466b85b88de5bc0f376, type: 2}
