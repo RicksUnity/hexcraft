@@ -120,6 +120,7 @@ public class MOBcontroller : MonoBehaviour {
 			if (MOBtoPlayerDis < 1.8f) 
 			{
                 player.GetComponent<Rigidbody>().velocity = -MOBtoPlayerVec*5;
+				player.GetComponent<HealthBar>().currentHealth -=10;
 				print ("you have been pushed");
 			}
 		}

@@ -13,6 +13,7 @@ public class MineBlock : MonoBehaviour {
     public float mineCounter = 0;
     public float mineSpeed = 10; //Lower number means a higher speed.
     public RectTransform mineBar;
+    public bool Cheating = false;
 
 	void Update () {
         MineBar();
@@ -31,14 +32,20 @@ public class MineBlock : MonoBehaviour {
             //If the raycast is hitting an enemy, then attack the enemy and knock it back
             if (hit.transform.gameObject.tag == "Enemy" && Input.GetMouseButtonDown(0))
             {
-                print("bingo");
-                hit.transform.GetComponent<MOBcontroller>().health -= (12  );// + SelectedItem.GetComponent<SelectedItem>().itemDamage);
+                hit.transform.GetComponent<MOBcontroller>().health -= (12 + SelectedItem.GetComponent<SelectedItem>().itemDamage);
                 hit.transform.GetComponent<Rigidbody>().AddForce(new Vector3(hit.transform.position.x - transform.position.x, 1, hit.transform.position.z - hit.transform.position.z));
             }
             // If the raycast hits and object, and the left mouse button is down, start mining the block
             else
             {
-                mineCounter += 1;
+                if(hit.transform.gameObject.name == "HexTile_soil(Clone)" || hit.transform.gameObject.name == "HexTile_grass(Clone)")
+                {
+                    mineCounter += 1 + SelectedItem.GetComponent<SelectedItem>().itemSpeedDirt;
+                }
+                else{
+                    mineCounter += 1 + SelectedItem.GetComponent<SelectedItem>().itemSpeedStone;
+                }
+                
                 //If the mine counter gets ocver a certain value then mine the block
                 if (mineCounter >= mineSpeed)
                 {
@@ -78,9 +85,10 @@ public class MineBlock : MonoBehaviour {
             //determines the id of the block that is being placed
             for (int i = 0; i < ItemDatabase.items.Count; i++)
             {
-                //if (placeBlock.name + "(Clone)" == ItemDatabase.items[i].itemWorld)
-                if (placeBlock == ItemDatabase.items[i].itemWorld)
+                if (placeBlock  == ItemDatabase.items[i].itemWorld)
+                
                 {
+                    //if (placeBlock == ItemDatabase.items[i].itemWorld)
                     placeBlockID = ItemDatabase.items[i].itemID;
                 }
             }
@@ -179,7 +187,11 @@ public class MineBlock : MonoBehaviour {
                         //If a block has been placed, remove it from the players inventory
                         else
                         {
-                            //Inventory.RemoveItem(placeBlockID);
+
+                            
+                                print("ghjkl"+placeBlockID);
+                               Inventory.RemoveItem(placeBlockID); 
+                            
                             //If the block paced is redstone then run the orientation check on thi and all nearby redstone.
                             if (newHex.name == "redstone(Clone)" || newHex.name == "redstoneTorch(Clone)")
                             {
@@ -195,6 +207,6 @@ public class MineBlock : MonoBehaviour {
     void MineBar()
     {
         mineBar.sizeDelta = new Vector2(mineCounter, mineBar.sizeDelta.y);
-        mineBar.anchoredPosition = new Vector2(-(mineSpeed - mineCounter) / 2, 0);
+        mineBar.anchoredPosition = new Vector2(-(mineSpeed - mineCounter), 0);
     }
 }

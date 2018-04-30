@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour {
         //If tthe player is dead, retunr them to spawn and make it daytime
         if(currentHealth <= 0)
         {
-            transform.position = new Vector3(20, 20, 20);
+            transform.position = new Vector3(0, 0, 0);
             currentHealth = 100;
             sun.GetComponent<DayNight>().time = 0;
         }

@@ -21,7 +21,7 @@ public class CraftingRecipe: MonoBehaviour{
 		craftingRecipe.Add(16, new int[] {0,5,0,0,5,0,0,20,0});	//Stone sword
 		craftingRecipe.Add(17, new int[] {0,22,0,0,22,0,0,20,0});	//Wood sword
 	//spades
-		craftingRecipe.Add(10, new int[] {0,3,0,0,20,0,0,20,0});	//Diamond…'.'.\.\[] spade
+		craftingRecipe.Add(10, new int[] {0,3,0,0,20,0,0,20,0});	//Diamond Spade
 		craftingRecipe.Add(11, new int[] {0,21,0,0,20,0,0,20,0});	//Iron Spade
 		craftingRecipe.Add(12, new int[] {0,5,0,0,20,0,0,20,0});	//Stone spade
 		craftingRecipe.Add(13, new int[] {0,22,0,0,20,0,0,20,0});	//Wood sword
@@ -30,6 +30,9 @@ public class CraftingRecipe: MonoBehaviour{
 		craftingRecipe.Add(19, new int[] {0,4,0,0,20,0,0,20,0});	//Reststone torch
 	//planks
 		craftingRecipe.Add(22, new int[] {0,0,0,0,23,0,0,0,0});	//Planks
+		craftingRecipe.Add(20, new int[] {0,22,0,0,22,0,0,0,0}); //Sticks
+	//restone
+		craftingRecipe.Add(24, new int[] {0,0,0,0,23,0,0,0,0}); //Redstone Dust
 
 	}
 		
