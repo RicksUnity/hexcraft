@@ -26,6 +26,8 @@ public class Inventory : MonoBehaviour {
 	private CraftingRecipe Recipe;
 	public Rect finishBox = new Rect();
 
+	int currentitem = 0;
+
     public enum draggingFrom
 	{
 		slots, craft, finish, none
@@ -239,15 +241,7 @@ public class Inventory : MonoBehaviour {
 		}
 		GUI.EndGroup ();
 	}
-// Draws the item currently selected in a seperate, golden, slot. 
-	void DrawSelected(){
-		SelectedItem item = new SelectedItem();
-		Rect selSlotRect = new Rect(50,100,50,50);
-		GUI.Box(new Rect(selSlotRect), "", skin.GetStyle("SelectedItem"));
-		GUI.DrawTexture(selSlotRect, favSlots[0].itemIcon);
-		
 
-	}
 // Draws favourites on to the screen in the top left corner
 // if slot empty, draws an empty slot. 
 	void DrawFavourites()
@@ -275,11 +269,23 @@ public class Inventory : MonoBehaviour {
 				GUI.DrawTexture(favSlotRect, favSlots[i].itemIcon);
 	
 			}
-			DrawSelected();
+			
 			//Debug.Log ("fav:"+favSlots[i]+"inventory:"+inventory[i]);
 
 			i++;
 		}
+		DrawSelected();
+
+	}
+	// Draws the item currently selected in a seperate, golden, slot. 
+	void DrawSelected(){
+		SelectedItem item = new SelectedItem();
+		Rect selSlotRect = new Rect(50,100,50,50);
+		GUI.Box(new Rect(selSlotRect), "", skin.GetStyle("SelectedItem"));
+		print(SelectedItem.selectedItem);
+		currentitem = SelectedItem.selectedItem; 
+		GUI.DrawTexture(selSlotRect, favSlots[currentitem].itemIcon);
+		
 
 	}
 // Tooltip appears when hovering above an item, stating its name and description.

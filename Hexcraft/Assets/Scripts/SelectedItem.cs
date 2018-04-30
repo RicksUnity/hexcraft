@@ -7,7 +7,7 @@ public class SelectedItem : MonoBehaviour
 {
 	public float damage; 
 	public float speed; 
-	public int selectedItem = 1;
+	public static int selectedItem = 1;
     public int itemDamage=0;
     public Camera MainCamera;
 
@@ -22,6 +22,7 @@ public class SelectedItem : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+
 		if(Input.GetAxis("Mouse ScrollWheel") > 0f )
 		{
 			//print("Up");
