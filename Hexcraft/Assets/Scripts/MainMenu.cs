@@ -123,12 +123,14 @@ public class MainMenu : MonoBehaviour {
 				if (characterName.Length == 0 || worldName.Length == 0)
 					EditorUtility.DisplayDialog ("Empty name!", "Character's or world's name can't be empty", "OK");
 				else {
-					currentMenu = Menu.None;
-					saveload.Save (worldName);	    //save the world
+					
+					currentMenu = Menu.None;	    //save the world
 					GameObject field2 = GameObject.Instantiate (field1);   //generate the world
 					Vector3 fieldpos  =  new Vector3 (0,0,0);
 					field2.transform.position = fieldpos;
 					Player.transform.position = new Vector3 (0, 40, 0);   
+					Debug.Log ("ass");
+					saveload.Save (worldName);
 						
 				}
 
