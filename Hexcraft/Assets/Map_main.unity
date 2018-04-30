@@ -139276,7 +139276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 614158658}
-  field1: {fileID: 1158915933709382, guid: 438946e87b89f490f81a68ed7ec8c012, type: 2}
+  field1: {fileID: 1167341935621782, guid: 438946e87b89f490f81a68ed7ec8c012, type: 2}
   currentMenu: 0
   worldName: 
   characterName: 
