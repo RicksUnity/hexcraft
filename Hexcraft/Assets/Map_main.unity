@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -124,7 +123,7 @@ GameObject:
   - component: {fileID: 122687315}
   - component: {fileID: 122687317}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -440,13 +439,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeBlock: {fileID: 1938123384389740, guid: 98e75beb0ee6f4c5293532eea296a841, type: 2}
-  ItemDatabase: {fileID: 0}
-  Inventory: {fileID: 0}
-  playerCollider: {fileID: 0}
+  ItemDatabase: {fileID: 1063279564}
+  Inventory: {fileID: 418384238}
+  playerCollider: {fileID: 614158658}
   SelectedItem: {fileID: 0}
   mineCounter: 0
   mineSpeed: 10
-  mineBar: {fileID: 0}
+  mineBar: {fileID: 125020371}
 --- !u!1 &614158658 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
@@ -462,6 +461,20 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &614158663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 614158658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0facf3b7a578fe4ea39112022d6cf03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 100
+  healthBar: {fileID: 2125415710}
+  sun: {fileID: 122687314}
 --- !u!114 &614158664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,7 +629,7 @@ MonoBehaviour:
   damage: 0
   speed: 0
   itemDamage: 0
-  MainCamera: {fileID: 0}
+  MainCamera: {fileID: 608595028}
   selected:
   - itemName: 
     itemID: 0
@@ -673,7 +686,7 @@ MonoBehaviour:
     type: 2}
   RedstoneBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043,
     type: 2}
-  StoneBlock: {fileID: 1938123384389740, guid: 98e75beb0ee6f4c5293532eea296a841, type: 2}
+  StoneBlock: {fileID: 1491357381643146, guid: e3dba39a05b504989b45989eca134c28, type: 2}
   Torch: {fileID: 1452844423550310, guid: 879029a7852e836449328ef948db2c16, type: 2}
   RedstoneTorch: {fileID: 1766082364644210, guid: c6bbd39e386af564fb77d11370d422cf,
     type: 2}
@@ -878,9 +891,9 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1996177535}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000016292068}
+  m_LocalPosition: {x: -303, y: 239, z: -0.000098729935}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2094711030}
   - {fileID: 1074197500}
@@ -919,7 +932,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2094711029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 150, z: -0}
   m_LocalScale: {x: 1, y: 0.07, z: 1}
   m_Children:
   - {fileID: 2125415710}

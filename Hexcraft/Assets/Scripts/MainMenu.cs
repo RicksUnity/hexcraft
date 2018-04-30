@@ -129,9 +129,7 @@ public class MainMenu : MonoBehaviour {
 					Vector3 fieldpos  =  new Vector3 (0,0,0);
 					field2.transform.position = fieldpos;
 					Player.transform.position = new Vector3 (0, 40, 0);   
-					Debug.Log ("ass");
 					saveload.Save (worldName);
-						
 				}
 
 			}
