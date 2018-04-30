@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -191,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 122687315}
-  time: 0.3
+  time: 0.8
   dayLength: 3600
 --- !u!1 &123367415
 GameObject:
@@ -700,7 +699,7 @@ MonoBehaviour:
   RedstoneTorch: {fileID: 1167471336556340, guid: c481bae0f6274473dbbf0c0dab14c232,
     type: 2}
   Metal: {fileID: 1122732570992828, guid: bd99806116f2f4d8bba9f90528b515e4, type: 2}
-  PlankBlock: {fileID: 1176890424600428, guid: b570b673d9744a346a6698c4a2a00043, type: 2}
+  PlankBlock: {fileID: 1554341920703610, guid: 2ed6654b9c17f43678dbd956a08a44cd, type: 2}
   WoodBlock: {fileID: 1314890554833786, guid: 7a4399f027b564e82a19fc4ce4b995b4, type: 2}
   redstone: {fileID: 1501052486333062, guid: bb49267b26bdc6c46b34b6675cd0eef7, type: 2}
   HexTile_grass: {fileID: 1250713223474466, guid: 3f90c26566c7c45a18f0349dc482093d,
@@ -900,9 +899,9 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1996177535}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000016292068}
+  m_LocalPosition: {x: -303, y: 239, z: -0.000098729935}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2094711030}
   - {fileID: 1074197500}
@@ -941,7 +940,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2094711029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 250, z: -0}
   m_LocalScale: {x: 1, y: 0.07, z: 1}
   m_Children:
   - {fileID: 2125415710}
@@ -950,7 +949,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 150}
+  m_AnchoredPosition: {x: 0, y: 250}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2094711031

@@ -85,7 +85,7 @@ public class MineBlock : MonoBehaviour {
             //determines the id of the block that is being placed
             for (int i = 0; i < ItemDatabase.items.Count; i++)
             {
-                if (placeBlock  == ItemDatabase.items[i].itemWorld)
+                if (placeBlock.name  == ItemDatabase.items[i].itemWorld.name)
                 
                 {
                     //if (placeBlock == ItemDatabase.items[i].itemWorld)
@@ -188,8 +188,6 @@ public class MineBlock : MonoBehaviour {
                         else
                         {
 
-                            
-                                print("ghjkl"+placeBlockID);
                                Inventory.RemoveItem(placeBlockID); 
                             
                             //If the block paced is redstone then run the orientation check on thi and all nearby redstone.
