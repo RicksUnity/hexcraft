@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Field: MonoBehaviour {
 
+
+
 	private GameObject currentBlockType;
 	public GameObject[] blockTypes;
 	public GameObject rockbottom;
@@ -29,6 +31,9 @@ public class Field: MonoBehaviour {
 	private int randmineral;
 
 	public GameObject TreeFab;
+
+	private float hex1;
+	private float hex2;
 
 	void Start () {
 
@@ -69,8 +74,9 @@ public class Field: MonoBehaviour {
 
 		//-------------FOR Sicles----------------------------------------
 
-		for (int z = -cols; z < cols+2; z++) {
-			for (int x = -rows; x < rows+1; x++) {
+		for (int z = -grid+1; z < grid; z++) {
+			hex1=((Mathf.Abs(z))*-1)+(grid);
+			for (int x = -grid+1; x < hex1; x++) {
 
 				//-------------Noise Tuner and block selector----------------------------------------
 
@@ -110,15 +116,22 @@ public class Field: MonoBehaviour {
 
 				//-------------Block alighment and plasement---------------------------------------
 
-				GameObject newBlock = GameObject.Instantiate (currentBlockType);
+				GameObject newBlock =
+					GameObject.Instantiate (currentBlockType);
 				newBlock.transform.SetParent(transform, false);
-				newBlock.tag = tag;
+
+				hex2 = z;
+
+				if(hex2>0){
+					hex2=hex2*(-1);
+				}
+
 				newBlock.transform.position =
 					new Vector3 (
-						(x*2+(0.5f-Mathf.Pow(-1,z)/2))+myPos.x,
-						y,
-						(z*tres)+myPos.z
-					);
+								(x*2+myPos.x-hex2),
+								y,
+								(z*tres)+myPos.z
+								);
 				newBlock.transform.localScale = scale;
 				Bpos = newBlock.transform.position;
 
