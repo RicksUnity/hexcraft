@@ -22,7 +22,7 @@ public class SaveLoad2: MonoBehaviour {
 	public List<float> MetalSet = new List<float>();
 	public List<float> RedSet = new List<float>();
 	public List<float> transparentSet = new List<float>();
-
+	//public GameObject Player;
 
 
 
@@ -35,7 +35,7 @@ public class SaveLoad2: MonoBehaviour {
 	}
 	public int count (string name){
 		
-		return GameObject.FindGameObjectsWithTag ("stone").Count();
+		return GameObject.FindGameObjectsWithTag (name).Count();
 			
 
 	}
@@ -43,6 +43,7 @@ public class SaveLoad2: MonoBehaviour {
 
 
 	public void Save (string worldName){
+		
 		BinaryFormatter bf = new BinaryFormatter ();
 		SavedItem data = new SavedItem ();
 		FileStream file = File.Create ("Assets/Store/"+worldName+".dat");    //create the file for saving the game
@@ -52,14 +53,14 @@ public class SaveLoad2: MonoBehaviour {
 			data.Leaves.Add (objs.transform.position.y);
 			data.Leaves.Add (objs.transform.position.z);
 		}
-		foreach (GameObject objs in GameObject.FindGameObjectsWithTag("grass")) {//save the grass to the game
+		foreach (GameObject objs in GameObject.FindGameObjectsWithTag("Tree")) {//save the grass to the game
 			data.Tree.Add (objs.transform.position.x);
 			data.Tree.Add (objs.transform.position.y);
 			data.Tree.Add (objs.transform.position.z);
 		}
 
 		////////////////////
-		foreach (GameObject objs in GameObject.FindGameObjectsWithTag("Coal")) {  //save the coal to the game
+		foreach (GameObject objs in GameObject.FindGameObjectsWithTag("coal")) {  //save the coal to the game
 			data.Coal.Add (objs.transform.position.x);
 			data.Coal.Add (objs.transform.position.y);
 			data.Coal.Add (objs.transform.position.z);
@@ -73,6 +74,7 @@ public class SaveLoad2: MonoBehaviour {
 			data.HexTile_grass.Add (objs.transform.position.x);
 			data.HexTile_grass.Add (objs.transform.position.y);
 			data.HexTile_grass.Add (objs.transform.position.z);
+			Debug.Log ("Save"+objs.transform.position.z);
 		}
 		foreach (GameObject objs in GameObject.FindGameObjectsWithTag("HexTile_Rock")) {   //save the hextile rock to the game
 			data.HexTile_Rock.Add (objs.transform.position.x);
@@ -113,6 +115,7 @@ public class SaveLoad2: MonoBehaviour {
 
 
 	public void Load(string name) {  //Load the game back 
+		Debug.Log ("Loaging game here");
 		Debug.Log (name);
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream file = File.Open (name , FileMode.Open);  // open the file of the saved game
@@ -147,6 +150,8 @@ public class SaveLoad2: MonoBehaviour {
 			loadBlock.transform.parent = GameObject.FindGameObjectWithTag ("LoadGame").transform;
 			loadBlock.transform.SetParent (GameObject.FindGameObjectWithTag ("LoadGame").transform,false);
 			loadBlock.transform.position = posotion;
+			Debug.Log ("Loaging game here"+"Leaves");
+			//Debug.Log ("Leaves"+LeavesSet [i]);
 		}
 		 j = 1;
 		 k = 2;
@@ -165,11 +170,11 @@ public class SaveLoad2: MonoBehaviour {
 		////////////////////////////////////////////////////////
 		j = 1;
 		k = 2;
-		for (int i = 0; i<GameObject.FindGameObjectsWithTag ("Coal").Count()/3 ; i=i+3) {   //load the coal to the game
+		for (int i = 0; i<CoalSet.Count()/3 ; i=i+3) {   //load the coal to the game
 			j = i + 1;
 			k = i + 2;
 			Vector3 posotion = new Vector3 (CoalSet [i], CoalSet [j], CoalSet [k]);
-			GameObject loadBlock = GameObject.Instantiate (Resources.Load("Coal") as GameObject);
+			GameObject loadBlock = GameObject.Instantiate (Resources.Load("coal") as GameObject);
 			loadBlock.transform.parent = GameObject.FindGameObjectWithTag ("LoadGame").transform;
 			loadBlock.transform.SetParent(GameObject.FindGameObjectWithTag ("LoadGame").transform,false);
 			loadBlock.transform.position = posotion;
@@ -177,7 +182,7 @@ public class SaveLoad2: MonoBehaviour {
 		}
 		j = 1;
 		k = 2;
-		for (int i = 0; i<GameObject.FindGameObjectsWithTag ("Diamond").Count()/3 ; i=i+3) {  //load the diamond to the game
+		for (int i = 0; i<DiamondSet.Count()/3 ; i=i+3) {  //load the diamond to the game
 			j = i + 1;
 			k = i + 2;
 			Vector3 posotion = new Vector3 (DiamondSet [i], DiamondSet [j], DiamondSet [k]);
@@ -189,7 +194,7 @@ public class SaveLoad2: MonoBehaviour {
 		}
 		j = 1;
 		k = 2;
-		for (int i = 0; i<GameObject.FindGameObjectsWithTag ("HexTile_grass").Count()/3 ; i=i+3) {  //load the hextile grass to the game
+		for (int i = 0; i<HexTile_grassSet.Count()/3 ; i=i+3) {  //load the hextile grass to the game
 			j = i + 1;
 			k = i + 2;
 			Vector3 posotion = new Vector3 (HexTile_grassSet [i], HexTile_grassSet [j], HexTile_grassSet [k]);
@@ -201,7 +206,7 @@ public class SaveLoad2: MonoBehaviour {
 		}
 		j = 1;
 		k = 2;
-		for (int i = 0; i<GameObject.FindGameObjectsWithTag ("HexTile_Rock").Count()/3 ; i=i+3) {  //load the hextile rock to the game
+		for (int i = 0; i<HexTile_RockSet.Count()/3 ; i=i+3) {  //load the hextile rock to the game
 			j = i + 1;
 			k = i + 2;
 			Vector3 posotion = new Vector3 (HexTile_RockSet [i], HexTile_RockSet [j], HexTile_RockSet [k]);
@@ -213,7 +218,7 @@ public class SaveLoad2: MonoBehaviour {
 		}
 		j = 1;
 		k = 2;
-		for (int i = 0; i<GameObject.FindGameObjectsWithTag ("HexTile_soil").Count()/3 ; i=i+3) {   //load the hextile soil to the game
+		for (int i = 0; i<HexTile_soilSet.Count()/3 ; i=i+3) {   //load the hextile soil to the game
 			j = i + 1;
 			k = i + 2;
 			Vector3 posotion = new Vector3 (HexTile_soilSet [i], HexTile_soilSet [j], HexTile_soilSet [k]);
@@ -225,7 +230,7 @@ public class SaveLoad2: MonoBehaviour {
 		}
 		j = 1;
 		k = 2;
-		for (int i = 0; i<GameObject.FindGameObjectsWithTag ("Metal").Count()/3 ; i=i+3) {  //load the metal to the game
+		for (int i = 0; i<MetalSet.Count()/3 ; i=i+3) {  //load the metal to the game
 			j = i + 1;
 			k = i + 2;
 			Vector3 posotion = new Vector3 (MetalSet [i], MetalSet [j], MetalSet [k]);
@@ -237,7 +242,7 @@ public class SaveLoad2: MonoBehaviour {
 		}
 		j = 1;
 		k = 2;
-		for (int i = 0; i<GameObject.FindGameObjectsWithTag ("Red").Count()/3 ; i=i+3) {  //load the red to the game
+		for (int i = 0; i<RedSet.Count()/3 ; i=i+3) {  //load the red to the game
 			j = i + 1;
 			k = i + 2;
 			Vector3 posotion = new Vector3 (RedSet [i], RedSet [j], RedSet [k]);
@@ -249,7 +254,7 @@ public class SaveLoad2: MonoBehaviour {
 		}
 		j = 1;
 		k = 2;
-		for (int i = 0; i<GameObject.FindGameObjectsWithTag ("transparent").Count()/3 ; i=i+3) {   //load the transparent to the game
+		for (int i = 0; i<transparentSet.Count()/3 ; i=i+3) {   //load the transparent to the game
 			j = i + 1;
 			k = i + 2;
 			Vector3 posotion = new Vector3 (transparentSet [i], transparentSet [j], transparentSet [k]);
@@ -266,20 +271,29 @@ public class SaveLoad2: MonoBehaviour {
 
 
 
+		//Inventory inventory2 = new Inventory(); 
+		GameObject inventory2 = GameObject.Find("Inventory"); 
+		Inventory a = (Inventory)inventory2.GetComponent (typeof(Inventory)); 
+		for (int v = 0; v< dataDe.inventory.Count()-1; v++){ 
+			a.addItem (dataDe.inventory[v]); 
+			//inventory2.gameObject.addItem (dataDe.inventory[v]); 
+			Debug.Log (dataDe.inventory[v]); 
+			//inventory.inventory[v].itemID = dataDe.inventory[v]; 
+			Debug.Log ("here"+dataDe.inventory[v]); 
+		} 
+		//Player.transform.position = new Vector3 (0, 40, 0);
 
 
 
 
 
-
-
-		Inventory inventory2 = new Inventory();
+		/*Inventory inventory2 = new Inventory();
 		for (int v = 0; v< dataDe.inventory.Count()-1; v++){   //load the inventory
 				inventory2.addItem (dataDe.inventory[v]);
 				//Debug.Log (dataDe.inventory[v]);
 				//inventory.inventory[v].itemID = dataDe.inventory[v];
 				Debug.Log ("here"+dataDe.inventory[v]);
-			}
+			}*/
 	}
 
 

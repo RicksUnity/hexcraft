@@ -71,7 +71,7 @@ public class Inventory : MonoBehaviour {
         } else
             if (Screen.lockCursor && !wasLocked) {
                 wasLocked = true;
-                DidLockCursor();
+               // DidLockCursor();
 	}
 	}
 // Used to draw the inventory menu.
