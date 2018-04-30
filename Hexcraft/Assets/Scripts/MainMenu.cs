@@ -41,7 +41,7 @@ public class MainMenu : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			Debug.Log ("update");
 			//GUI.enabled = true;
-			if (!IsEscape)
+			if (!IsEscape)      //for in game menu
 				IsEscape = true;
 			else
 				IsEscape = false;
@@ -55,41 +55,30 @@ public class MainMenu : MonoBehaviour {
 		GUILayout.FlexibleSpace();
 		GUILayout.BeginVertical();
 		GUILayout.FlexibleSpace();
-		//Debug.Log ("f");
-
-		/*if (Input.GetKeyDown ("escape")) {
-				Debug.Log ("Escape0");
-			if (!IsEscape)
-				IsEscape = true;
-			else
-				IsEscape = false;
-				Debug.Log (IsEscape);
-			}*/
-		//if (currentMenu == Menu.InGame) {		
-		if (IsEscape) {
-			//GUI.enabled = true;
-			//Debug.Log ("Escape1");
+			
+		if (IsEscape) {    //draw the in game menu is press esc
+			
 			GUILayout.BeginArea (new Rect (0, 0, Screen.width, Screen.height));
 			GUILayout.BeginHorizontal ();
 			GUILayout.FlexibleSpace ();
 			GUILayout.BeginVertical ();
 			GUILayout.FlexibleSpace ();
 
-			if (GUILayout.Button ("Back to the game")) {
+			if (GUILayout.Button ("Back to the game")) {    //cancel the menu
 				IsEscape = false;
 			} else if (GUILayout.Button ("Save the game")) {
 				if (EditorUtility.DisplayDialog ("Save the game", "Are you sure you want to save the game?", "Yes", "No")) {
-					saveload.Save (worldName);
+					saveload.Save (worldName);     //save the game
 					IsEscape = false;
 				}
 					
-				//Debug.Log (EditorUtility.DisplayDialog ("Save the game","Are you sure you want to save the game?","Yes","No"));
-			} else if (GUILayout.Button ("Save the game and quit")) {
+				;
+			} else if (GUILayout.Button ("Save the game and quit")) {   //save game option and quit
 				saveload.Save (worldName); 
 				Application.Quit (); 
 
 				//Debug.Log ('c');
-			} else if (GUILayout.Button ("Quit without saving")) {
+			} else if (GUILayout.Button ("Quit without saving")) {   //quit game
 				//Debug.Log ('d');
 				Application.Quit ();
 			}
@@ -103,7 +92,7 @@ public class MainMenu : MonoBehaviour {
 		//}
 		//Cursor.visible = true;
 
-		else if(currentMenu == Menu.MainMenu) {
+		else if(currentMenu == Menu.MainMenu) {   //draw the main menu
 
 			if(GUILayout.Button("New Game")) {
 				//Game.current = new Game();
@@ -119,7 +108,7 @@ public class MainMenu : MonoBehaviour {
 			}
 		}
 
-		else if (currentMenu == Menu.NewGame) {
+		else if (currentMenu == Menu.NewGame) {    //draw the new game menu
 
 			GUILayout.Box("Name Your Characters");
 			characterName = GUILayout.TextField(characterName, 20);
@@ -135,11 +124,12 @@ public class MainMenu : MonoBehaviour {
 					EditorUtility.DisplayDialog ("Empty name!", "Character's or world's name can't be empty", "OK");
 				else {
 					currentMenu = Menu.None;
-					saveload.Save (worldName);		
-					GameObject field2 = GameObject.Instantiate (field1);
+					saveload.Save (worldName);	    //save the world
+					GameObject field2 = GameObject.Instantiate (field1);   //generate the world
 					Vector3 fieldpos  =  new Vector3 (0,0,0);
 					field2.transform.position = fieldpos;
-					Player.transform.position = new Vector3 (0, 40, 0);
+					Player.transform.position = new Vector3 (0, 40, 0);   
+						
 				}
 
 			}
@@ -150,18 +140,15 @@ public class MainMenu : MonoBehaviour {
 			}
 		}
 
-		else if (currentMenu == Menu.LoadGame) {
+		else if (currentMenu == Menu.LoadGame) {    //draw the load game option
 
 
-			//SaveLoad.Load();
+
 			GUILayout.Box("Select Saved File");
 			GUILayout.Space(10);
-			//GUILayout.Box("Select Saved File2");
-
-
-			//if(i<info.Length){
+		
 			foreach (FileInfo f in info){
-				//Debug.Log (i);
+				
 				GUILayout.Space(10);
 				if (GUILayout.Button (Path.GetFileNameWithoutExtension (f.ToString ()))) {
 					saveload.Load (f.ToString ());
@@ -169,13 +156,10 @@ public class MainMenu : MonoBehaviour {
 					currentMenu = Menu.None;
 					Player.transform.position = new Vector3 (0, 40, 0);
 				}
-				//currentMenu = Menu.None;
+
 				i++;
 			}
-			//}
-			//Debug.Log(i);
 
-			//GUILayout.Space(10);
 			if(GUILayout.Button("Cancel")) {
 				currentMenu = Menu.MainMenu;
 			}		
