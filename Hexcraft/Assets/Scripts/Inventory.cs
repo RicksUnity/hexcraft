@@ -26,13 +26,15 @@ public class Inventory : MonoBehaviour {
 	private CraftingRecipe Recipe;
 	public Rect finishBox = new Rect();
 
+	int currentitem = 0;
+
     public enum draggingFrom
 	{
 		slots, craft, finish, none
 	} ;
 	draggingFrom drag = draggingFrom.none;
 	void Start() {
-		Screen.lockCursor = true;
+		 Screen.lockCursor = true;
 
 		gt = GetComponent<GUITexture>();
 		for (int i = 0; i < (slotsX*slotsY); i++)
@@ -47,19 +49,9 @@ public class Inventory : MonoBehaviour {
 		Recipe = GameObject.FindGameObjectWithTag("Crafting Recipe").GetComponent<CraftingRecipe>();
 
 		addItem(1);
-		addItem(3);
-        addItem(24);
+        addItem(18);
         addItem(19);
-		addItem(3);
-		addItem(22);
-		addItem(3);
-		addItem(5);
-		addItem(6);
-		addItem(7);
-		addItem(12);
-		addItem(15);
-		addItem(20);
-		addItem(20);
+        addItem(24);
 	}
 	// Checks for input from the player, if the 'I' key has been pressed opens inventory.
 	void Update()
@@ -69,10 +61,10 @@ public class Inventory : MonoBehaviour {
 		{
 			showInventory = !showInventory;
 			showFavourites = !showInventory; 
+			print(Screen.lockCursor);
 			Screen.lockCursor = !Screen.lockCursor;
+			print(Screen.lockCursor);
 			//FPC.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController> ().MouseLook.m_cursorIsLocked = false;
-
-			
 		}
         
         if (!Screen.lockCursor && wasLocked) {
@@ -82,7 +74,8 @@ public class Inventory : MonoBehaviour {
             if (Screen.lockCursor && !wasLocked) {
                 wasLocked = true;
                 DidLockCursor();
-	}
+
+		}
 	}
 // Used to draw the inventory menu.
 //Used to draw the favourites (first ten slots of the inventory).
@@ -112,7 +105,7 @@ public class Inventory : MonoBehaviour {
 		
 		}
 // Draw when conditions are met. 
-// Contains the logic for draggin items from and to different slots
+// Contains the logic for dragging items from and to different slots
 // as well as to the creafting menu. 
 
 	void DrawInventory()
@@ -249,15 +242,7 @@ public class Inventory : MonoBehaviour {
 		}
 		GUI.EndGroup ();
 	}
-// Draws the item currently selected in a seperate, golden, slot. 
-	void DrawSelected(){
-		SelectedItem item = new SelectedItem();
-		Rect selSlotRect = new Rect(50,100,50,50);
-		GUI.Box(new Rect(selSlotRect), "", skin.GetStyle("SelectedItem"));
-		GUI.DrawTexture(selSlotRect, favSlots[0].itemIcon);
-		
 
-	}
 // Draws favourites on to the screen in the top left corner
 // if slot empty, draws an empty slot. 
 	void DrawFavourites()
@@ -285,11 +270,23 @@ public class Inventory : MonoBehaviour {
 				GUI.DrawTexture(favSlotRect, favSlots[i].itemIcon);
 	
 			}
-			DrawSelected();
+			
 			//Debug.Log ("fav:"+favSlots[i]+"inventory:"+inventory[i]);
 
 			i++;
 		}
+		DrawSelected();
+
+	}
+	// Draws the item currently selected in a seperate, golden, slot. 
+	void DrawSelected(){
+		SelectedItem item = new SelectedItem();
+		Rect selSlotRect = new Rect(50,100,50,50);
+		GUI.Box(new Rect(selSlotRect), "", skin.GetStyle("SelectedItem"));
+		print(SelectedItem.selectedItem);
+		currentitem = SelectedItem.selectedItem; 
+		GUI.DrawTexture(selSlotRect, favSlots[currentitem].itemIcon);
+		
 
 	}
 // Tooltip appears when hovering above an item, stating its name and description.

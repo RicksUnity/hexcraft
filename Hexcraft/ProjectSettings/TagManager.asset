@@ -5,6 +5,22 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hex
+  - Light
+  - Enemy
+  - Crafting Recipe
+  - Item Database
+  - LoadGame
+  - Inventory
+  - Diamond
+  - HexTile_grass
+  - HexTile_Rock
+  - HexTile_soil
+  - Metal
+  - Red
+  - transparent
+  - Leaves
+  - Tree
+  - coal
   layers:
   - Default
   - TransparentFX

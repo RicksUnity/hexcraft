@@ -8,11 +8,18 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 [Serializable]
 	public class SavedItem{
-		//public string stone;
-	public List<float> stone = new List<float>();
-		//public Hex[] stone ;
-	public List<float> grass = new List<float>();
-		//public string grass;
+	public List<float> Leaves = new List<float>();   //create the list for every componet in the game
+	public List<float> Tree = new List<float>();
+
+	public List<float> Coal = new List<float>();    
+	public List<float> Diamond = new List<float>();  
+	public List<float> HexTile_grass = new List<float>();
+	public List<float> HexTile_Rock = new List<float>();
+	public List<float> HexTile_soil = new List<float>();
+	public List<float> Metal = new List<float>();
+	public List<float> Red = new List<float>();
+	public List<float> transparent = new List<float>();
+
 		public float playerPositionX;
 		public float playerPositionY;
 		public float playerPositionZ;

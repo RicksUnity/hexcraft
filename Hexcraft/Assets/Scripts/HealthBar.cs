@@ -9,11 +9,12 @@ public class HealthBar : MonoBehaviour {
     private float healAmount = 2f;
     public GameObject sun;
 
-	void Start () {
+    //Calls the  heal function every set amount of time defined by healCountdown
+    void Start () {
         InvokeRepeating("Heal", 1, healCountdown);
     }
 	
-	// Update is called once per frame
+    //Reconfigures the on screen health bar to represent the currentHealth of the player
 	void Update () {
         healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
         healthBar.anchoredPosition = new Vector2(-(100 - currentHealth)/2,0);
@@ -21,12 +22,15 @@ public class HealthBar : MonoBehaviour {
 
     void Heal ()
     {
+        //If tthe player is dead, retunr them to spawn and make it daytime
         if(currentHealth <= 0)
         {
-            transform.position = new Vector3(20, 20, 20);
+            transform.position = new Vector3(0, 0, 0);
             currentHealth = 100;
             sun.GetComponent<DayNight>().time = 0;
         }
+
+        //Heals the player by a max amount of healAmount up to 100 health
         if (currentHealth >= 100-healAmount)
         {
             currentHealth = 100;

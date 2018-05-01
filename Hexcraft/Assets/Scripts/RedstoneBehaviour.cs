@@ -8,6 +8,7 @@ public class RedstoneBehaviour : MonoBehaviour {
     public Vector3 pointing = new Vector3(0,0,0);
     private Collider behind;
     public GameObject infront;
+    public Light lightSource;
 
     // --- Determines which way a line of redstone is facing --- 
     public void Orientation (bool passOn){
@@ -60,6 +61,10 @@ public class RedstoneBehaviour : MonoBehaviour {
     }
 
     void Update () {
+        if (torch)
+        {
+            lightSource.intensity = strength;
+        }
         // --- If a line of redsotne is pointing at a non redstone block, then the infront tag of the redstone becomes this block and the block becomes powered ---
         Collider[] nearby = Physics.OverlapSphere(transform.position, 2.9f);
         if (pointing != new Vector3(0,0,0))

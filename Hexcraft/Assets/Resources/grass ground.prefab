@@ -28,7 +28,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4748878555327860
 Transform:
@@ -111,3 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   isDropped: 0
+  isPowered: 0
+  poweredStrength: 0
+  attatchedTo: {fileID: 0}
+  ItemDatabase: {fileID: 0}
+  Inventory: {fileID: 0}

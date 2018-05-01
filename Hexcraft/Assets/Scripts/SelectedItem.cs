@@ -7,7 +7,9 @@ public class SelectedItem : MonoBehaviour
 {
 	public float damage; 
 	public float speed; 
-	public int selectedItem = 1;
+	public static int selectedItem = 1;
+	public int itemSpeedDirt=0;
+	public int itemSpeedStone=0;
     public int itemDamage=0;
     public Camera MainCamera;
 
@@ -22,6 +24,7 @@ public class SelectedItem : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+
 		if(Input.GetAxis("Mouse ScrollWheel") > 0f )
 		{
 			//print("Up");
@@ -63,6 +66,8 @@ public class SelectedItem : MonoBehaviour
 			{
 				MainCamera.GetComponent<MineBlock>().placeBlock = Inventory.inventory[i].itemWorld;
                 itemDamage = Inventory.inventory[i].itemPower;
+				itemSpeedStone = Inventory.inventory[i].itemSpeedStone;
+				itemSpeedDirt = Inventory.inventory[i].itemSpeedDirt;
 			}	
 
 		}

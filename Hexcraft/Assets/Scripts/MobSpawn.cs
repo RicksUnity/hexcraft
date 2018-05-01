@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MobSpawn : MonoBehaviour {
-    public float spawnCountdown = 30;
+    public float spawnCountdown = 5;
     public GameObject spawnMob;
     private float spawnRadius = 12f;
     private float lightDistance = 14f;
